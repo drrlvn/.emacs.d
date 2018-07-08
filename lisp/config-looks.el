@@ -17,7 +17,9 @@
      ((find-font (font-spec :name "Fantasque Sans Mono"))
       (set-frame-font (format "Fantasque Sans Mono %d" font-size) nil t))
      ((find-font (font-spec :name "Fira Mono"))
-      (set-frame-font (format "Fira Mono %d" font-size) nil t)))))
+      (set-frame-font (format "Fira Mono %d" font-size) nil t))
+     ((find-font (font-spec :name "Ubuntu Mono"))
+      (set-frame-font (format "Ubuntu Mono %d" font-size) nil t)))))
 
 (use-package doom-themes
   :ensure
