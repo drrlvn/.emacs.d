@@ -28,14 +28,9 @@
   (require 'bind-key))
 
 (push "~/.emacs.d/lisp" load-path)
-(let ((zplug-bin (expand-file-name "~/.zplug/bin")))
-  (push zplug-bin exec-path)
-  (setenv "PATH" (concat zplug-bin path-separator (getenv "PATH"))))
 
 (require 'config-defuns-autoloads)
 (require 'config-looks)
-
-(defconst rg-executable (executable-find "rg"))
 
 (defgroup my/customizations nil
   "Customizations"
@@ -346,9 +341,8 @@
                                          "\\(?:\\`[#.]\\)"
                                          ;; file names ending with # or ~
                                          "\\|\\(?:[#~]\\'\\)"))
-  (when rg-executable
-    (setq counsel-rg-base-command "rg -S --no-heading --line-number --color never %s"
-          counsel-grep-base-command "rg -S --no-heading --line-number --color never %s %s"))
+  (setq counsel-rg-base-command "rg -S --no-heading --line-number --color never %s"
+        counsel-grep-base-command "rg -S --no-heading --line-number --color never %s %s")
   (counsel-mode 1))
 
 (use-package swiper
@@ -618,9 +612,8 @@
          ("M-g O" . dumb-jump-go-other-window)
          ("M-g M-o" . dumb-jump-quick-look))
   :config
-  (setq dumb-jump-selector 'ivy)
-  (when rg-executable
-    (setq dumb-jump-force-searcher 'rg)))
+  (setq dumb-jump-selector 'ivy
+        dumb-jump-force-searcher 'rg))
 
 (use-package easy-kill
   :ensure
