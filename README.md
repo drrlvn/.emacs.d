@@ -1,4 +1,5 @@
 # Emacs
+![Screenshot](screenshot.png)
 
 My personal Emacs configuration with contribution from friends.
 
