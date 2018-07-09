@@ -562,6 +562,10 @@
   :mode "\\.pylintrc\\'"
   :hook (conf-mode . my/conf-mode-hook))
 
+(use-package deadgrep
+  :ensure
+  :bind ("<f6>" . deadgrep))
+
 (use-package diff-hl
   :if (not my/restricted-resources)
   :ensure
