@@ -67,6 +67,7 @@
         python-indent-electric-colon
         python-indent-shift-left
         python-indent-shift-right
+        query-replace
         smex
         sp-cua-replace-region
         special-digit-argument

@@ -45,6 +45,7 @@
   (spaceline-spacemacs-theme))
 
 (use-package mode-icons
+  :if window-system
   :ensure
   :config (mode-icons-mode 1))
 
