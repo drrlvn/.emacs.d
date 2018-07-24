@@ -41,6 +41,7 @@
   (setq spaceline-responsive nil
         spaceline-workspace-numbers-unicode t
         spaceline-window-numbers-unicode t)
+  (set-face-background 'spaceline-highlight-face "#51afef")
   (spaceline-toggle-minor-modes-off)
   (spaceline-spacemacs-theme))
 
