@@ -293,13 +293,15 @@
 (use-package ivy
   :ensure
   :demand
-  :bind (("C-c s". ivy-resume)
+  :bind (("C-c C-s". ivy-resume)
+         ("C-x B" . ivy-switch-buffer-other-window)
          :map ivy-minibuffer-map
          ("<return>" . ivy-alt-done)
          ("C-j" . ivy-done))
   :config
   (setq ivy-use-virtual-buffers t
         ivy-use-selectable-prompt t
+        ivy-virtual-abbreviate 'full
         ivy-count-format "(%d/%d) "
         ivy-extra-directories '("./")
         ivy-re-builders-alist '((t . ivy--regex-ignore-order))
@@ -316,13 +318,22 @@
 
 (use-package ivy-prescient
   :ensure
+  :after ivy
   :config
   (setq ivy-prescient-retain-classic-highlighting t)
   (ivy-prescient-mode 1))
 
+(use-package ivy-rich
+  :ensure
+  :after ivy
+  :config
+  (setq ivy-rich-path-style 'abbrev
+        ivy-rich-switch-buffer-align-virtual-buffer t)
+  (ivy-rich-mode 1))
+
 (use-package counsel
   :ensure
-  :demand
+  :after ivy
   :bind (("C-s" . counsel-grep-or-swiper)
          ("C-x y" . counsel-yank-pop)
          ("C-x C-r" . counsel-recentf)
@@ -340,8 +351,8 @@
                                          ;; file names beginning with # or .
                                          "\\(?:\\`[#.]\\)"
                                          ;; file names ending with # or ~
-                                         "\\|\\(?:[#~]\\'\\)"))
-  (setq counsel-rg-base-command "rg -S --no-heading --line-number --color never %s"
+                                         "\\|\\(?:[#~]\\'\\)")
+        counsel-rg-base-command "rg -S --no-heading --line-number --color never %s"
         counsel-grep-base-command "rg -S --no-heading --line-number --color never %s %s")
   (counsel-mode 1))
 
