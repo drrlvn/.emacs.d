@@ -501,6 +501,13 @@
   :ensure
   :hook (anaconda-mode . my/company-anaconda-setup))
 
+(use-package pipenv
+  :ensure
+  :after projectile
+  :bind (:map projectile-command-map
+              ("s" . nil))
+  :hook (python-mode . pipenv-mode))
+
 (use-package go-mode
   :ensure
   :defer)
@@ -571,6 +578,7 @@
 
 (use-package conf-mode
   :mode "\\.pylintrc\\'"
+  :mode ("Pipfile\\'" . conf-toml-mode)
   :hook (conf-mode . my/conf-mode-hook))
 
 (use-package deadgrep
