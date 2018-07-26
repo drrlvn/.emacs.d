@@ -37,7 +37,7 @@
   :group 'convenience)
 
 (defcustom my/restricted-resources nil
-  "Avoid using resource-demanding packages, which might lead to parformance degradation"
+  "Avoid using resource-demanding packages, which might lead to parformance degradation."
   :type 'boolean
   :group 'my/customizations)
 
@@ -620,15 +620,6 @@
          ("M-S-<left>" . drag-stuff-left)
          ("M-S-<right>" . drag-stuff-right))
   :hook (drag-stuff-after-drag . my/indent-line-or-region))
-
-(use-package dumb-jump
-  :ensure
-  :bind (("M-g o" . dumb-jump-go)
-         ("M-g O" . dumb-jump-go-other-window)
-         ("M-g M-o" . dumb-jump-quick-look))
-  :config
-  (setq dumb-jump-selector 'ivy
-        dumb-jump-force-searcher 'rg))
 
 (use-package easy-kill
   :ensure
