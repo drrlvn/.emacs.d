@@ -501,13 +501,6 @@
   :ensure
   :hook (anaconda-mode . my/company-anaconda-setup))
 
-(use-package pipenv
-  :ensure
-  :after projectile
-  :bind (:map projectile-command-map
-              ("s" . nil))
-  :hook (python-mode . pipenv-mode))
-
 (use-package go-mode
   :ensure
   :defer)
@@ -857,6 +850,12 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   (ivy-set-actions 'counsel-projectile-switch-project
                    '(("s" counsel-projectile-switch-project-action-rg "search project with rg")))
   (counsel-projectile-mode 1))
+
+(use-package pipenv
+  :ensure
+  :bind (:map projectile-command-map
+              ("s" . nil))
+  :hook (python-mode . pipenv-mode))
 
 (use-package rainbow-delimiters
   :ensure
