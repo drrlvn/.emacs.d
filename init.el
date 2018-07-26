@@ -571,6 +571,7 @@
 
 (use-package conf-mode
   :mode "\\.pylintrc\\'"
+  :mode ("Pipfile\\'" . conf-toml-mode)
   :hook (conf-mode . my/conf-mode-hook))
 
 (use-package deadgrep
@@ -840,6 +841,12 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   (ivy-set-actions 'counsel-projectile-switch-project
                    '(("s" counsel-projectile-switch-project-action-rg "search project with rg")))
   (counsel-projectile-mode 1))
+
+(use-package pipenv
+  :ensure
+  :bind (:map projectile-command-map
+              ("s" . nil))
+  :hook (python-mode . pipenv-mode))
 
 (use-package rainbow-delimiters
   :ensure
