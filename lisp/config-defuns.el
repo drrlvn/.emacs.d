@@ -416,14 +416,14 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
 (defun my/projectile-kill-buffers ()
   "Kill all buffers from current project."
   (interactive)
-  (mapc 'kill-buffer (-remove 'buffer-base-buffer (projectile-project-buffers))))
+  (mapc 'kill-buffer (seq-remove #'buffer-base-buffer (projectile-project-buffers))))
 
 ;;;###autoload
 (defun my/pylint-ignore-errors-at-point ()
   "Add a pylint ignore comment for the error on the current line."
   (interactive)
   (let* ((errs (flycheck-overlay-errors-in (line-beginning-position) (line-end-position)))
-         (ids (delete-dups (-map 'flycheck-error-id errs))))
+         (ids (delete-dups (seq-map #'flycheck-error-id errs))))
     (when (> (length ids) 0)
       (save-excursion
         (comment-indent)
