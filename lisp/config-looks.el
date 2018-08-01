@@ -7,24 +7,20 @@
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
-;; frame title
-(setq frame-title-format
-      '("" invocation-name ": " (:eval (if buffer-file-name (abbreviate-file-name buffer-file-name) "%b"))))
+(setq frame-title-format '("" invocation-name ": %b"))
 
-(unless (get 'default 'saved-face)
-  (let ((font-size (if (eq system-type 'darwin) 15 12)))
-    (cond
-     ((find-font (font-spec :name "Fantasque Sans Mono"))
-      (set-frame-font (format "Fantasque Sans Mono %d" font-size) nil t))
-     ((find-font (font-spec :name "Fira Mono"))
-      (set-frame-font (format "Fira Mono %d" font-size) nil t))
-     ((find-font (font-spec :name "Ubuntu Mono"))
-      (set-frame-font (format "Ubuntu Mono %d" font-size) nil t)))))
+(custom-set-faces
+ `(default
+    ((t
+      :family ,(seq-find (lambda (font) (find-font (font-spec :name font))) '("Iosevka" "Fira Mono" "Ubuntu Mono"))
+      :height ,(if (eq system-type 'darwin) 150 130)))))
 
 (use-package doom-themes
   :ensure
   :config
   (load-theme 'doom-one t)
+  (set-face-attribute 'font-lock-keyword-face nil :slant 'italic)
+  (set-face-attribute 'font-lock-preprocessor-face nil :slant 'italic)
   (doom-themes-org-config))
 
 (use-package window-numbering
