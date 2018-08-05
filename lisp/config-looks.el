@@ -13,7 +13,6 @@
  `(default
     ((t
       :family ,(seq-find (lambda (font) (find-font (font-spec :name font))) '("Iosevka" "Fira Mono" "Ubuntu Mono"))
-      :height ,(if (eq system-type 'darwin) 150 130)))))
       :height ,(if (eq system-type 'darwin) 150 120)))))
 
 (use-package doom-themes
