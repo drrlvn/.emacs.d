@@ -12,7 +12,8 @@
 (custom-set-faces
  `(default
     ((t
-      :family ,(seq-find (lambda (font) (find-font (font-spec :name font))) '("Iosevka" "Fira Mono" "Ubuntu Mono"))
+      :family ,(seq-find (lambda (font) (find-font (font-spec :name font)))
+                         '("Iosevka SS05" "Iosevka SS09" "Iosevka SS01" "Ubuntu Mono"))
       :height ,(if (eq system-type 'darwin) 150 120)))))
 
 (use-package doom-themes
