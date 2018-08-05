@@ -14,6 +14,7 @@
     ((t
       :family ,(seq-find (lambda (font) (find-font (font-spec :name font))) '("Iosevka" "Fira Mono" "Ubuntu Mono"))
       :height ,(if (eq system-type 'darwin) 150 130)))))
+      :height ,(if (eq system-type 'darwin) 150 120)))))
 
 (use-package doom-themes
   :ensure
@@ -21,6 +22,9 @@
   (load-theme 'doom-one t)
   (set-face-attribute 'font-lock-keyword-face nil :slant 'italic)
   (set-face-attribute 'font-lock-preprocessor-face nil :slant 'italic)
+  (set-face-attribute 'font-lock-type-face nil :weight 'bold)
+  (set-face-attribute 'font-lock-function-name-face nil :weight 'bold)
+  (set-face-attribute 'font-lock-constant-face nil :weight 'bold)
   (doom-themes-org-config))
 
 (use-package window-numbering
