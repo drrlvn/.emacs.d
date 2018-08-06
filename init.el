@@ -160,7 +160,6 @@
       initial-scratch-message nil
       kill-whole-line t
       large-file-warning-threshold (* 100 1024 1024)
-      lazy-highlight-initial-delay 0
       mouse-wheel-progressive-speed nil
       resize-mini-windows t
       ring-bell-function 'ignore
@@ -237,10 +236,6 @@
   :defer
   :config (setq glasses-separate-parentheses-p nil
                 glasses-uncapitalize-p t))
-
-(use-package eldoc
-  :defer
-  :config (setq eldoc-idle-delay 0.1))
 
 (use-package imenu
   :defer
@@ -369,9 +364,7 @@
   (cua-mode 1))
 
 (use-package paren
-  :config
-  (setq show-paren-delay 0)
-  (show-paren-mode 1))
+  :config (show-paren-mode 1))
 
 (use-package flycheck
   :ensure
@@ -666,21 +659,17 @@
   :bind (("C-\"" . highlight-symbol-at-point)
          ("C-," . highlight-symbol-prev)
          ("C-." . highlight-symbol-next))
-  :config (setq highlight-symbol-colors '("highlight")
-                highlight-symbol-idle-delay 0))
+  :config (setq highlight-symbol-colors '("highlight")))
 
 (use-package highlight-parentheses
   :ensure
-  :config
-  (setq hl-paren-delay 0)
-  (global-highlight-parentheses-mode 1))
+  :config (global-highlight-parentheses-mode 1))
 
 (use-package highlight-indent-guides
   :ensure
   :hook (prog-mode . highlight-indent-guides-mode)
   :config (setq highlight-indent-guides-method 'character
-                highlight-indent-guides-responsive 'stack
-                highlight-indent-guides-delay 0))
+                highlight-indent-guides-responsive 'stack))
 
 (use-package volatile-highlights
   :ensure
