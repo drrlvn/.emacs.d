@@ -31,19 +31,10 @@
   :ensure
   :config (window-numbering-mode 1))
 
-(use-package powerline
-  :defer
-  :config (remove-hook 'focus-out-hook 'powerline-unset-selected-window))
-
-(use-package spaceline-config
-  :ensure spaceline
+(use-package telephone-line
+  :ensure
   :config
-  (setq spaceline-responsive nil
-        spaceline-workspace-numbers-unicode t
-        spaceline-window-numbers-unicode t)
-  (set-face-background 'spaceline-highlight-face "#51afef")
-  (spaceline-toggle-minor-modes-off)
-  (spaceline-spacemacs-theme))
+  (telephone-line-mode 1))
 
 (use-package mode-icons
   :if window-system
