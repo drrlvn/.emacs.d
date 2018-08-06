@@ -558,8 +558,7 @@
 (use-package company
   :ensure
   :config
-  (setq company-idle-delay 0
-        company-minimum-prefix-length 2
+  (setq company-minimum-prefix-length 2
         company-backends (delete 'company-clang company-backends)
         company-global-modes '(not eshell-mode)
         company-tooltip-align-annotations t)
