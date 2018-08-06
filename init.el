@@ -758,10 +758,10 @@
 
 (use-package git-link
   :ensure
-  :bind (("C-c C-g h" . git-link-homepage)
-         ("C-c C-g c" . git-link-commit)
-         ("C-c C-g l" . git-link)
-         ("C-c C-g H" . my/git-link-homepage-in-browser)))
+  :bind (("C-c G h" . git-link-homepage)
+         ("C-c G c" . git-link-commit)
+         ("C-c G l" . git-link)
+         ("C-c G H" . my/git-link-homepage-in-browser)))
 
 (use-package man
   :bind ("<f1>" . man)
