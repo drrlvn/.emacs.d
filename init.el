@@ -818,6 +818,7 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :ensure
   :demand
   :bind (("C-c C-f" . projectile-find-file)
+         ("<f7>" . projectile-compile-project)
          :map projectile-command-map
          ("s" . counsel-rg))
   :config
