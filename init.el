@@ -724,6 +724,7 @@
          ("C-<f9>" . magit-blame)
          ("C-c g" . magit-dispatch-popup))
   :config
+  (set-face-attribute 'magit-branch-remote nil :foreground (doom-color 'magenta))
   (setq magit-bury-buffer-function 'magit-mode-quit-window
         magit-repository-directories '(("~/dev" . 1))
         magit-tag-arguments '("--annotate")
