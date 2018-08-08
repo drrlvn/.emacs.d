@@ -879,6 +879,10 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
         js2-mode-show-strict-warnings nil)
   :mode "\\.js\\'")
 
+(use-package window-numbering
+  :ensure
+  :config (window-numbering-mode 1))
+
 (use-package winner
   :config (winner-mode))
 

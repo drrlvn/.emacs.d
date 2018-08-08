@@ -27,14 +27,9 @@
   (set-face-attribute 'font-lock-constant-face nil :weight 'bold)
   (doom-themes-org-config))
 
-(use-package window-numbering
+(use-package doom-modeline
   :ensure
-  :config (window-numbering-mode 1))
-
-(use-package telephone-line
-  :ensure
-  :config
-  (telephone-line-mode 1))
+  :config (doom-modeline-init))
 
 (use-package mode-icons
   :if window-system
