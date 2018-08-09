@@ -826,7 +826,8 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   (setq projectile-completion-system 'ivy)
   (fset #'projectile-kill-buffers #'my/projectile-kill-buffers)
   (advice-add #'projectile-switch-project :around #'my/projectile-disable-remove-current-project)
-  (projectile-mode 1))
+  (projectile-mode 1)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
 (use-package counsel-projectile
   :ensure
