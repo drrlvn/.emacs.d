@@ -832,8 +832,6 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
 
 (use-package counsel-projectile
   :ensure
-  :bind (:map counsel-projectile-command-map
-              ("s" . nil))
   :config
   (ivy-set-actions 'counsel-projectile-switch-project
                    '(("s" counsel-projectile-switch-project-action-rg "search project with rg")))
