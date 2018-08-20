@@ -637,14 +637,6 @@
         eyebrowse-new-workspace t)
   (eyebrowse-mode 1))
 
-(use-package git-messenger
-  :ensure
-  :bind (("C-x v p" . git-messenger:popup-message)
-         :map git-messenger-map
-         ("d" . my/git-messenger-show-with-magit)
-         ("l" . my/git-messenger-link-commit))
-  :config (setq git-messenger:show-detail t))
-
 (use-package gitignore-mode
   :ensure
   :defer)
