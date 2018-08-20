@@ -398,7 +398,7 @@
 
 (use-package lispy
   :ensure
-  :hook ((emacs-lisp-mode . lispy-mode) (hy-mode . lispy-mode))
+  :hook ((emacs-lisp-mode . lispy-mode))
   :bind (:map lispy-mode-map-lispy
               ("M-i" . nil)
               ("C-," . nil)
@@ -468,10 +468,6 @@
   :config
   (advice-add #'python-indent-shift-left :around #'my/python-shift-region)
   (advice-add #'python-indent-shift-right :around #'my/python-shift-region))
-
-(use-package hy-mode
-  :ensure
-  :defer)
 
 (use-package py-isort
   :ensure
