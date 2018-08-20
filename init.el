@@ -731,7 +731,9 @@
         magit-fetch-arguments '("--prune")
         magit-log-arguments '("-n256" "--graph" "--decorate" "--show-signature")
         magit-log-section-arguments '("-n256" "--decorate" "--show-signature")
-        magit-diff-refine-hunk t)
+        magit-diff-refine-hunk t
+        magit-section-initial-visibility-alist '((recent . show)
+                                                 (unpushed . show)))
   (unless (eq system-type 'darwin)
     (setq magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")))
   (remove-hook 'magit-pre-display-buffer-hook #'magit-save-window-configuration)
