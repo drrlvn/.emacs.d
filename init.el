@@ -815,6 +815,9 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
          :map projectile-mode-map
          ("C-c p" . projectile-command-map))
   :config
+  (projectile-register-project-type 'rust-cargo '("Cargo.toml")
+                                    :compile "cargo check"
+                                    :test "cargo test")
   (setq projectile-completion-system 'ivy)
   (fset #'projectile-kill-buffers #'my/projectile-kill-buffers)
   (advice-add #'projectile-switch-project :around #'my/projectile-disable-remove-current-project)
