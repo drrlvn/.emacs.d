@@ -811,6 +811,7 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :demand
   :bind (("C-c C-f" . projectile-find-file)
          ("<f7>" . projectile-compile-project)
+         ("<C-f7>" . projectile-test-project)
          :map projectile-mode-map
          ("C-c p" . projectile-command-map))
   :config
