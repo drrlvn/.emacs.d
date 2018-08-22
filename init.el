@@ -812,9 +812,7 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :bind (("C-c C-f" . projectile-find-file)
          ("<f7>" . projectile-compile-project)
          :map projectile-mode-map
-         ("C-c p" . projectile-command-map)
-         :map projectile-command-map
-         ("s" . counsel-rg))
+         ("C-c p" . projectile-command-map))
   :config
   (setq projectile-completion-system 'ivy)
   (fset #'projectile-kill-buffers #'my/projectile-kill-buffers)
@@ -824,6 +822,8 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
 (use-package counsel-projectile
   :ensure
   :config
+  (cl-delete-if (lambda (x) (string= (car x) "si")) counsel-projectile-key-bindings)
+  (push '("s" . counsel-projectile-rg) counsel-projectile-key-bindings)
   (ivy-set-actions 'counsel-projectile-switch-project
                    '(("s" counsel-projectile-switch-project-action-rg "search project with rg")))
   (counsel-projectile-mode 1))
