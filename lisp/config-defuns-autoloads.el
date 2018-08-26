@@ -6,26 +6,6 @@
 ;;;### (autoloads nil "config-defuns" "config-defuns.el" (0 0 0 0))
 ;;; Generated autoloads from config-defuns.el
 
-(autoload 'my/cleanup-buffer "config-defuns" "\
-Perform a bunch of operations on the whitespace content of a buffer.
-
-\(fn)" t nil)
-
-(autoload 'my/filter-buffer "config-defuns" "\
-Run shell command on buffer and replace it with the output.
-
-\(fn)" t nil)
-
-(autoload 'my/open-line-below "config-defuns" "\
-Go to end of line, then insert N newlines and indent.
-
-\(fn N)" t nil)
-
-(autoload 'my/open-line-above "config-defuns" "\
-Go to end of line, then insert N newlines and indent.
-
-\(fn N)" t nil)
-
 (autoload 'my/diff-current-buffer-with-file "config-defuns" "\
 View the differences between current buffer and its associated file.
 
@@ -38,11 +18,6 @@ Invoke `revert-buffer' without the confirmation.
 
 (autoload 'my/kill-buffer-other-window "config-defuns" "\
 Kill buffer in other window.
-
-\(fn)" t nil)
-
-(autoload 'my/eval-and-replace "config-defuns" "\
-Replace the preceding sexp with its value.
 
 \(fn)" t nil)
 
@@ -61,15 +36,10 @@ Colorize complication buffer.
 
 \(fn)" nil nil)
 
-(autoload 'my/rotate-windows "config-defuns" "\
-Rotate your windows.
-
-\(fn)" t nil)
-
 (autoload 'my/toggle-comment-line-or-region "config-defuns" "\
-Toggle comment on line if no region is active, or comment region.
+Toggle comment betwen BEG and END, by default using line or region.
 
-\(fn)" t nil)
+\(fn BEG END)" t nil)
 
 (autoload 'my/increment-number-at-point "config-defuns" "\
 Increment number at point by N.
@@ -104,23 +74,8 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html
 
 \(fn P)" t nil)
 
-(autoload 'my/git-messenger-show-with-magit "config-defuns" "\
-Use magit to show the commit of git-messenger.
-
-\(fn)" t nil)
-
-(autoload 'my/git-messenger-link-commit "config-defuns" "\
-Get a link to the commit of git-messenger.
-
-\(fn)" t nil)
-
 (autoload 'my/git-link-homepage-in-browser "config-defuns" "\
 Open the repository homepage in the browser.
-
-\(fn)" t nil)
-
-(autoload 'my/show-buffer-file-name "config-defuns" "\
-Show the full path to the current file in the minibuffer.
 
 \(fn)" t nil)
 
@@ -176,11 +131,6 @@ Insert all special methods.
 
 (autoload 'my/rust-toggle-mut "config-defuns" "\
 Toggle mut for variable under point.
-
-\(fn)" t nil)
-
-(autoload 'my/find-user-init-file "config-defuns" "\
-Run `find-file' on `user-init-file'.
 
 \(fn)" t nil)
 
@@ -257,7 +207,7 @@ Use local eslint from node_modules before global.
 
 \(fn)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "config-defuns" '(#("my/" 0 3 (fontified t face font-lock-function-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "config-defuns" '("my/")))
 
 ;;;***
 

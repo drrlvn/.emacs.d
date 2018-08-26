@@ -11,45 +11,6 @@
      (setq kill-ring orig-kill-ring
            kill-ring-yank-pointer orig-kill-ring-yank-pointer)))
 
-(defun my/region-or-current-word ()
-  "Return region if active else current word."
-  (if (region-active-p)
-      (buffer-substring (region-beginning) (region-end))
-    (current-word)))
-
-;;;###autoload
-(defun my/cleanup-buffer ()
-  "Perform a bunch of operations on the whitespace content of a buffer."
-  (interactive)
-  (delete-trailing-whitespace)
-  (indent-region (point-min) (point-max)))
-
-;;;###autoload
-(defun my/filter-buffer ()
-  "Run shell command on buffer and replace it with the output."
-  (interactive)
-  (let ((prev-point (point)))
-    (call-process-region (point-min) (point-max) shell-file-name t t nil shell-command-switch
-                         (read-shell-command "Shell command on buffer: "))
-    (goto-char prev-point)))
-
-;;;###autoload
-(defun my/open-line-below (n)
-  "Go to end of line, then insert N newlines and indent."
-  (interactive "*p")
-  (end-of-line)
-  (newline n t)
-  (indent-according-to-mode))
-
-;;;###autoload
-(defun my/open-line-above (n)
-  "Go to end of line, then insert N newlines and indent."
-  (interactive "*p")
-  (beginning-of-line)
-  (newline n t)
-  (forward-line (- n))
-  (indent-according-to-mode))
-
 ;;;###autoload
 (defun my/diff-current-buffer-with-file ()
   "View the differences between current buffer and its associated file."
@@ -72,19 +33,6 @@
   (kill-buffer (window-buffer (next-window))))
 
 ;;;###autoload
-(defun my/eval-and-replace ()
-  "Replace the preceding sexp with its value."
-  (interactive)
-  (let ((original-point (point)))
-    (let ((eval-expression-print-length nil)
-          (eval-expression-print-level nil))
-      (eval-last-sexp t))
-    (let ((distance (- (point) original-point)))
-      (backward-char distance)
-      (backward-kill-sexp)
-      (forward-char distance))))
-
-;;;###autoload
 (defun my/balance-windows (&rest _args)
   "Call `balance-windows' while ignoring ARGS."
   (balance-windows))
@@ -105,39 +53,13 @@
     (ansi-color-apply-on-region compilation-filter-start (point-max))))
 
 ;;;###autoload
-(defun my/rotate-windows ()
-  "Rotate your windows."
-  (interactive)
-  (if (not (> (count-windows) 1))
-      (message "You can't rotate a single window!")
-    (let ((i 1)
-          (numWindows (count-windows)))
-      (while  (< i numWindows)
-        (let* (
-               (w1 (elt (window-list) i))
-               (w2 (elt (window-list) (+ (% i numWindows) 1)))
-
-               (b1 (window-buffer w1))
-               (b2 (window-buffer w2))
-
-               (s1 (window-start w1))
-               (s2 (window-start w2))
-               )
-          (set-window-buffer w1  b2)
-          (set-window-buffer w2 b1)
-          (set-window-start w1 s2)
-          (set-window-start w2 s1)
-          (setq i (1+ i)))))))
-
-;;;###autoload
-(defun my/toggle-comment-line-or-region ()
-  "Toggle comment on line if no region is active, or comment region."
-  (interactive)
-  (let (beg end)
-    (if (region-active-p)
-        (setq beg (region-beginning) end (region-end))
-      (setq beg (line-beginning-position) end (line-end-position)))
-    (comment-or-uncomment-region beg end)))
+(defun my/toggle-comment-line-or-region (beg end)
+  "Toggle comment betwen BEG and END, by default using line or region."
+  (interactive
+      (if mark-active
+          (list (region-beginning) (region-end))
+        (list (line-beginning-position) (line-beginning-position 2))))
+  (comment-or-uncomment-region beg end))
 
 ;;;###autoload
 (defun my/increment-number-at-point (n)
@@ -195,21 +117,6 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
         (t (narrow-to-defun))))
 
 ;;;###autoload
-(defun my/git-messenger-show-with-magit ()
-  "Use magit to show the commit of git-messenger."
-  (interactive)
-  (magit-show-commit git-messenger:last-commit-id)
-  (git-messenger:popup-close))
-
-;;;###autoload
-(defun my/git-messenger-link-commit ()
-  "Get a link to the commit of git-messenger."
-  (interactive)
-  (cl-letf (((symbol-function 'word-at-point) (lambda () git-messenger:last-commit-id)))
-    (call-interactively 'git-link-commit))
-  (git-messenger:popup-close))
-
-;;;###autoload
 (defun my/git-link-homepage-in-browser ()
   "Open the repository homepage in the browser."
   (interactive)
@@ -217,17 +124,6 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
   (let ((git-link-open-in-browser t))
     (ignore git-link-open-in-browser)
     (call-interactively 'git-link-homepage)))
-
-;;;###autoload
-(defun my/show-buffer-file-name ()
-  "Show the full path to the current file in the minibuffer."
-  (interactive)
-  (let ((file-name (buffer-file-name)))
-    (if file-name
-        (progn
-          (message file-name)
-          (kill-new file-name))
-      (error "Buffer not visiting a file"))))
 
 (defun my/region-line-beginning ()
   "Return the position of the line in which the region beginning is placed."
@@ -337,12 +233,6 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
     (if (looking-back "mut\\s-+" (point-at-bol))
         (delete-region (match-beginning 0) (match-end 0))
       (insert "mut "))))
-
-;;;###autoload
-(defun my/find-user-init-file ()
-  "Run `find-file' on `user-init-file'."
-  (interactive)
-  (find-file user-init-file))
 
 ;;;###autoload
 (defun my/magit-status-config-project ()

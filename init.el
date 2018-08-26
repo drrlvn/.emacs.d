@@ -48,12 +48,8 @@
 (bind-key "M-<f9>" #'vc-revision-other-window)
 (bind-key "<f11>" #'toggle-frame-fullscreen)
 (bind-key "S-<f11>" #'whitespace-cleanup)
-(bind-key "<f12>" #'my/cleanup-buffer)
-(bind-key "S-<f12>" #'my/find-user-init-file)
 (bind-key "C-<f12>" #'my/magit-status-config-project)
 
-(bind-key "M-<return>" #'my/open-line-below)
-(bind-key "M-S-<return>" #'my/open-line-above)
 (bind-key "C-<delete>" #'kill-word)
 (bind-key "M-SPC" #'cycle-spacing)
 
@@ -69,21 +65,14 @@
 (unbind-key "C-x C-z")
 (bind-key "C-!" #'kill-this-buffer)
 (bind-key "C-M-!" #'my/kill-buffer-other-window)
-(bind-key "C-^" #'bury-buffer)
-(bind-key "C-#" #'quick-calc)
 
 (bind-key "C-c C-<return>" #'delete-blank-lines)
-(bind-key "C-c n" #'my/cleanup-buffer)
 (bind-key "C-c d" #'my/diff-current-buffer-with-file)
-(bind-key "C-c C-r" #'my/rotate-windows)
 (bind-key "C-c C-;" #'my/toggle-comment-line-or-region)
 (bind-key "M-s M-s" #'sort-lines)
-(bind-key "C-%" #'my/filter-buffer)
 
 (bind-key "C-+" #'my/increment-number-at-point)
 (bind-key "C-M-+" #'my/decrement-number-at-point)
-
-(bind-key "C-x C-p" #'my/show-buffer-file-name)
 
 (bind-key "C-x n r" #'narrow-to-region)
 (bind-key "C-x n n" #'my/narrow-or-widen-dwim)
@@ -271,6 +260,18 @@
   :bind (("M-[" . bln-backward-half)
          ("M-]" . bln-forward-half)))
 
+(use-package crux
+  :ensure
+  :bind (("M-<return>" . crux-smart-open-line)
+         ("M-S-<return>" . crux-smart-open-line-above)
+         ("<f12>" . crux-cleanup-buffer-or-region)
+         ("S-<f12>" . crux-find-user-init-file)
+         ("C-S-<backspace>" . crux-kill-whole-line)
+         ("C-c n" . crux-cleanup-buffer-or-region)
+         ("C-c C-e" . crux-eval-and-replace)
+         ("C-c C-r" . crux-transpose-windows)
+         ("C-^" . crux-top-join-line)))
+
 (use-package recentf
   :config
   (setq recentf-max-saved-items 1000)
@@ -388,10 +389,6 @@
 
 (use-package prog-mode
   :hook (prog-mode . my/prog-mode-hook))
-
-(use-package elisp-mode
-  :bind (:map emacs-lisp-mode-map
-              ("C-c C-e" . my/eval-and-replace)))
 
 (use-package eldoc
   :hook (emacs-lisp-mode . eldoc-mode))
