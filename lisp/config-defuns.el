@@ -142,16 +142,6 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
     (indent-according-to-mode)))
 
 ;;;###autoload
-(defun my/package-upgrade-all ()
-  "."
-  (interactive)
-  (save-window-excursion
-    (let ((package-menu-async nil))
-      (package-list-packages))
-    (package-menu-mark-upgrades)
-    (package-menu-execute 'noquery)))
-
-;;;###autoload
 (defun my/maybe-clang-format-buffer ()
   "Format buffer if project has .clang-format file."
   (interactive)
