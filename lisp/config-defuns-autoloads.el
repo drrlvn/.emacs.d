@@ -84,11 +84,6 @@ Indent region if it is active, otherwise indent line.
 
 \(fn)" t nil)
 
-(autoload 'my/package-upgrade-all "config-defuns" "\
-.
-
-\(fn)" t nil)
-
 (autoload 'my/maybe-clang-format-buffer "config-defuns" "\
 Format buffer if project has .clang-format file.
 
@@ -207,7 +202,7 @@ Use local eslint from node_modules before global.
 
 \(fn)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "config-defuns" '("my/")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "config-defuns" '(#("my/" 0 3 (face font-lock-function-name-face)))))
 
 ;;;***
 

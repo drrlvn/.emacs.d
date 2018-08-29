@@ -77,8 +77,6 @@
 (bind-key "C-x n r" #'narrow-to-region)
 (bind-key "C-x n n" #'my/narrow-or-widen-dwim)
 
-(bind-key "C-x p" #'my/package-upgrade-all)
-
 (bind-key [remap goto-line] #'my/goto-line-with-feedback)
 
 (bind-key "M-p" #'my/scroll-down)
@@ -91,6 +89,10 @@
   (use-package exec-path-from-shell
     :ensure
     :config (exec-path-from-shell-initialize)))
+
+(use-package paradox
+  :ensure
+  :bind (("C-x p" . paradox-upgrade-packages)))
 
 (use-package mwim
   :ensure
