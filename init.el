@@ -92,7 +92,9 @@
 
 (use-package paradox
   :ensure
-  :bind (("C-x p" . paradox-upgrade-packages)))
+  :bind (("C-x p" . paradox-upgrade-packages))
+  :config
+  (setq paradox-github-token t))
 
 (use-package mwim
   :ensure
