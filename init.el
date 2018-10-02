@@ -923,4 +923,8 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :ensure
   :bind (("M-g M-o" . dump-jump-quick-look)))
 
+(use-package prettier-js
+  :ensure
+  :hook (js2-mode-hook . prettier-js-mode))
+
 ;;; init.el ends here
