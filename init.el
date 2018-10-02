@@ -919,4 +919,8 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :ensure
   :bind ("C-M-/" . ivy-yasnippet))
 
+(use-package dumb-jump
+  :ensure
+  :bind (("M-g M-o" . dump-jump-quick-look)))
+
 ;;; init.el ends here
