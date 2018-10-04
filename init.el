@@ -144,6 +144,7 @@
       backup-directory-alist `((".*" . ,temporary-file-directory))
       comment-padding nil
       confirm-kill-processes nil
+      create-lockfiles nil
       diff-switches "-u"
       disabled-command-function nil
       history-length 500
