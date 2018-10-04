@@ -820,9 +820,9 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   (projectile-register-project-type 'rust-cargo '("Cargo.toml")
                                     :compile "cargo check"
                                     :test "cargo test")
-  (setq projectile-completion-system 'ivy)
+  (setq projectile-completion-system 'ivy
+        projectile-current-project-on-switch 'move-to-end)
   (fset #'projectile-kill-buffers #'my/projectile-kill-buffers)
-  (advice-add #'projectile-switch-project :around #'my/projectile-disable-remove-current-project)
   (projectile-mode 1))
 
 (use-package counsel-projectile

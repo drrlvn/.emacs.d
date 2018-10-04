@@ -95,12 +95,6 @@
       (display-line-numbers-mode prev-display-line-numbers-mode))))
 
 ;;;###autoload
-(defun my/projectile-disable-remove-current-project (orig-fun &rest args)
-  "Call ORIG-FUN with ARGS while replacing projectile--remove-current-project with identity function."
-  (cl-letf (((symbol-function 'projectile--remove-current-project) #'identity))
-    (apply orig-fun args)))
-
-;;;###autoload
 (defun my/narrow-or-widen-dwim (p)
   "Widen if buffer is narrowed, narrow-dwim otherwise.
 Dwim means: region, org-src-block, org-subtree, or

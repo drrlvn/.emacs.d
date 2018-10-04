@@ -56,11 +56,6 @@ Show line numbers temporarily, while prompting for the line number input.
 
 \(fn)" t nil)
 
-(autoload 'my/projectile-disable-remove-current-project "config-defuns" "\
-Call ORIG-FUN with ARGS while replacing projectile--remove-current-project with identity function.
-
-\(fn ORIG-FUN &rest ARGS)" nil nil)
-
 (autoload 'my/narrow-or-widen-dwim "config-defuns" "\
 Widen if buffer is narrowed, narrow-dwim otherwise.
 Dwim means: region, org-src-block, org-subtree, or
