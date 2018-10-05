@@ -926,6 +926,6 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
 
 (use-package prettier-js
   :ensure
-  :hook (js2-mode-hook . prettier-js-mode))
+  :hook (js2-mode . prettier-js-mode))
 
 ;;; init.el ends here
