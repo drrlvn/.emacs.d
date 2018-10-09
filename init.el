@@ -922,7 +922,7 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
 
 (use-package dumb-jump
   :ensure
-  :bind (("M-g M-o" . dump-jump-quick-look)))
+  :bind (("M-g M-o" . dumb-jump-quick-look)))
 
 (use-package prettier-js
   :ensure
