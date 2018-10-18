@@ -928,4 +928,8 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :ensure
   :hook (js2-mode . prettier-js-mode))
 
+(use-package magit-todos
+  :ensure
+  :hook (magit-status-mode . magit-todos-mode))
+
 ;;; init.el ends here
