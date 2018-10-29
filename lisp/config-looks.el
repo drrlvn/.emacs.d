@@ -29,7 +29,9 @@
 
 (use-package doom-modeline
   :ensure
-  :config (doom-modeline-init))
+  :config
+  (doom-modeline-init)
+  (setq doom-modeline-python-executable nil))
 
 (use-package mode-icons
   :if window-system
