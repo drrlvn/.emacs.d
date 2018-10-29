@@ -389,6 +389,10 @@
               #b00110000
               #b00010000))))
 
+(use-package js
+  :config
+  (setq js-switch-indent-offset js-indent-level))
+
 (use-package flyspell
   :hook (rst-mode . flyspell-mode))
 
