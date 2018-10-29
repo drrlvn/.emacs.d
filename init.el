@@ -390,7 +390,8 @@
               #b00010000))))
 
 (use-package flyspell
-  :hook (rst-mode . flyspell-mode))
+  :hook ((rst-mode . flyspell-mode)
+         (text-mode . flyspell-mode)))
 
 (use-package prog-mode
   :hook (prog-mode . my/prog-mode-hook))
