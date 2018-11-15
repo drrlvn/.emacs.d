@@ -397,9 +397,6 @@
 (use-package prog-mode
   :hook (prog-mode . my/prog-mode-hook))
 
-(use-package eldoc
-  :hook (emacs-lisp-mode . eldoc-mode))
-
 (use-package lispy
   :ensure
   :hook ((emacs-lisp-mode . lispy-mode))
@@ -520,8 +517,7 @@
 
 (use-package racer
   :ensure
-  :hook ((rust-mode . racer-mode)
-         (racer-mode . eldoc-mode))
+  :hook ((rust-mode . racer-mode))
   :bind (:map rust-mode-map
               ("C-c h" . racer-describe)))
 
