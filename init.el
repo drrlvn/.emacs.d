@@ -85,6 +85,9 @@
 (bind-key "M-z" #'my/zap-up-to-char)
 (bind-key "M-Z" #'zap-to-char)
 
+(bind-key "<C-M-down>" #'next-error)
+(bind-key "<C-M-up>" #'previous-error)
+
 (when (eq system-type 'darwin)
   (use-package exec-path-from-shell
     :ensure
