@@ -378,7 +378,9 @@
   :hook ((prog-mode . flycheck-mode) (flycheck-mode . my/use-eslint-from-node-modules))
   :config
   (setq flycheck-indication-mode 'right-fringe
-        flycheck-emacs-lisp-load-path 'inherit)
+        flycheck-emacs-lisp-load-path 'inherit
+        flycheck-flake8rc ".flake8")
+  (flycheck-add-next-checker 'python-flake8 'python-pylint)
   (when window-system
     (define-fringe-bitmap 'flycheck-fringe-bitmap-double-arrow
       (vector #b00010000
