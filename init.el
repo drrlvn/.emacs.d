@@ -515,7 +515,8 @@
 (use-package flycheck-rust
   :ensure
   :after rust-mode
-  :hook (flycheck-mode . flycheck-rust-setup))
+  :hook (flycheck-mode . flycheck-rust-setup)
+  :config (flycheck-add-next-checker 'rust-cargo 'rust-clippy))
 
 (use-package racer
   :ensure
