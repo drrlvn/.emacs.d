@@ -160,6 +160,7 @@
       scroll-conservatively 10000
       scroll-margin 5
       scroll-preserve-screen-position t
+      shell-file-name "/bin/sh"
       )
 
 (setq-default comment-column 0
@@ -305,7 +306,6 @@
         ivy-virtual-abbreviate 'full
         ivy-count-format "(%d/%d) "
         ivy-extra-directories '("./")
-        ivy-re-builders-alist '((t . ivy--regex-ignore-order))
         ivy-initial-inputs-alist nil)
   (push '(emacs-lisp-mode . swiper-match-face-1) ivy-switch-buffer-faces-alist)
   (push '(python-mode . swiper-match-face-2) ivy-switch-buffer-faces-alist)
@@ -353,7 +353,6 @@
                                          "\\(?:\\`[#.]\\)"
                                          ;; file names ending with # or ~
                                          "\\|\\(?:[#~]\\'\\)")
-        counsel-rg-base-command "rg -S --no-heading --line-number --color never %s"
         counsel-grep-base-command "rg -S --no-heading --line-number --color never %s %s")
   (counsel-mode 1))
 
