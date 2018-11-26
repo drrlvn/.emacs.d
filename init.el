@@ -740,13 +740,6 @@
   :ensure
   :hook (magit-mode . turn-on-magit-gitflow))
 
-(use-package magithub
-  :ensure
-  :after magit
-  :config
-  (setq magithub-preferred-remote-method 'clone_url)
-  (magithub-feature-autoinject t))
-
 (use-package git-commit
   :config
   (setq git-commit-summary-max-length fill-column)
