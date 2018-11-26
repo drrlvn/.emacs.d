@@ -319,6 +319,7 @@
 
 (use-package ivy-prescient
   :ensure
+  :disabled
   :after ivy
   :config
   (setq ivy-prescient-retain-classic-highlighting t)
