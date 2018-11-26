@@ -329,8 +329,7 @@
   :ensure
   :after ivy
   :config
-  (setq ivy-rich-path-style 'abbrev
-        ivy-rich-switch-buffer-align-virtual-buffer t)
+  (setq ivy-rich-path-style 'abbrev)
   (ivy-rich-mode 1))
 
 (use-package counsel
@@ -714,7 +713,7 @@
   :ensure
   :bind (("<f9>" . magit-status)
          ("S-<f9>" . magit-log-buffer-file)
-         ("C-<f9>" . magit-blame)
+         ("C-<f9>" . magit-blame-addition)
          ("C-c g" . magit-dispatch-popup))
   :config
   (set-face-attribute 'magit-branch-remote nil :foreground (doom-color 'magenta))
