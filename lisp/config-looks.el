@@ -33,11 +33,6 @@
   (doom-modeline-init)
   (setq doom-modeline-python-executable nil))
 
-(use-package mode-icons
-  :if window-system
-  :ensure
-  :config (mode-icons-mode 1))
-
 (when window-system
   (scroll-bar-mode -1)
   (horizontal-scroll-bar-mode -1))
