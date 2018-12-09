@@ -512,6 +512,10 @@
               ("C-c m" . my/rust-toggle-mut))
   :config (setq rust-format-on-save t))
 
+(use-package cargo
+  :ensure
+  :hook (rust-mode . cargo-minor-mode))
+
 (use-package flycheck-rust
   :ensure
   :after rust-mode
