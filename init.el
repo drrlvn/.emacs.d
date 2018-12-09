@@ -518,11 +518,15 @@
   :hook (flycheck-mode . flycheck-rust-setup)
   :config (flycheck-add-next-checker 'rust-cargo 'rust-clippy))
 
-(use-package racer
+(use-package lsp-mode
   :ensure
-  :hook ((rust-mode . racer-mode))
-  :bind (:map rust-mode-map
-              ("C-c h" . racer-describe)))
+  :hook (rust-mode . lsp)
+  :config (require 'lsp-clients))
+
+(use-package lsp-ui
+  :ensure
+  :hook (lsp-mode . lsp-ui-mode)
+  :config (set-face-attribute 'lsp-ui-sideline-global nil :inherit 'mode-line))
 
 (use-package yaml-mode
   :ensure
