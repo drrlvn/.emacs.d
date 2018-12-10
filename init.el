@@ -564,7 +564,8 @@
 (use-package company
   :ensure
   :config
-  (setq company-minimum-prefix-length 2
+  (setq company-minimum-prefix-length 0
+        company-auto-complete t
         company-backends (delete 'company-clang company-backends)
         company-global-modes '(not eshell-mode)
         company-tooltip-align-annotations t)
