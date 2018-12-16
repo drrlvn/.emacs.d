@@ -505,7 +505,6 @@
 
 (use-package rust-mode
   :ensure
-  :defer
   :bind (:map rust-mode-map
               ("C-c C-f" . nil)
               ("C-c P" . rust-promote-module-into-dir)
@@ -522,9 +521,9 @@
   :hook (flycheck-mode . flycheck-rust-setup)
   :config (flycheck-add-next-checker 'rust-cargo 'rust-clippy))
 
-(use-package lsp-mode
-  :ensure
-  :hook (rust-mode . lsp)
+(use-package lsp
+  :ensure lsp-mode
+  :hook rust-mode
   :config (require 'lsp-clients))
 
 (use-package lsp-ui
