@@ -513,7 +513,11 @@
 
 (use-package cargo
   :ensure
-  :hook (rust-mode . cargo-minor-mode))
+  :hook (rust-mode . cargo-minor-mode)
+  :config
+  (setq cargo-process--command-check "check --all-features"
+        cargo-process--command-test "test --all-features"
+        cargo-process--command-build "build --all-features"))
 
 (use-package flycheck-rust
   :ensure
