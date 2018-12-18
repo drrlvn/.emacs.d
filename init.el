@@ -212,7 +212,8 @@
 
 (use-package org
   :bind (("<f10>" . org-agenda)
-         ("C-<f10>" . org-capture))
+         ("C-<f10>" . org-capture)
+         ("M-<f10>" . org-capture-goto-last-stored))
   :hook (org-mode . my/org-mode-hook)
   :config
   (setq org-replace-disputed-keys t
