@@ -531,6 +531,7 @@
 (use-package lsp
   :ensure lsp-mode
   :hook rust-mode
+  :bind ("C-c r" . lsp-rename)
   :config (require 'lsp-clients))
 
 (use-package lsp-ui
