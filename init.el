@@ -497,11 +497,6 @@
   :ensure
   :hook (anaconda-mode . my/company-anaconda-setup))
 
-(use-package pipenv
-  :ensure
-  :hook (python-mode . pipenv-mode)
-  :custom (pipenv-keymap-prefix (kbd "C-c C-e")))
-
 (use-package go-mode
   :ensure
   :defer)
