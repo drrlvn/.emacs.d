@@ -756,10 +756,6 @@
   (setq git-commit-summary-max-length fill-column)
   (global-git-commit-mode 1))
 
-(use-package emojify
-  :ensure
-  :config (global-emojify-mode))
-
 (use-package git-link
   :ensure
   :bind (("C-c G h" . git-link-homepage)
