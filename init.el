@@ -253,7 +253,9 @@
 
 (use-package server
   :if window-system
-  :config (server-start))
+  :config
+  (unless (server-running-p)
+    (server-start)))
 
 (use-package autorevert
   :config
