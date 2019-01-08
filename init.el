@@ -526,13 +526,23 @@
 (use-package lsp
   :ensure lsp-mode
   :hook rust-mode
-  :bind ("C-c r" . lsp-rename)
-  :config (require 'lsp-clients))
+  :config
+  (setq lsp-prefer-flymake nil)
+  (require 'lsp-clients))
 
 (use-package lsp-ui
   :ensure
   :hook (lsp-mode . lsp-ui-mode)
+  :bind (:map lsp-ui-mode-map
+              ("C-c l r" . lsp-rename)
+              ("C-c l s" . lsp-ui-find-workspace-symbol)
+              ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
+              ([remap xref-find-references] . lsp-ui-peek-find-references))
   :config (set-face-attribute 'lsp-ui-sideline-global nil :inherit 'mode-line))
+
+(use-package lsp-ui-flycheck
+  :bind (:map lsp-ui-mode-map
+              ("C-c l c" . lsp-ui-flycheck-list)))
 
 (use-package yaml-mode
   :ensure
