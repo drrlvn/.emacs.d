@@ -21,3 +21,18 @@ Notes:
 * For spell checking to work an ispell compatible program and dictionary need to be installed,
   e.g. `aspell-en`.
 * By default `cmark` is used to markdown export/preview so it needs to be installed.
+
+## Working with Python
+
+It's highly recommended to develop Python projects in virtual environment. Once you have a virtual
+environment, use `C-c p E` to define the variable `pyvenv-activate` for the current project. Store
+the path of the virtual environment inside this variable. Remember to quote that path with double
+quotation marks.
+
+It's also recommended to install the [Python Language
+Server](https://github.com/palantir/python-language-server) inside your virtual environment, as well
+as Pylint and isort if you're interested.
+
+If you follow these steps then when visiting a Python file, the modeline should show `Python
+(ENV_NAME)` where `ENV_NAME` is the name of your virtual environment. The modeline should also
+indicate that the Python Language Server is running by showing `LSP[pyls:pid]`.

@@ -384,6 +384,18 @@ COUNT are set in the same way as the original function."
   (when (eq (projectile-project-type) 'rust-cargo)
     (cargo-minor-mode)))
 
+(defun my/virtualenv-name ()
+  "Gets the virtual env name intelligently."
+  (if (-contains? '("env" ".env") pyvenv-virtual-env-name)
+      (f-filename (f-dirname pyvenv-virtual-env))
+    pyvenv-virtual-env-name))
+
+;;;###autoload
+(defun my/reload-venv ()
+  "Run LSP and update the modeline with the name of the virtualenv."
+  (lsp)
+  (setq doom-modeline-env-version (format "(%s)" (my/virtualenv-name))))
+
 (provide 'config-defuns)
 
 ;;; Local Variables:

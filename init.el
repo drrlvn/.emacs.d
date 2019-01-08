@@ -150,6 +150,14 @@
 
 (require 'config-looks)
 
+(use-package dash
+  :ensure
+  :defer)
+
+(use-package f
+  :ensure
+  :defer)
+
 (when (eq system-type 'darwin)
   (use-package exec-path-from-shell
     :ensure
@@ -497,6 +505,7 @@
   :bind (:map python-mode-map
               ("C-<f8>" . my/pylint-ignore-errors-at-point)
               ("C-c C-f" . nil))
+  :hook (python-mode . lsp)
   :config
   (advice-add #'python-indent-shift-left :around #'my/python-shift-region)
   (advice-add #'python-indent-shift-right :around #'my/python-shift-region))
@@ -511,15 +520,8 @@
 
 (use-package pyvenv
   :ensure
+  :init (add-hook 'pyvenv-post-activate-hooks #'my/reload-venv)
   :hook (hack-local-variables . my/pyvenv-activate))
-
-(use-package anaconda-mode
-  :ensure
-  :hook (python-mode (python-mode . anaconda-eldoc-mode)))
-
-(use-package company-anaconda
-  :ensure
-  :hook (anaconda-mode . my/company-anaconda-setup))
 
 (use-package go-mode
   :ensure
@@ -570,11 +572,13 @@
               ("C-c l s" . lsp-ui-find-workspace-symbol)
               ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
               ([remap xref-find-references] . lsp-ui-peek-find-references))
-  :config (setq lsp-ui-sideline-show-hover nil))
+  :config (setq lsp-ui-sideline-ignore-duplicate t
+                lsp-ui-sideline-show-hover nil))
 
 (use-package lsp-ui-flycheck
   :bind (:map lsp-ui-mode-map
-              ("C-c l c" . lsp-ui-flycheck-list)))
+              ("C-c l c" . lsp-ui-flycheck-list))
+  :config (flycheck-add-next-checker 'lsp-ui '(warning . python-pylint)))
 
 (use-package yaml-mode
   :ensure

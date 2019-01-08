@@ -217,6 +217,11 @@ Activate cargo-mode in Magit if the project type is Rust.
 
 \(fn)" nil nil)
 
+(autoload 'my/reload-venv "config-defuns" "\
+Run LSP and update the modeline with the name of the virtualenv.
+
+\(fn)" nil nil)
+
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "config-defuns" '("my/")))
 
 ;;;***
