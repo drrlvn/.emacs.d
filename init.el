@@ -451,30 +451,31 @@
   :config (setq c-basic-offset 4
                 c-default-style "bsd"))
 
-(use-package rtags
-  :ensure
-  :hook ((c-mode-common . rtags-start-process-unless-running))
-  :bind (:map c-mode-base-map
-              ("M-." . rtags-find-symbol-at-point)
-              ("M-i" . rtags-imenu))
-  :config
-  (setq rtags-autostart-diagnostics t
-        rtags-completions-enabled t
-        rtags-display-result-backend 'ivy)
-  (rtags-enable-standard-keybindings))
+(when (eq system-type 'gnu/linux)
+  (use-package rtags
+    :ensure
+    :hook ((c-mode-common . rtags-start-process-unless-running))
+    :bind (:map c-mode-base-map
+                ("M-." . rtags-find-symbol-at-point)
+                ("M-i" . rtags-imenu))
+    :config
+    (setq rtags-autostart-diagnostics t
+          rtags-completions-enabled t
+          rtags-display-result-backend 'ivy)
+    (rtags-enable-standard-keybindings))
 
-(use-package ivy-rtags
-  :ensure
-  :after rtags)
+  (use-package ivy-rtags
+    :ensure
+    :after rtags)
 
-(use-package company-rtags
-  :ensure
-  :after company
-  :config (add-to-list 'company-backends 'company-rtags))
+  (use-package company-rtags
+    :ensure
+    :after company
+    :config (add-to-list 'company-backends 'company-rtags))
 
-(use-package flycheck-rtags
-  :ensure
-  :after rtags)
+  (use-package flycheck-rtags
+    :ensure
+    :after rtags))
 
 (use-package clang-format
   :ensure
