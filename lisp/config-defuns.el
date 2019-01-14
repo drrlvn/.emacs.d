@@ -358,6 +358,12 @@ COUNT are set in the same way as the original function."
     (when (and eslint (file-executable-p eslint))
       (setq-local flycheck-javascript-eslint-executable eslint))))
 
+;;;###autoload
+(defun my/cargo-toml-mode ()
+  "A hook that runs in TOML mode and activates cargo-minor-mode when necessary."
+  (when (equal (buffer-name) "Cargo.toml")
+    (cargo-minor-mode)))
+
 (provide 'config-defuns)
 
 ;;; Local Variables:
