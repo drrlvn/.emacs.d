@@ -513,7 +513,8 @@
 
 (use-package cargo
   :ensure
-  :hook (rust-mode . cargo-minor-mode)
+  :hook ((rust-mode . cargo-minor-mode)
+         (conf-toml-mode . my/cargo-toml-mode))
   :config
   (setq cargo-process--command-check "check --all-features"
         cargo-process--command-test "test --all-features"
