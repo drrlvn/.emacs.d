@@ -197,12 +197,12 @@ Use local eslint from node_modules before global.
 
 \(fn)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "config-defuns" '("my/")))
 (autoload 'my/cargo-toml-mode "config-defuns" "\
 A hook that runs in TOML mode and activates cargo-minor-mode when necessary.
 
 \(fn)" nil nil)
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "config-defuns" '("my/")))
 
 ;;;***
 

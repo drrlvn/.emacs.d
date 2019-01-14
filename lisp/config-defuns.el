@@ -361,7 +361,7 @@ COUNT are set in the same way as the original function."
 ;;;###autoload
 (defun my/cargo-toml-mode ()
   "A hook that runs in TOML mode and activates cargo-minor-mode when necessary."
-  (when (string= (buffer-name) "Cargo.toml")
+  (when (equal (buffer-name) "Cargo.toml")
     (cargo-minor-mode)))
 
 (provide 'config-defuns)
