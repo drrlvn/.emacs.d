@@ -312,6 +312,7 @@
         ivy-virtual-abbreviate 'full
         ivy-count-format "(%d/%d) "
         ivy-extra-directories '("./")
+        ivy-more-chars-alist '((t . 2))
         ivy-initial-inputs-alist nil)
   (push '(emacs-lisp-mode . swiper-match-face-1) ivy-switch-buffer-faces-alist)
   (push '(python-mode . swiper-match-face-2) ivy-switch-buffer-faces-alist)
