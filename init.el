@@ -160,8 +160,11 @@
       scroll-conservatively 10000
       scroll-margin 5
       scroll-preserve-screen-position t
-      shell-file-name "/bin/sh"
+      visual-order-cursor-movement t
       )
+
+(unless (eq system-type 'windows-nt)
+  (setq shell-file-name "/bin/sh"))
 
 (setq-default comment-column 0
               fill-column 100
@@ -169,6 +172,8 @@
               indent-tabs-mode nil
               tab-width 4
               cursor-type 'bar
+              bidi-paragraph-separate-re "^"
+              bidi-paragraph-start-re "^"
               )
 
 (unless (file-exists-p custom-file)
@@ -405,6 +410,21 @@
 
 (use-package prog-mode
   :hook (prog-mode . my/prog-mode-hook))
+
+(use-package tex
+  :ensure auctex
+  :defer
+  :init (use-package preview
+          :defer
+          :config
+          (nconc preview-default-preamble
+                 '("\\PreviewEnvironment{enumerate}" "\\PreviewEnvironment{itemize}" "\\PreviewEnvironment{description}" "\\PreviewEnvironment{tabular}"
+                   "\\PreviewEnvironment{flushleft}"))
+          (setq preview-auto-cache-preamble nil))
+  :config
+  (setq TeX-clean-confirm nil
+        TeX-save-query nil)
+  (setq-default TeX-engine 'xetex))
 
 (use-package lispy
   :ensure
