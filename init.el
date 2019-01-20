@@ -338,7 +338,7 @@
 
 (use-package ivy-rich
   :ensure
-  :after ivy
+  :after (ivy counsel)
   :config
   (setq ivy-rich-path-style 'abbrev)
   (ivy-rich-mode 1))
