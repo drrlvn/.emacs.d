@@ -75,8 +75,8 @@ bookmarks
 # prescient
 var/
 
-# magithub
-magithub/
+# forge
+forge-database.sqlite
 
 .lsp-session-v1
 custom.el

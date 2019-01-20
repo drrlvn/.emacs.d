@@ -787,6 +787,12 @@
   :ensure
   :hook (magit-mode . turn-on-magit-gitflow))
 
+(use-package forge
+  :ensure
+  :after magit
+  :config
+  (push '("git.infinidat.com" "git.infinidat.com/api/v4" "git.infinidat.com" forge-gitlab-repository) forge-alist))
+
 (use-package git-commit
   :config
   (setq git-commit-summary-max-length fill-column)
