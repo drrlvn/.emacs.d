@@ -85,43 +85,6 @@
 (bind-key "M-z" #'my/zap-up-to-char)
 (bind-key "M-Z" #'zap-to-char)
 
-(when (eq system-type 'darwin)
-  (use-package exec-path-from-shell
-    :ensure
-    :config (exec-path-from-shell-initialize)))
-
-(use-package paradox
-  :ensure
-  :bind (("C-x p" . paradox-upgrade-packages))
-  :config
-  (setq paradox-github-token t))
-
-(use-package mwim
-  :ensure
-  :bind (("<home>" . mwim-beginning)
-         ("<end>" . mwim-end)))
-
-(use-package misc
-  :bind ("C-$" . copy-from-above-command))
-
-(eval
- `(use-package windmove
-    :bind ((,(concat my/windmove-modifier "-<left>") . windmove-left)
-           (,(concat my/windmove-modifier "-<right>") . windmove-right)
-           (,(concat my/windmove-modifier "-<up>") . windmove-up)
-           (,(concat my/windmove-modifier "-<down>") . windmove-down))))
-
-(use-package hydra
-  :ensure
-  :bind ("<f8>" . my/hydra-error/body)
-  :config (defhydra my/hydra-error ()
-            "goto-error"
-            ("P" first-error "first")
-            ("n" next-error "next")
-            ("p" previous-error "prev")
-            ("v" recenter-top-bottom "recenter")
-            ("q" nil "quit")))
-
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
@@ -180,6 +143,43 @@
 (unless (file-exists-p custom-file)
   (write-region "" nil custom-file))
 (load custom-file)
+
+(when (eq system-type 'darwin)
+  (use-package exec-path-from-shell
+    :ensure
+    :config (exec-path-from-shell-initialize)))
+
+(use-package paradox
+  :ensure
+  :bind (("C-x p" . paradox-upgrade-packages))
+  :config
+  (setq paradox-github-token t))
+
+(use-package mwim
+  :ensure
+  :bind (("<home>" . mwim-beginning)
+         ("<end>" . mwim-end)))
+
+(use-package misc
+  :bind ("C-$" . copy-from-above-command))
+
+(eval
+ `(use-package windmove
+    :bind ((,(concat my/windmove-modifier "-<left>") . windmove-left)
+           (,(concat my/windmove-modifier "-<right>") . windmove-right)
+           (,(concat my/windmove-modifier "-<up>") . windmove-up)
+           (,(concat my/windmove-modifier "-<down>") . windmove-down))))
+
+(use-package hydra
+  :ensure
+  :bind ("<f8>" . my/hydra-error/body)
+  :config (defhydra my/hydra-error ()
+            "goto-error"
+            ("P" first-error "first")
+            ("n" next-error "next")
+            ("p" previous-error "prev")
+            ("v" recenter-top-bottom "recenter")
+            ("q" nil "quit")))
 
 (use-package hl-line
   :config (global-hl-line-mode 1))
