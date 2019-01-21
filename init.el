@@ -433,7 +433,8 @@
               ("M-i" . nil)
               ("C-," . nil)
               ("<M-left>" . nil)
-              ("<M-right>" . nil)))
+              ("<M-right>" . nil))
+  :config (advice-add 'delete-selection-pre-hook :around 'lispy--delsel-advice))
 
 (use-package macrostep
   :ensure
