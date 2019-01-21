@@ -556,6 +556,11 @@
   (setq lsp-prefer-flymake nil)
   (require 'lsp-clients))
 
+(use-package lsp-rust
+  :ensure
+  :after lsp
+  :config (lsp-rust-set-config "clippy_preference" "on"))
+
 (use-package lsp-ui
   :ensure
   :hook (lsp-mode . lsp-ui-mode)
