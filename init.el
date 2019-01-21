@@ -36,9 +36,9 @@
   "Customizations"
   :group 'convenience)
 
-(defcustom my/restricted-resources nil
-  "Avoid using resource-demanding packages, which might lead to parformance degradation."
-  :type 'boolean
+(defcustom my/windmove-modifier "M"
+  "Modifier key used for windmove bindings."
+  :type 'string
   :group 'my/customizations)
 
 (bind-key "<escape>" #'keyboard-escape-quit)
@@ -104,11 +104,12 @@
 (use-package misc
   :bind ("C-$" . copy-from-above-command))
 
-(use-package windmove
-  :bind (("M-<left>" . windmove-left)
-         ("M-<right>" . windmove-right)
-         ("M-<up>" . windmove-up)
-         ("M-<down>" . windmove-down)))
+(eval
+ `(use-package windmove
+    :bind ((,(concat my/windmove-modifier "-<left>") . windmove-left)
+           (,(concat my/windmove-modifier "-<right>") . windmove-right)
+           (,(concat my/windmove-modifier "-<up>") . windmove-up)
+           (,(concat my/windmove-modifier "-<down>") . windmove-down))))
 
 (use-package hydra
   :ensure
@@ -624,7 +625,6 @@
   :bind ("<f6>" . deadgrep))
 
 (use-package diff-hl
-  :if (not my/restricted-resources)
   :ensure
   :demand
   :bind ("C-]" . my/hydra-diff-hl/body)
