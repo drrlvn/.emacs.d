@@ -154,6 +154,11 @@ Move current line, which should be an import statement, to the beginning of the 
 
 \(fn)" nil nil)
 
+(autoload 'my/rust-mode-hook "config-defuns" "\
+.
+
+\(fn)" nil nil)
+
 (autoload 'my/pyvenv-activate "config-defuns" "\
 .
 

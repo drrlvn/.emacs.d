@@ -275,6 +275,14 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
   (setq require-final-newline t))
 
 ;;;###autoload
+(defun my/rust-mode-hook ()
+  "."
+  (lsp)
+  (let ((preferences (make-hash-table)))
+      (puthash "clippy_preference" "on" preferences)
+      (lsp--set-configuration `(:rust ,preferences))))
+
+;;;###autoload
 (defun my/pyvenv-activate ()
   "."
   (if (bound-and-true-p pyvenv-activate)

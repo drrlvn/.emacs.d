@@ -528,6 +528,7 @@
 
 (use-package rust-mode
   :ensure
+  :hook (rust-mode . my/rust-mode-hook)
   :bind (:map rust-mode-map
               ("C-c C-f" . nil)
               ("C-c P" . rust-promote-module-into-dir)
@@ -551,15 +552,10 @@
 
 (use-package lsp
   :ensure lsp-mode
-  :hook rust-mode
+  :commands lsp
   :config
   (setq lsp-prefer-flymake nil)
   (require 'lsp-clients))
-
-(use-package lsp-rust
-  :ensure
-  :after lsp
-  :config (lsp-rust-set-config "clippy_preference" "on"))
 
 (use-package lsp-ui
   :ensure
