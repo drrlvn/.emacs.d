@@ -805,7 +805,8 @@
   :bind (("C-c G h" . git-link-homepage)
          ("C-c G c" . git-link-commit)
          ("C-c G l" . git-link)
-         ("C-c G H" . my/git-link-homepage-in-browser)))
+         ("C-c G H" . my/git-link-homepage-in-browser))
+  :config (setq git-link-use-commit t))
 
 (use-package man
   :bind ("<f1>" . man)
