@@ -538,7 +538,8 @@
 (use-package cargo
   :ensure
   :hook ((rust-mode . cargo-minor-mode)
-         (conf-toml-mode . my/cargo-toml-mode))
+         (conf-toml-mode . my/cargo-toml-mode)
+         (magit-mode . my/magit-mode-cargo))
   :config
   (setq cargo-process--command-check "check --all-features"
         cargo-process--command-test "test --all-features"
