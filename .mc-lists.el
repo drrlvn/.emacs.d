@@ -3,6 +3,8 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        LaTeX-insert-item
+        TeX-insert-backslash
         backward-sexp
         beginning-of-visual-line
         c-electric-brace
@@ -68,6 +70,7 @@
         python-indent-shift-left
         python-indent-shift-right
         query-replace
+        reindent-then-newline-and-indent
         smex
         sp-cua-replace-region
         special-digit-argument
@@ -180,6 +183,7 @@
         my/hydra-multiple-cursors/mc/unmark-previous-like-this
         my/hydra-multiple-cursors/nil
         shell
+        toggle-input-method
         wgrep-finish-edit
         widget-button-click
         ))
