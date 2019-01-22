@@ -605,6 +605,7 @@
 
 (use-package company
   :ensure
+  :bind (:map company-mode-map ("C-c TAB" . company-complete))
   :config
   (setq company-minimum-prefix-length 2
         company-backends (delete 'company-clang company-backends)
