@@ -806,7 +806,10 @@
          ("C-c G c" . git-link-commit)
          ("C-c G l" . git-link)
          ("C-c G H" . my/git-link-homepage-in-browser))
-  :config (setq git-link-use-commit t))
+  :config
+  (setq git-link-use-commit t)
+  (push '("git\\.infinidat\\.com" git-link-gitlab) git-link-remote-alist)
+  (push '("git\\.infinidat\\.com" git-link-commit-github) git-link-commit-remote-alist))
 
 (use-package man
   :bind ("<f1>" . man)
