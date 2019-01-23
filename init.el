@@ -427,16 +427,6 @@
         TeX-save-query nil)
   (setq-default TeX-engine 'xetex))
 
-(use-package lispy
-  :ensure
-  :hook ((emacs-lisp-mode . lispy-mode))
-  :bind (:map lispy-mode-map-lispy
-              ("M-i" . nil)
-              ("C-," . nil)
-              ("<M-left>" . nil)
-              ("<M-right>" . nil))
-  :init (advice-add 'delete-selection-pre-hook :around 'lispy--delsel-advice))
-
 (use-package macrostep
   :ensure
   :bind (:map emacs-lisp-mode-map
