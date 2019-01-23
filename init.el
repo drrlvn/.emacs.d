@@ -152,8 +152,7 @@
 (use-package paradox
   :ensure
   :bind (("C-x p" . paradox-upgrade-packages))
-  :config
-  (setq paradox-github-token t))
+  :config (setq paradox-github-token t))
 
 (use-package mwim
   :ensure
@@ -774,7 +773,8 @@
                           #'magit-insert-recent-commits
                           #'magit-insert-unpushed-to-upstream-or-recent
                           'replace)
-  (magit-add-section-hook 'magit-status-sections-hook #'magit-insert-modules-overview nil 'append))
+  (magit-add-section-hook 'magit-status-sections-hook #'magit-insert-modules-overview nil 'append)
+  (magit-define-popup-option 'magit-push-popup ?o "Set push option" "--push-option="))
 
 (use-package magit-gitflow
   :ensure
