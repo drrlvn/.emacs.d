@@ -372,6 +372,12 @@ COUNT are set in the same way as the original function."
   (when (equal (buffer-name) "Cargo.toml")
     (cargo-minor-mode)))
 
+;;;###autoload
+(defun my/magit-mode-cargo ()
+  "Activate cargo-mode in Magit if the project type is Rust."
+  (when (eq (projectile-project-type) 'rust-cargo)
+    (cargo-minor-mode)))
+
 (provide 'config-defuns)
 
 ;;; Local Variables:

@@ -207,6 +207,11 @@ A hook that runs in TOML mode and activates cargo-minor-mode when necessary.
 
 \(fn)" nil nil)
 
+(autoload 'my/magit-mode-cargo "config-defuns" "\
+Activate cargo-mode in Magit if the project type is Rust.
+
+\(fn)" nil nil)
+
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "config-defuns" '("my/")))
 
 ;;;***
