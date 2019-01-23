@@ -507,8 +507,7 @@
   :commands py-isort-buffer
   :bind (:map python-mode-map
               ("C-c i" . my/python-insert-import)
-              ("C-c I" . my/py-isort-buffer))
-  :config (setq py-isort-options '("-ds" "-ca")))
+              ("C-c I" . my/py-isort-buffer)))
 
 (use-package pyvenv
   :ensure
