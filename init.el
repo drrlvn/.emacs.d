@@ -862,8 +862,7 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
 (use-package projectile
   :ensure
   :demand
-  :bind (("C-c C-f" . projectile-find-file)
-         ("<f7>" . projectile-compile-project)
+  :bind (("<f7>" . projectile-compile-project)
          ("<C-f7>" . projectile-test-project)
          :map projectile-mode-map
          ("C-c p" . projectile-command-map))
@@ -878,7 +877,11 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
 
 (use-package counsel-projectile
   :ensure
+  :demand
+  :bind (("C-c C-f" . counsel-projectile-find-file))
   :config
+  (counsel-projectile-modify-action 'counsel-projectile-switch-project-action
+                                    '((default counsel-projectile-switch-project-action-find-file)))
   (cl-delete-if (lambda (x) (string= (car x) "si")) counsel-projectile-key-bindings)
   (push '("s" . counsel-projectile-rg) counsel-projectile-key-bindings)
   (ivy-set-actions 'counsel-projectile-switch-project
