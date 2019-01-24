@@ -30,11 +30,15 @@
 (push "~/.emacs.d/lisp" load-path)
 
 (require 'config-defuns-autoloads)
-(require 'config-looks)
 
 (defgroup my/customizations nil
   "Customizations"
   :group 'convenience)
+
+(defcustom my/theme 'doom-one
+  "Emacs theme."
+  :type 'symbol
+  :group 'my/customizations)
 
 (defcustom my/windmove-modifier "M"
   "Modifier key used for windmove bindings."
@@ -143,6 +147,8 @@
 (unless (file-exists-p custom-file)
   (write-region "" nil custom-file))
 (load custom-file)
+
+(require 'config-looks)
 
 (when (eq system-type 'darwin)
   (use-package exec-path-from-shell

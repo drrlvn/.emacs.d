@@ -16,10 +16,13 @@
                          '("Iosevka SS05" "Iosevka SS09" "Iosevka SS01" "Iosevka" "Ubuntu Mono"))
       :height ,(if (eq system-type 'darwin) 150 120)))))
 
+(eval-when-compile
+  (defvar my/theme))
+
 (use-package doom-themes
   :ensure
   :config
-  (load-theme 'doom-one t)
+  (load-theme my/theme t)
   (set-face-attribute 'font-lock-keyword-face nil :slant 'italic)
   (set-face-attribute 'font-lock-preprocessor-face nil :slant 'italic)
   (set-face-attribute 'font-lock-type-face nil :weight 'bold)
