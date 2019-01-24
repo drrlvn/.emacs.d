@@ -731,12 +731,12 @@
   :config (setq ibuffer-show-empty-filter-groups nil
                 ibuffer-saved-filter-groups '(("default"
                                                ("Dired" (mode . dired-mode))
+                                               ("Rust" (mode . rust-mode))
                                                ("C/C++" (or
                                                          (mode . c-mode)
                                                          (mode . c++-mode)))
                                                ("Python" (mode . python-mode))
                                                ("Go" (mode . go-mode))
-                                               ("Rust" (mode . rust-mode))
                                                ("Elisp" (mode . emacs-lisp-mode))
                                                ("Web" (or
                                                        (mode . sgml-mode)
@@ -744,8 +744,11 @@
                                                        (mode . css-mode)
                                                        (mode . js-mode)))
                                                ("Docs" (or
+                                                        (mode . TeX-mode)
+                                                        (derived-mode . markdown-mode)
                                                         (mode . org-mode)
                                                         (mode . rst-mode)))
+                                               ("Git" (derived-mode . magit-mode))
                                                ("Misc" (name . "^\\*"))
                                                ))))
 
