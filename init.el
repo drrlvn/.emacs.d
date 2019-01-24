@@ -149,6 +149,9 @@
     :ensure
     :config (exec-path-from-shell-initialize)))
 
+(use-package browse-url
+  :bind ("<C-M-return>" . browse-url-at-point))
+
 (use-package paradox
   :ensure
   :bind (("C-x p" . paradox-upgrade-packages))
