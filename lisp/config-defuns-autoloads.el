@@ -26,6 +26,11 @@ Call `balance-windows' while ignoring ARGS.
 
 \(fn &rest ARGS)" nil nil)
 
+(autoload 'my/counsel-rg "config-defuns" "\
+.
+
+\(fn)" t nil)
+
 (autoload 'my/indent-yanked-region "config-defuns" "\
 Indent region in major modes that don't mind indentation, ignoring ARGS.
 

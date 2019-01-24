@@ -38,6 +38,12 @@
   (balance-windows))
 
 ;;;###autoload
+(defun my/counsel-rg ()
+  "."
+  (interactive)
+  (counsel-rg nil default-directory))
+
+;;;###autoload
 (defun my/indent-yanked-region (&rest _args)
   "Indent region in major modes that don't mind indentation, ignoring ARGS."
   (if (and

@@ -353,7 +353,7 @@
          ("C-x y" . counsel-yank-pop)
          ("C-x C-r" . counsel-recentf)
          ("M-i" . counsel-imenu)
-         ("C-c a" . counsel-rg)
+         ("C-c a" . my/counsel-rg)
          ("C-c u" . counsel-unicode-char)
          :map counsel-mode-map
          ([remap pop-to-mark-command] . nil)
