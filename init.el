@@ -331,6 +331,7 @@
   (push '(emacs-lisp-mode . swiper-match-face-1) ivy-switch-buffer-faces-alist)
   (push '(python-mode . swiper-match-face-2) ivy-switch-buffer-faces-alist)
   (push '(c++-mode . swiper-match-face-3) ivy-switch-buffer-faces-alist)
+  (push '(rust-mode . swiper-match-face-4) ivy-switch-buffer-faces-alist)
   (ivy-mode 1))
 
 (use-package ivy-hydra

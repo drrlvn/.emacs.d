@@ -33,8 +33,8 @@
 (use-package doom-modeline
   :ensure
   :config
-  (doom-modeline-init)
-  (setq doom-modeline-python-executable nil))
+  (setq doom-modeline-python-executable nil)
+  (doom-modeline-mode 1))
 
 (when window-system
   (scroll-bar-mode -1)
