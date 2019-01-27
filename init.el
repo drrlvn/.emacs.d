@@ -474,7 +474,7 @@
   (use-package company-rtags
     :ensure
     :after company
-    :config (add-to-list 'company-backends 'company-rtags))
+    :config (push 'company-rtags company-backends))
 
   (use-package flycheck-rtags
     :ensure
@@ -550,6 +550,11 @@
   (setq lsp-prefer-flymake nil)
   (require 'lsp-clients))
 
+(use-package company-lsp
+  :ensure
+  :after company
+  :config (push 'company-lsp company-backends))
+
 (use-package lsp-ui
   :ensure
   :hook (lsp-mode . lsp-ui-mode)
@@ -558,9 +563,7 @@
               ("C-c l s" . lsp-ui-find-workspace-symbol)
               ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
               ([remap xref-find-references] . lsp-ui-peek-find-references))
-  :config
-  (set-face-attribute 'lsp-ui-sideline-global nil :inherit 'mode-line)
-  (setq lsp-ui-sideline-show-hover nil))
+  :config (setq lsp-ui-sideline-show-hover nil))
 
 (use-package lsp-ui-flycheck
   :bind (:map lsp-ui-mode-map
