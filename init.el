@@ -470,7 +470,13 @@
   :config (setq c-basic-offset 4
                 c-default-style "bsd"))
 
-(when (eq system-type 'gnu/linux)
+(if (not (eq system-type 'gnu/linux))
+    (eval-when-compile
+      (defvar rtags-autostart-diagnostics)
+      (defvar rtags-completions-enabled)
+      (defvar rtags-display-result-backend)
+      (defvar company-backends))
+
   (use-package rtags
     :ensure
     :hook ((c-mode-common . rtags-start-process-unless-running))
@@ -807,7 +813,9 @@
   :ensure
   :hook (magit-mode . turn-on-magit-gitflow))
 
-(unless (eq system-type 'windows-nt)
+(if (eq system-type 'windows-nt)
+    (eval-when-compile
+      (defvar forge-alist))
   (use-package forge
     :ensure
     :after magit

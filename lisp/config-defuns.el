@@ -95,6 +95,7 @@
     (unwind-protect
         (progn
           (let ((display-line-numbers-type t))
+            (ignore display-line-numbers-type)
             (display-line-numbers-mode 1))
           (let ((current-prefix-arg (read-number "Goto line: ")))
             (call-interactively 'goto-line)))
@@ -146,6 +147,7 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
   "Format buffer if project has .clang-format file."
   (interactive)
   (let ((projectile-require-project-root nil))
+    (ignore projectile-require-project-root)
     (when (file-exists-p (expand-file-name ".clang-format" (projectile-project-root)))
       (clang-format-buffer)))
   nil)
@@ -339,6 +341,7 @@ Goes backward if ARG is negative; error if CHAR not found."
 (defun my/update-file-autoloads ()
   "Update current file's autoloads and save."
   (let ((generated-autoload-file (format "%s-autoloads.el" (file-name-sans-extension buffer-file-name))))
+    (ignore generated-autoload-file)
     (update-directory-autoloads ".")))
 
 ;;;###autoload
@@ -379,7 +382,7 @@ COUNT are set in the same way as the original function."
 
 ;;;###autoload
 (defun my/cargo-toml-mode ()
-  "A hook that runs in TOML mode and activates cargo-minor-mode when necessary."
+  "A hook to run in TOML mode which activates cargo-minor-mode when necessary."
   (when (equal (buffer-name) "Cargo.toml")
     (cargo-minor-mode)))
 
