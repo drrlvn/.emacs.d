@@ -253,6 +253,11 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
 ;; hooks
 
 ;;;###autoload
+(defun my/latex-mode-hook ()
+  "."
+  (TeX-add-symbols '("textenglish") '("texthebrew")))
+
+;;;###autoload
 (defun my/org-mode-hook ()
   "."
   (make-local-variable 'show-paren-mode)

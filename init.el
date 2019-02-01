@@ -432,6 +432,7 @@
 (use-package tex
   :ensure auctex
   :defer
+  :hook (LaTeX-mode . my/latex-mode-hook)
   :init (use-package preview
           :defer
           :config

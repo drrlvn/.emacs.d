@@ -139,6 +139,11 @@ Move current line, which should be an import statement, to the beginning of the 
 
 \(fn)" t nil)
 
+(autoload 'my/latex-mode-hook "config-defuns" "\
+.
+
+\(fn)" nil nil)
+
 (autoload 'my/org-mode-hook "config-defuns" "\
 .
 
