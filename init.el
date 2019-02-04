@@ -413,13 +413,13 @@
   (flycheck-add-next-checker 'python-flake8 'python-pylint)
   (when window-system
     (define-fringe-bitmap 'flycheck-fringe-bitmap-double-arrow
-      (vector #b00010000
-              #b00011000
-              #b00011100
-              #b00011110
-              #b00011100
-              #b00011000
-              #b00010000))))
+      (vector #b00001000
+              #b00001100
+              #b00001110
+              #b00001111
+              #b00001110
+              #b00001100
+              #b00001000))))
 
 (use-package js
   :config
