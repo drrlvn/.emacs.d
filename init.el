@@ -407,19 +407,19 @@
   :bind ("M-<f8>" . flycheck-list-errors)
   :hook ((prog-mode . flycheck-mode) (flycheck-mode . my/use-eslint-from-node-modules))
   :config
-  (setq flycheck-indication-mode 'right-fringe
+  (setq flycheck-indication-mode 'left-fringe
         flycheck-emacs-lisp-load-path 'inherit
         flycheck-flake8rc ".flake8")
   (flycheck-add-next-checker 'python-flake8 'python-pylint)
   (when window-system
     (define-fringe-bitmap 'flycheck-fringe-bitmap-double-arrow
-      (vector #b00010000
-              #b00110000
-              #b01110000
-              #b11110000
-              #b01110000
-              #b00110000
-              #b00010000))))
+      (vector #b00001000
+              #b00001100
+              #b00001110
+              #b00001111
+              #b00001110
+              #b00001100
+              #b00001000))))
 
 (use-package js
   :config
