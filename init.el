@@ -273,6 +273,9 @@
   :config (setq uniquify-buffer-name-style 'post-forward
                 uniquify-separator ":"))
 
+(use-package vlf-setup
+  :ensure vlf)
+
 (use-package server
   :if window-system
   :config
