@@ -327,7 +327,9 @@
          ("C-x B" . ivy-switch-buffer-other-window)
          :map ivy-minibuffer-map
          ("<return>" . ivy-alt-done)
-         ("C-j" . ivy-done))
+         ("C-j" . ivy-done)
+         ("<C-down>" . ivy-next-line-and-call)
+         ("<C-up>" . ivy-previous-line-and-call))
   :config
   (setq ivy-use-virtual-buffers t
         ivy-use-selectable-prompt t
