@@ -822,8 +822,7 @@
     ("r" smerge-refine "refine diff")
     ("p" smerge-prev "previous conflict")
     ("n" smerge-next "next conflict")
-    ("q" nil "quit"))
-  (set-face-attribute 'smerge-upper nil :background "#e5e3b5"))
+    ("q" nil "quit")))
 
 (use-package magit-gitflow
   :ensure
