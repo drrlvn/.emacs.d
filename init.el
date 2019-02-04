@@ -810,6 +810,21 @@
   (magit-add-section-hook 'magit-status-sections-hook #'magit-insert-modules-overview nil 'append)
   (magit-define-popup-option 'magit-push-popup ?o "Set push option" "--push-option="))
 
+(use-package smerge-mode
+  :bind (:map smerge-mode-map
+              ("C-c m" . my/hydra-smerge/body))
+  :config
+  (defhydra my/hydra-smerge (:hint nil)
+    "smerge"
+    ("a" smerge-keep-all "keep all")
+    ("b" smerge-keep-base "keep base")
+    ("l" smerge-keep-lower "keep lower")
+    ("u" smerge-keep-upper "keep upper")
+    ("r" smerge-refine "refine diff")
+    ("p" smerge-prev "previous conflict")
+    ("n" smerge-next "next conflict")
+    ("q" nil "quit")))
+
 (use-package magit-gitflow
   :ensure
   :hook (magit-mode . turn-on-magit-gitflow))
