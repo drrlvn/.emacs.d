@@ -2,6 +2,12 @@
 ;;; Commentary:
 ;;; Code:
 
+;;;###autoload
+(defvar-local my/python-isort-on-save nil "Format the buffer with isort before saving")
+
+;;;###autoload
+(defvar-local my/python-black-on-save nil "Format the buffer with black before saving")
+
 (defmacro my/save-kill-ring (&rest body)
   "Save `kill-ring' and restore it after executing BODY."
   `(let ((orig-kill-ring kill-ring)
@@ -236,7 +242,15 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
   "Wrap `py-isort-buffer' with `my/save-kill-ring'."
   (interactive)
   (my/save-kill-ring
-   (py-isort-buffer)))
+   (py-isort-buffer))
+  nil)
+
+;;;###autoload
+(defun my/blacken-buffer ()
+  "Run `blacken-buffer' and always return nil."
+  (interactive)
+  (blacken-buffer)
+  nil)
 
 ;;;###autoload
 (defun my/python-insert-import ()
@@ -403,6 +417,18 @@ COUNT are set in the same way as the original function."
   "Run LSP and update the modeline with the name of the virtualenv."
   (lsp)
   (setq doom-modeline-env-version (format "(%s)" (my/virtualenv-name))))
+
+;;;###autoload
+(defun my/set-python-write-functions ()
+  "Format a Python buffer before saving according to local variables."
+  (add-hook
+   'hack-local-variables-hook
+   (lambda ()
+     (when my/python-isort-on-save
+       (push #'my/py-isort-buffer write-contents-functions))
+
+     (when my/python-black-on-save
+       (push #'my/blacken-buffer write-contents-functions)))))
 
 (provide 'config-defuns)
 

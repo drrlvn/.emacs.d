@@ -31,8 +31,21 @@ quotation marks.
 
 It's also recommended to install the [Python Language
 Server](https://github.com/palantir/python-language-server) inside your virtual environment, as well
-as Pylint and isort if you're interested.
+as Pylint if you're interested.
 
 If you follow these steps then when visiting a Python file, the modeline should show `Python
 (ENV_NAME)` where `ENV_NAME` is the name of your virtual environment. The modeline should also
 indicate that the Python Language Server is running by showing `LSP[pyls:pid]`.
+
+### Auto formatting
+
+This configuration supports automatic Python formatting on save. Since there's no consensus about a
+Python formatting tool, or whether to use such at all, this feature is turned off and can be enabled
+on project basis.
+
+Two buffer local variables were created for this - `my/python-isort-on-save` which runs
+[isort](https://github.com/timothycrosley/isort/) and `my/python-black-on-save` which runs
+[black](https://github.com/ambv/black).
+
+These variables are local buffer and are nil by default. They can be set for a given project by
+using dir-local variables, just like `pyvenv-activate`. Use `C-c p E` to set them.

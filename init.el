@@ -514,10 +514,15 @@
   :bind (:map python-mode-map
               ("C-<f8>" . my/pylint-ignore-errors-at-point)
               ("C-c C-f" . nil))
-  :hook (python-mode . lsp)
+  :hook ((python-mode . lsp)
+         (python-mode . my/set-python-write-functions))
   :config
   (advice-add #'python-indent-shift-left :around #'my/python-shift-region)
   (advice-add #'python-indent-shift-right :around #'my/python-shift-region))
+
+(use-package blacken
+  :ensure
+  :defer)
 
 (use-package py-isort
   :ensure
