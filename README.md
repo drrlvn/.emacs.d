@@ -33,8 +33,7 @@ It's also recommended to install the [Python Language
 Server](https://github.com/palantir/python-language-server) inside your virtual environment, as well
 as Pylint if you're interested.
 
-If you follow these steps then when visiting a Python file, the modeline should show `Python
-(ENV_NAME)` where `ENV_NAME` is the name of your virtual environment. The modeline should also
+If you follow these steps then when visiting a Python file, the modeline should
 indicate that the Python Language Server is running by showing `LSP[pyls:pid]`.
 
 ### Auto formatting

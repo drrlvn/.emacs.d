@@ -534,7 +534,7 @@
 
 (use-package pyvenv
   :ensure
-  :init (add-hook 'pyvenv-post-activate-hooks #'my/reload-venv)
+  :init (add-hook 'pyvenv-post-activate-hooks #'lsp)
   :hook (hack-local-variables . my/pyvenv-activate))
 
 (use-package go-mode
