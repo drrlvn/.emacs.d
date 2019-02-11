@@ -45,6 +45,10 @@
   :type 'string
   :group 'my/customizations)
 
+(when (eq system-type 'windows-nt)
+  (setq w32-lwindow-modifier 'super)
+  (w32-register-hot-key [s-s]))
+
 (bind-key "<escape>" #'keyboard-escape-quit)
 (bind-key "C-x r q" #'save-buffers-kill-emacs)
 (unbind-key "C-x C-c")
