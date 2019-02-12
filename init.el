@@ -131,7 +131,10 @@
       visual-order-cursor-movement t
       )
 
-(unless (eq system-type 'windows-nt)
+(if (eq system-type 'windows-nt)
+    (progn
+      (setq w32-lwindow-modifier 'super)
+      (w32-register-hot-key [s-s]))
   (setq shell-file-name "/bin/sh"))
 
 (setq-default comment-column 0
