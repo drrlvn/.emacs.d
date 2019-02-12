@@ -45,10 +45,6 @@
   :type 'string
   :group 'my/customizations)
 
-(when (eq system-type 'windows-nt)
-  (setq w32-lwindow-modifier 'super)
-  (w32-register-hot-key [s-s]))
-
 (bind-key "<escape>" #'keyboard-escape-quit)
 (bind-key "C-x r q" #'save-buffers-kill-emacs)
 (unbind-key "C-x C-c")
@@ -135,7 +131,10 @@
       visual-order-cursor-movement t
       )
 
-(unless (eq system-type 'windows-nt)
+(if (eq system-type 'windows-nt)
+    (progn
+      (setq w32-lwindow-modifier 'super)
+      (w32-register-hot-key [s-s]))
   (setq shell-file-name "/bin/sh"))
 
 (setq-default comment-column 0
