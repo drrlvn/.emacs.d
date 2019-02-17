@@ -559,7 +559,8 @@
          (conf-toml-mode . my/cargo-toml-mode)
          (magit-mode . my/magit-mode-cargo))
   :config
-  (setq cargo-process--command-check "check --all-features"
+  (setq cargo-process--command-check "check --all-features --tests"
+        cargo-process--command-clippy "clippy --all-features --tests"
         cargo-process--command-test "test --all-features"
         cargo-process--command-build "build --all-features"))
 
@@ -923,7 +924,7 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
          ("C-c p" . projectile-command-map))
   :config
   (projectile-register-project-type 'rust-cargo '("Cargo.toml")
-                                    :compile "cargo check --all-features"
+                                    :compile "cargo check --all-features --tests"
                                     :test "cargo test --all-features")
   (setq projectile-completion-system 'ivy
         projectile-current-project-on-switch 'move-to-end)
