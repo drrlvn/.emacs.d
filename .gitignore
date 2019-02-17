@@ -78,5 +78,8 @@ var/
 # forge
 forge-database.sqlite
 
+# transient
+transient/
+
 .lsp-session-v1
 custom.el

@@ -558,11 +558,10 @@
   :hook ((rust-mode . cargo-minor-mode)
          (conf-toml-mode . my/cargo-toml-mode)
          (magit-mode . my/magit-mode-cargo))
-  :config
-  (setq cargo-process--command-check "check --all-features --tests"
-        cargo-process--command-clippy "clippy --all-features --tests"
-        cargo-process--command-test "test --all-features"
-        cargo-process--command-build "build --all-features"))
+  :config (setq cargo-process--command-check "check --all-features --tests"
+                cargo-process--command-clippy "clippy --all-features --tests"
+                cargo-process--command-test "test --all-features"
+                cargo-process--command-build "build --all-features"))
 
 (use-package flycheck-rust
   :ensure
@@ -802,8 +801,6 @@
   (set-face-attribute 'magit-branch-remote nil :foreground (doom-color 'magenta))
   (setq magit-bury-buffer-function 'magit-mode-quit-window
         magit-repository-directories '(("~/dev" . 1))
-        magit-tag-arguments '("--annotate")
-        magit-fetch-arguments '("--prune")
         magit-log-arguments '("-n256" "--graph" "--decorate" "--show-signature")
         magit-log-section-arguments '("-n256" "--decorate" "--show-signature")
         magit-diff-refine-hunk t
