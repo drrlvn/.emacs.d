@@ -1032,4 +1032,22 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :ensure
   :hook (js2-mode . prettier-js-mode))
 
+(use-package engine-mode
+  :ensure
+  :defer
+  :config
+  (engine-mode 1)
+  (defengine google
+    "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
+    :keybinding "g")
+  (defengine duckduckgo
+    "https://duckduckgo.com/?q=%s"
+    :keybinding "d")
+  (defengine stack-overflow
+    "https://stackoverflow.com/search?q=%s"
+    :keybinding "s")
+  (defengine github
+    "https://github.com/search?ref=simplesearch&q=%s"
+    :keybinding "h"))
+
 ;;; init.el ends here
