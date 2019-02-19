@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Bors Merge
+# key: bmrg
+# --
+bors r+
