@@ -800,6 +800,7 @@
         magit-log-arguments '("-n256" "--graph" "--decorate" "--show-signature")
         magit-log-section-arguments '("-n256" "--decorate" "--show-signature")
         magit-diff-refine-hunk t
+        magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1
         magit-section-initial-visibility-alist '((recent . show)
                                                  (unpushed . show)
                                                  (unpulled . show))
