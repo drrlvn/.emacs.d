@@ -27,11 +27,6 @@ Kill buffer in other window.
 
 \(fn)" t nil)
 
-(autoload 'my/balance-windows "config-defuns" "\
-Call `balance-windows' while ignoring ARGS.
-
-\(fn &rest ARGS)" nil nil)
-
 (autoload 'my/counsel-rg "config-defuns" "\
 .
 
