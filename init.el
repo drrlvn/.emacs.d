@@ -8,6 +8,9 @@
                                               file-name-handler-alist file-name-handler-alist-original
                                               gc-cons-threshold gc-cons-threshold-original))))
 
+(defconst my/cargo-check-flags "--all-features --tests --examples")
+(defconst my/cargo-build-flags "--all-features")
+
 (setq gc-cons-threshold (* 100 1024 1024)
       file-name-handler-alist nil
       inhibit-message t
@@ -554,10 +557,10 @@
   :hook ((rust-mode . cargo-minor-mode)
          (conf-toml-mode . my/cargo-toml-mode)
          (magit-mode . my/magit-mode-cargo))
-  :config (setq cargo-process--command-check "check --all-features --tests"
-                cargo-process--command-clippy "clippy --all-features --tests"
-                cargo-process--command-test "test --all-features"
-                cargo-process--command-build "build --all-features"))
+  :config (setq cargo-process--command-check (concat "check " my/cargo-check-flags)
+                cargo-process--command-clippy (concat "clippy " my/cargo-check-flags)
+                cargo-process--command-test (concat "test " my/cargo-build-flags)
+                cargo-process--command-build (concat "build " my/cargo-build-flags)))
 
 (use-package flycheck-rust
   :ensure
@@ -918,8 +921,8 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
          ("C-c p" . projectile-command-map))
   :config
   (projectile-register-project-type 'rust-cargo '("Cargo.toml")
-                                    :compile "cargo check --all-features --tests"
-                                    :test "cargo test --all-features")
+                                    :compile (concat "cargo check " my/cargo-check-flags)
+                                    :test (concat "cargo test " my/cargo-build-flags))
   (setq projectile-completion-system 'ivy
         projectile-current-project-on-switch 'move-to-end)
   (fset #'projectile-kill-buffers #'my/projectile-kill-buffers)
