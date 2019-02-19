@@ -94,10 +94,6 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
-(advice-add #'split-window-right :after #'my/balance-windows)
-(advice-add #'split-window-below :after #'my/balance-windows)
-(advice-add #'delete-window :after #'my/balance-windows)
-
 (advice-add #'yank :after #'my/indent-yanked-region)
 (advice-add #'yank-pop :after #'my/indent-yanked-region)
 

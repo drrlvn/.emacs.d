@@ -39,11 +39,6 @@
   (kill-buffer (window-buffer (next-window))))
 
 ;;;###autoload
-(defun my/balance-windows (&rest _args)
-  "Call `balance-windows' while ignoring ARGS."
-  (balance-windows))
-
-;;;###autoload
 (defun my/counsel-rg ()
   "."
   (interactive)
