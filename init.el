@@ -1051,4 +1051,12 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
     "https://github.com/search?ref=simplesearch&q=%s"
     :keybinding "h"))
 
+(use-package bm
+  :ensure
+  :bind (("<f2>" . bm-next)
+         ("S-<f2>" . bm-show)
+         ("C-<f2>" . bm-toggle))
+  :config (setq bm-cycle-all-buffers t
+                bm-in-lifo-order t))
+
 ;;; init.el ends here
