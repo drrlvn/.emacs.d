@@ -902,14 +902,6 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
             ("M-p" mc/unmark-previous-like-this)
             ("q" nil)))
 
-(use-package popwin
-  :ensure
-  :commands (popwin:display-buffer-condition popwin:display-buffer-action)
-  :init (push '(popwin:display-buffer-condition popwin:display-buffer-action) display-buffer-alist)
-  :config
-  (push '("*Flycheck errors*" :stick t) popwin:special-display-config)
-  (push '(cargo-process-mode :stick t) popwin:special-display-config))
-
 (use-package projectile
   :ensure
   :demand
