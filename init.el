@@ -266,9 +266,7 @@
 
 (use-package tramp
   :defer
-  :config (setq tramp-use-ssh-controlmaster-options nil
-                tramp-default-method "scpx"
-                tramp-histfile-override "/dev/null"))
+  :config (setq tramp-default-method "scpx"))
 
 (use-package uniquify
   :defer
