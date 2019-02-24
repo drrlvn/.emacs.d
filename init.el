@@ -788,7 +788,7 @@
   :bind (("<f9>" . magit-status)
          ("S-<f9>" . magit-log-buffer-file)
          ("C-<f9>" . magit-blame-addition)
-         ("C-c g" . magit-dispatch-popup)
+         ("C-c g" . magit-dispatch)
          :map magit-status-mode-map
          ("<C-up>" . magit-section-backward)
          ("<C-down>" . magit-section-forward)
