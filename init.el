@@ -581,7 +581,7 @@
 (use-package lsp-ui
   :ensure
   :hook (lsp-mode . lsp-ui-mode)
-  :bind (:map lsp-ui-mode-map
+  :bind (:map lsp-mode-map
               ("C-c l r" . lsp-rename)
               ("C-c l s" . lsp-ui-find-workspace-symbol)
               ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
@@ -590,7 +590,7 @@
                 lsp-ui-sideline-show-hover nil))
 
 (use-package lsp-ui-flycheck
-  :bind (:map lsp-ui-mode-map
+  :bind (:map lsp-mode-map
               ("C-c l c" . lsp-ui-flycheck-list))
   :config (flycheck-add-next-checker 'lsp-ui '(warning . python-pylint)))
 
