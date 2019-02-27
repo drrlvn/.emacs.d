@@ -639,7 +639,7 @@
   :config (company-prescient-mode 1))
 
 (use-package conf-mode
-  :mode "\\.pylintrc\\'"
+  :mode "rc\\'"
   :mode ("Pipfile\\'" . conf-toml-mode)
   :hook (conf-mode . my/conf-mode-hook))
 
