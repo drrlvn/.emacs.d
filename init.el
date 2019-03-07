@@ -323,7 +323,7 @@
 (use-package ivy
   :ensure
   :demand
-  :bind (("C-c C-s". ivy-resume)
+  :bind (("C-S-s". ivy-resume)
          ("C-x B" . ivy-switch-buffer-other-window)
          :map ivy-minibuffer-map
          ("<return>" . ivy-alt-done)
