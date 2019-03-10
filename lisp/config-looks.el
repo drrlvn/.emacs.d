@@ -9,12 +9,15 @@
 
 (setq frame-title-format '("" invocation-name ": %b"))
 
-(custom-set-faces
- `(default
-    ((t
-      :family ,(seq-find (lambda (font) (find-font (font-spec :name font)))
-                         '("Iosevka SS05" "Iosevka SS09" "Iosevka SS01" "Iosevka" "Ubuntu Mono"))
-      :height ,(if (eq system-type 'darwin) 150 120)))))
+(use-package cus-edit
+  :config
+  (when (eq (custom-face-state 'default) 'standard)
+        (custom-set-faces
+         `(default
+            ((t
+              :family ,(seq-find (lambda (font) (find-font (font-spec :name font)))
+                                 '("Iosevka SS05" "Iosevka SS09" "Iosevka SS01" "Iosevka" "Ubuntu Mono"))
+              :height ,(if (eq system-type 'darwin) 150 120)))))))
 
 (eval-when-compile
   (defvar my/theme))
