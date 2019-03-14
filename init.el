@@ -356,13 +356,6 @@
   (setq ivy-prescient-retain-classic-highlighting t)
   (ivy-prescient-mode 1))
 
-(use-package ivy-rich
-  :ensure
-  :after (ivy counsel)
-  :config
-  (setq ivy-rich-path-style 'abbrev)
-  (ivy-rich-mode 1))
-
 (use-package counsel
   :ensure
   :after ivy
