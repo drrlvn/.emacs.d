@@ -953,7 +953,8 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
                 web-mode-css-indent-offset 2
                 web-mode-style-padding 2
                 web-mode-script-padding 2
-                web-mode-enable-auto-expanding t))
+                web-mode-enable-auto-expanding t
+                web-mode-enable-current-element-highlight t))
 
 (use-package visual-regexp
   :ensure
