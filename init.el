@@ -1045,4 +1045,10 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :config (setq bm-cycle-all-buffers t
                 bm-in-lifo-order t))
 
+(use-package jump-char
+  :ensure
+  :bind
+  (("C-f" . jump-char-forward)
+   ("C-b" . jump-char-backward)))
+
 ;;; init.el ends here
