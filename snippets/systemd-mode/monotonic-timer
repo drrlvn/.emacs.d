@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: monotonic timer
+# key: monotonic
+# --
+[Unit]
+Description=$1
+
+[Timer]
+OnUnitActiveSec=$2
+
+[Install]
+WantedBy=timers.target

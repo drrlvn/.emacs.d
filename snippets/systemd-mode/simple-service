@@ -1,0 +1,11 @@
+# name: simple-service
+# key: service
+# --
+[Unit]
+Description=$1
+
+[Service]
+ExecStart=$2
+
+[Install]
+WantedBy=multi-user.target
