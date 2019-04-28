@@ -462,40 +462,9 @@
               ("C-c i m" . my/insert-move-ctor)
               ("C-c i M" . my/insert-move-assignment-operator))
   :hook (c-mode-common . my/c-mode-common-hook)
+  :hook (c-mode-common . lsp)
   :config (setq c-basic-offset 4
                 c-default-style "bsd"))
-
-(if (not (eq system-type 'gnu/linux))
-    (eval-when-compile
-      (defvar rtags-autostart-diagnostics)
-      (defvar rtags-completions-enabled)
-      (defvar rtags-display-result-backend)
-      (defvar company-backends))
-
-  (use-package rtags
-    :ensure
-    :hook ((c-mode-common . rtags-start-process-unless-running))
-    :bind (:map c-mode-base-map
-                ("M-." . rtags-find-symbol-at-point)
-                ("M-i" . rtags-imenu))
-    :config
-    (setq rtags-autostart-diagnostics t
-          rtags-completions-enabled t
-          rtags-display-result-backend 'ivy)
-    (rtags-enable-standard-keybindings))
-
-  (use-package ivy-rtags
-    :ensure
-    :after rtags)
-
-  (use-package company-rtags
-    :ensure
-    :after company
-    :config (push 'company-rtags company-backends))
-
-  (use-package flycheck-rtags
-    :ensure
-    :after rtags))
 
 (use-package clang-format
   :ensure
