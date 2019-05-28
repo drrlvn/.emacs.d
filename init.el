@@ -192,7 +192,6 @@
   :ensure
   :bind ("<f8>" . my/hydra-error/body)
   :config (defhydra my/hydra-error ()
-            "goto-error"
             ("P" first-error "first")
             ("n" next-error "next")
             ("p" previous-error "prev")
@@ -587,7 +586,8 @@
 (use-package avy
   :ensure
   :bind (("s-s" . avy-goto-word-or-subword-1)
-         ("C-s-s" . avy-goto-char)))
+         ("C-s-s" . avy-goto-char))
+  :config (setq avy-style 'words))
 
 (use-package company
   :ensure
@@ -618,8 +618,7 @@
   :bind ("C-]" . my/hydra-diff-hl/body)
   :hook ((dired-mode . diff-hl-dired-mode) (magit-post-refresh . diff-hl-magit-post-refresh))
   :config
-  (defhydra my/hydra-diff-hl (:hint nil)
-    "git-gutter"
+  (defhydra my/hydra-diff-hl ()
     ("]" diff-hl-next-hunk "next")
     ("[" diff-hl-previous-hunk "previous")
     ("r" diff-hl-revert-hunk "revert")
@@ -783,8 +782,7 @@
   :bind (:map smerge-mode-map
               ("C-c m" . my/hydra-smerge/body))
   :config
-  (defhydra my/hydra-smerge (:hint nil)
-    "smerge"
+  (defhydra my/hydra-smerge ()
     ("a" smerge-keep-all "keep all")
     ("b" smerge-keep-base "keep base")
     ("l" smerge-keep-lower "keep lower")
@@ -850,7 +848,7 @@
          ("C->" . mc/mark-next-like-this)
          ("C-<" . mc/mark-previous-like-this)
          ("C-:" . my/hydra-multiple-cursors/body))
-  :config (defhydra my/hydra-multiple-cursors (:hint nil)
+  :config (defhydra my/hydra-multiple-cursors ()
             "
 ^Up^           ^Down^         ^Miscellaneous^
 ---------------------------------------------
