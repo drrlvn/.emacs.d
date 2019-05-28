@@ -534,7 +534,8 @@
   :ensure lsp-mode
   :commands lsp
   :config
-  (setq lsp-prefer-flymake nil)
+  (setq lsp-prefer-flymake nil
+        lsp-restart 'ignore)
   (require 'lsp-clients))
 
 (use-package company-lsp
