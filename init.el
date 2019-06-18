@@ -48,6 +48,12 @@
   :type 'string
   :group 'my/customizations)
 
+(defcustom my/disable-clang-format-on-save nil
+  "Whether clang-format on buffer save should be disabled."
+  :type 'boolean
+  :group 'my/customizations)
+(make-variable-buffer-local 'my/disable-clang-format-on-save)
+
 (bind-key "<escape>" #'keyboard-escape-quit)
 (bind-key "C-x r q" #'save-buffers-kill-emacs)
 (unbind-key "C-x C-c")

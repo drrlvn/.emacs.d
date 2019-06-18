@@ -149,7 +149,10 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
   (interactive)
   (let ((projectile-require-project-root nil))
     (ignore projectile-require-project-root)
-    (when (file-exists-p (expand-file-name ".clang-format" (projectile-project-root)))
+    (when (and
+           (not my/disable-clang-format-on-save)
+           (not (string= clang-format-executable "clang-format"))
+           (file-exists-p (expand-file-name ".clang-format" (projectile-project-root))))
       (clang-format-buffer)))
   nil)
 
