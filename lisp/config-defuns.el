@@ -54,9 +54,9 @@
 
     (save-excursion
       (goto-char (beginning-of-thing 'symbol))
-      (insert "dbg!(")
-      (goto-char (end-of-thing 'symbol))
-      (insert ")"))))
+      (insert-parentheses 1)
+      (backward-char 1)
+      (insert "dbg!"))))
 
 (defun my/dbg-unwrap ()
   "Remove the dbg! macro."
