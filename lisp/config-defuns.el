@@ -45,6 +45,45 @@
   (counsel-rg nil default-directory))
 
 ;;;###autoload
+(defun my/dbg-wrap ()
+  "Wrap the region with the dbg! macro."
+  (interactive)
+  (if (region-active-p)
+      (progn
+        (save-excursion
+          (let ((beginning (region-beginning)))
+            (goto-char (region-end))
+            (insert ")")
+            (goto-char beginning)
+            (insert "dbg!("))))
+
+    (progn
+      (save-excursion
+        (goto-char (beginning-of-thing 'symbol))
+        (let ((beginning (point)))
+          (insert "dbg!(")
+          (goto-char (end-of-thing 'symbol))
+          (insert ")")
+          (goto-char beginning))))))
+
+;;;###autoload
+(defun my/dbg-unwrap ()
+  "Remove the dbg! macro."
+  (interactive)
+  (unless (looking-at "dbg!")
+    (error "Not pointing on a dbg! macro"))
+  (delete-char 4)
+  (delete-pair))
+
+;;;###autoload
+(defun my/dbg-wrap-or-unwrap ()
+  "Either remove or set the dbg! macro."
+  (interactive)
+  (if (looking-at "dbg!")
+      (my/dbg-unwrap)
+    (my/dbg-wrap)))
+
+;;;###autoload
 (defun my/indent-yanked-region (&rest _args)
   "Indent region in major modes that don't mind indentation, ignoring ARGS."
   (if (and
