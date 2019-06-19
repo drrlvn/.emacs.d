@@ -32,6 +32,11 @@ Kill buffer in other window.
 
 \(fn)" t nil)
 
+(autoload 'my/dbg-wrap-or-unwrap "config-defuns" "\
+Either remove or set the dbg! macro.
+
+\(fn)" t nil)
+
 (autoload 'my/indent-yanked-region "config-defuns" "\
 Indent region in major modes that don't mind indentation, ignoring ARGS.
 

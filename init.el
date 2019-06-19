@@ -517,7 +517,8 @@
   :bind (:map rust-mode-map
               ("C-c C-f" . nil)
               ("C-c P" . rust-promote-module-into-dir)
-              ("C-c m" . my/rust-toggle-mut))
+              ("C-c m" . my/rust-toggle-mut)
+              ("C-c d" . my/dbg-wrap-or-unwrap))
   :config (setq rust-format-on-save t))
 
 (use-package cargo
