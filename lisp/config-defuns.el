@@ -69,8 +69,7 @@
   (interactive)
   (save-excursion
     (goto-char (beginning-of-thing 'symbol))
-    (if (and (not (region-active-p))
-             (looking-at "dbg!"))
+    (if (looking-at "dbg!")
         (my/dbg-unwrap)
       (my/dbg-wrap))))
 
