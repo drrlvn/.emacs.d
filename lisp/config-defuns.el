@@ -55,16 +55,15 @@
           (backward-char 1)
           (insert "dbg!"))
 
-      (progn
-        (goto-char (beginning-of-thing 'symbol))
-        (if (looking-at "dbg!")
-            (progn
-              (delete-char 4)
-              (delete-pair))
+      (goto-char (beginning-of-thing 'symbol))
+      (if (looking-at "dbg!")
           (progn
-            (insert-parentheses 1)
-            (backward-char 1)
-            (insert "dbg!")))))))
+            (delete-char 4)
+            (delete-pair))
+
+        (insert-parentheses 1)
+        (backward-char 1)
+        (insert "dbg!")))))
 
 ;;;###autoload
 (defun my/indent-yanked-region (&rest _args)
