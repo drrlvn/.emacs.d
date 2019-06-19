@@ -47,12 +47,12 @@
 (defun my/dbg-wrap ()
   "Wrap the region with the dbg! macro."
   (if (region-active-p)
-      (save-excursion
+      (progn
         (insert-parentheses)
         (backward-char 1)
         (insert "dbg!"))
 
-    (save-excursion
+    (progn
       (goto-char (beginning-of-thing 'symbol))
       (insert-parentheses 1)
       (backward-char 1)
@@ -61,18 +61,18 @@
 (defun my/dbg-unwrap ()
   "Remove the dbg! macro."
   (delete-char 4)
-  (delete-pair)
-  t)
+  (delete-pair))
 
 ;;;###autoload
 (defun my/dbg-wrap-or-unwrap ()
-  "Either remove or set the dbg! macro."
+  "Either remove or add the dbg! macro."
   (interactive)
-  (unless (save-excursion
-            (goto-char (beginning-of-thing 'symbol))
-            (and (looking-at "dbg!")
-                 (my/dbg-unwrap)))
-    (my/dbg-wrap)))
+  (save-excursion
+    (goto-char (beginning-of-thing 'symbol))
+    (if (and (not (region-active-p))
+             (looking-at "dbg!"))
+        (my/dbg-unwrap)
+      (my/dbg-wrap))))
 
 ;;;###autoload
 (defun my/indent-yanked-region (&rest _args)
