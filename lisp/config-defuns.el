@@ -44,34 +44,27 @@
   (interactive)
   (counsel-rg nil default-directory))
 
-(defun my/dbg-wrap ()
-  "Wrap the region with the dbg! macro."
-  (if (region-active-p)
-      (progn
-        (insert-parentheses)
-        (backward-char 1)
-        (insert "dbg!"))
-
-    (progn
-      (goto-char (beginning-of-thing 'symbol))
-      (insert-parentheses 1)
-      (backward-char 1)
-      (insert "dbg!"))))
-
-(defun my/dbg-unwrap ()
-  "Remove the dbg! macro."
-  (delete-char 4)
-  (delete-pair))
-
 ;;;###autoload
 (defun my/dbg-wrap-or-unwrap ()
   "Either remove or add the dbg! macro."
   (interactive)
   (save-excursion
-    (goto-char (beginning-of-thing 'symbol))
-    (if (looking-at "dbg!")
-        (my/dbg-unwrap)
-      (my/dbg-wrap))))
+    (if (region-active-p)
+        (progn
+          (insert-parentheses)
+          (backward-char 1)
+          (insert "dbg!"))
+
+      (progn
+        (goto-char (beginning-of-thing 'symbol))
+        (if (looking-at "dbg!")
+            (progn
+              (delete-char 4)
+              (delete-pair))
+          (progn
+            (insert-parentheses 1)
+            (backward-char 1)
+            (insert "dbg!")))))))
 
 ;;;###autoload
 (defun my/indent-yanked-region (&rest _args)
