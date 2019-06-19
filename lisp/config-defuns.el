@@ -147,6 +147,7 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
 (defun my/maybe-clang-format-buffer ()
   "Format buffer if project has .clang-format file."
   (interactive)
+  (require 'clang-format)
   (let ((projectile-require-project-root nil))
     (ignore projectile-require-project-root)
     (when (and
