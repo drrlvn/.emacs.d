@@ -32,16 +32,6 @@ Kill buffer in other window.
 
 \(fn)" t nil)
 
-(autoload 'my/dbg-wrap "config-defuns" "\
-Wrap the region with the dbg! macro.
-
-\(fn)" t nil)
-
-(autoload 'my/dbg-unwrap "config-defuns" "\
-Remove the dbg! macro.
-
-\(fn)" t nil)
-
 (autoload 'my/dbg-wrap-or-unwrap "config-defuns" "\
 Either remove or set the dbg! macro.
 
