@@ -1029,4 +1029,8 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :bind (("C-f" . jump-char-forward)
          ("C-b" . jump-char-backward)))
 
+(use-package powershell
+  :ensure
+  :defer)
+
 ;;; init.el ends here
