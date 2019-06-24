@@ -218,7 +218,8 @@
   :defer
   :hook (compilation-filter . my/colorize-compilation-buffer)
   :config (setq compilation-scroll-output 'first-error
-                compilation-read-command nil))
+                compilation-read-command nil
+                compilation-ask-about-save nil))
 
 (use-package ediff
   :defer
