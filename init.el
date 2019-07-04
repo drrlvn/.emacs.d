@@ -610,9 +610,8 @@
 
 (use-package company-dabbrev
   :defer
-  :config
-  (setq company-dabbrev-downcase nil
-        company-dabbrev-ignore-case t))
+  :config (setq company-dabbrev-downcase nil
+                company-dabbrev-ignore-case t))
 
 (use-package company-prescient
   :ensure
