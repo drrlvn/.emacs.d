@@ -605,7 +605,8 @@
   (setq company-minimum-prefix-length 2
         company-backends (delete 'company-clang company-backends)
         company-global-modes '(not eshell-mode)
-        company-tooltip-align-annotations t)
+        company-tooltip-align-annotations t
+        company-dabbrev-downcase nil)
   (global-company-mode 1))
 
 (use-package company-prescient
