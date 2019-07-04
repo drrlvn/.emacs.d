@@ -605,9 +605,14 @@
   (setq company-minimum-prefix-length 2
         company-backends (delete 'company-clang company-backends)
         company-global-modes '(not eshell-mode)
-        company-tooltip-align-annotations t
-        company-dabbrev-downcase nil)
+        company-tooltip-align-annotations t)
   (global-company-mode 1))
+
+(use-package company-dabbrev
+  :defer
+  :config
+  (setq company-dabbrev-downcase nil
+        company-dabbrev-ignore-case t))
 
 (use-package company-prescient
   :ensure
