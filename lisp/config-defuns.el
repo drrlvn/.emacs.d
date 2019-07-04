@@ -66,15 +66,6 @@
         (my/insert-dbg)))))
 
 ;;;###autoload
-(defun my/indent-yanked-region (&rest _args)
-  "Indent region in major modes that don't mind indentation, ignoring ARGS."
-  (if (and
-       (derived-mode-p 'prog-mode)
-       (not (member major-mode '(python-mode ruby-mode makefile-mode))))
-      (let ((mark-even-if-inactive transient-mark-mode))
-        (indent-region (region-beginning) (region-end) nil))))
-
-;;;###autoload
 (defun my/colorize-compilation-buffer ()
   "Colorize complication buffer."
   (when (eq major-mode 'compilation-mode)

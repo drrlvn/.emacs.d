@@ -103,9 +103,6 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
-(advice-add #'yank :after #'my/indent-yanked-region)
-(advice-add #'yank-pop :after #'my/indent-yanked-region)
-
 (fset #'yes-or-no-p #'y-or-n-p)
 
 (remove-hook 'kill-buffer-query-functions #'process-kill-buffer-query-function)
