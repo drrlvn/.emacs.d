@@ -608,6 +608,11 @@
         company-tooltip-align-annotations t)
   (global-company-mode 1))
 
+(use-package company-dabbrev
+  :defer
+  :config (setq company-dabbrev-downcase nil
+                company-dabbrev-ignore-case t))
+
 (use-package company-prescient
   :ensure
   :config (company-prescient-mode 1))
