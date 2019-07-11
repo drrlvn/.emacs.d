@@ -331,6 +331,7 @@
   :demand
   :bind (("C-S-s". ivy-resume)
          ("C-x B" . ivy-switch-buffer-other-window)
+         ("H-b" . ivy-switch-buffer)
          :map ivy-minibuffer-map
          ("<return>" . ivy-alt-done)
          ("C-j" . ivy-done)
@@ -881,6 +882,8 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :demand
   :bind (("<f7>" . projectile-compile-project)
          ("<C-f7>" . projectile-test-project)
+         ("H-p" . projectile-switch-project)
+         ("H-f" . projectile-find-file)
          :map projectile-mode-map
          ("C-c p" . projectile-command-map))
   :config
