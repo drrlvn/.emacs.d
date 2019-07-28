@@ -228,7 +228,8 @@
                 doc-view-resolution 300))
 
 (use-package dired
-  :config (setq dired-recursive-deletes 'always))
+  :config (setq dired-recursive-deletes 'always
+                dired-listing-switches "--group-directories-first -lFhX"))
 
 (use-package dired-aux
   :defer
@@ -330,8 +331,7 @@
   :ensure
   :demand
   :bind (("C-S-s". ivy-resume)
-         ("C-x B" . ivy-switch-buffer-other-window)
-         ("H-b" . ivy-switch-buffer)
+         ("H-b" . counsel-switch-buffer)
          :map ivy-minibuffer-map
          ("<return>" . ivy-alt-done)
          ("C-j" . ivy-done)
@@ -367,6 +367,8 @@
   :ensure
   :after ivy
   :bind (("C-s" . counsel-grep-or-swiper)
+         ("C-x b" . counsel-switch-buffer)
+         ("C-x B" . counsel-switch-buffer-other-window)
          ("C-x y" . counsel-yank-pop)
          ("C-x C-r" . counsel-recentf)
          ("M-i" . counsel-imenu)
