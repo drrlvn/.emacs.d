@@ -556,11 +556,15 @@
   :hook (lsp-mode . lsp-ui-mode)
   :bind (:map lsp-mode-map
               ("C-c l r" . lsp-rename)
+              ("C-c l c" . lsp-ui-sideline-apply-code-actions)
               ("C-c l s" . lsp-ui-find-workspace-symbol)
               ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
               ([remap xref-find-references] . lsp-ui-peek-find-references))
-  :config (setq lsp-ui-sideline-ignore-duplicate t
-                lsp-ui-sideline-show-hover nil))
+  :config
+  (setq lsp-ui-sideline-ignore-duplicate t
+                lsp-ui-sideline-show-hover nil)
+  (set-face-attribute 'lsp-ui-sideline-code-action nil :foreground (doom-color 'cyan))
+  )
 
 (use-package lsp-ui-flycheck
   :bind (:map lsp-mode-map
