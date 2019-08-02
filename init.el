@@ -74,6 +74,10 @@
 (bind-key "C-`" #'pop-to-mark-command)
 (bind-key "C-M-`" #'pop-global-mark)
 
+(bind-key "<C-M-home>" #'first-error)
+(bind-key "<C-M-prior>" #'previous-error)
+(bind-key "<C-M-next>" #'next-error)
+
 (bind-key "C-z" #'repeat)
 (unbind-key "C-x C-z")
 (bind-key "C-!" #'kill-this-buffer)
