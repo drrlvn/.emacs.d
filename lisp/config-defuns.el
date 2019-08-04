@@ -8,15 +8,6 @@
 ;;;###autoload
 (defvar-local my/python-black-on-save nil "Format the buffer with black before saving")
 
-(defmacro my/save-kill-ring (&rest body)
-  "Save `kill-ring' and restore it after executing BODY."
-  `(let ((orig-kill-ring kill-ring)
-         (orig-kill-ring-yank-pointer kill-ring-yank-pointer))
-     (unwind-protect
-         ,@body)
-     (setq kill-ring orig-kill-ring
-           kill-ring-yank-pointer orig-kill-ring-yank-pointer)))
-
 ;;;###autoload
 (defun my/diff-current-buffer-with-file ()
   "View the differences between current buffer and its associated file."
@@ -250,7 +241,7 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
   (magit-status (magit-toplevel (file-name-directory user-init-file))))
 
 (defun my/py-isort-buffer ()
-  "Wrap `py-isort-buffer' with `my/save-kill-ring'."
+  "Run `isort' on buffer."
   (interactive)
   (let ((tmp-buf (generate-new-buffer "tmp")))
     (call-shell-region (point-min) (point-max) "isort -" nil tmp-buf)
@@ -272,13 +263,12 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
   "Move current line, which should be an import statement, to the beginning of the file and run isort."
   (interactive)
   (save-excursion
-    (let ((import-string (delete-and-extract-region (line-beginning-position) (line-end-position))))
+    (let ((import-string (string-trim (delete-and-extract-region (line-beginning-position) (line-end-position)))))
       (delete-char -1)
       (goto-char (point-min))
       (while (or (not (looking-at "$")) (python-syntax-comment-or-string-p))
         (forward-line))
       (insert import-string)
-      (indent-region (line-beginning-position) (line-end-position))
       (my/py-isort-buffer))))
 
 ;; hooks
