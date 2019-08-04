@@ -252,8 +252,12 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
 (defun my/py-isort-buffer ()
   "Wrap `py-isort-buffer' with `my/save-kill-ring'."
   (interactive)
-  (my/save-kill-ring
-   (py-isort-buffer))
+  (let ((tmp-buf (generate-new-buffer "tmp")))
+    (call-shell-region (point-min) (point-max) "isort -" nil tmp-buf)
+    (with-current-buffer tmp-buf
+      (delete-trailing-whitespace))
+    (replace-buffer-contents tmp-buf)
+    (kill-buffer tmp-buf))
   nil)
 
 ;;;###autoload

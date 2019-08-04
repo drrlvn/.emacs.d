@@ -488,7 +488,9 @@
          ("slashrc\\'" . python-mode))
   :bind (:map python-mode-map
               ("C-<f8>" . my/pylint-ignore-errors-at-point)
-              ("C-c C-f" . nil))
+              ("C-c C-f" . nil)
+              ("C-c i" . my/python-insert-import)
+              ("C-c I" . my/py-isort-buffer))
   :hook ((python-mode . lsp)
          (python-mode . my/set-python-write-functions))
   :config
@@ -498,14 +500,6 @@
 (use-package blacken
   :ensure
   :defer)
-
-(use-package py-isort
-  :ensure
-  :after python
-  :commands py-isort-buffer
-  :bind (:map python-mode-map
-              ("C-c i" . my/python-insert-import)
-              ("C-c I" . my/py-isort-buffer)))
 
 (use-package pyvenv
   :ensure
