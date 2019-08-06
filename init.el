@@ -109,6 +109,9 @@
 
 (fset #'yes-or-no-p #'y-or-n-p)
 
+(use-package savehist
+  :init (savehist-mode 1))
+
 (remove-hook 'kill-buffer-query-functions #'process-kill-buffer-query-function)
 
 (defun display-startup-echo-area-message () ".")
