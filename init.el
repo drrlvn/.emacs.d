@@ -109,9 +109,6 @@
 
 (fset #'yes-or-no-p #'y-or-n-p)
 
-(use-package savehist
-  :init (savehist-mode 1))
-
 (remove-hook 'kill-buffer-query-functions #'process-kill-buffer-query-function)
 
 (defun display-startup-echo-area-message () ".")
@@ -1045,5 +1042,8 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
 (use-package powershell
   :ensure
   :defer)
+
+(use-package savehist
+  :init (savehist-mode 1))
 
 ;;; init.el ends here
