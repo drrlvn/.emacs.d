@@ -1043,4 +1043,7 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :ensure
   :defer)
 
+(use-package savehist
+  :config (savehist-mode 1))
+
 ;;; init.el ends here
