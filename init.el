@@ -917,6 +917,10 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :ensure
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(use-package rainbow-mode
+  :ensure
+  :hook (prog-mode . rainbow-mode))
+
 (use-package restclient
   :ensure
   :mode ("\\.http\\'" . restclient-mode))
