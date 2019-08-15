@@ -921,7 +921,8 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
 
 (use-package rainbow-mode
   :ensure
-  :hook (prog-mode . rainbow-mode))
+  :hook (prog-mode . rainbow-mode)
+  :config (setq rainbow-x-colors nil))
 
 (use-package restclient
   :ensure
