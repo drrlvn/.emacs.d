@@ -42,12 +42,12 @@
 
 (defcustom my/font-family (seq-find (lambda (font) (find-font (font-spec :name font)))
                                     '("Iosevka SS05" "Iosevka SS09" "Iosevka SS01" "Iosevka" "Ubuntu Mono"))
-  "Emacs font."
+  "Emacs font family."
   :type 'string
   :group 'my/customizations)
 
 (defcustom my/font-height (if (eq system-type 'darwin) 150 120)
-  "Emacs font."
+  "Emacs font height."
   :type 'string
   :group 'my/customizations)
 
