@@ -48,7 +48,7 @@
 
 (defcustom my/font-height (if (eq system-type 'darwin) 150 120)
   "Emacs font height."
-  :type 'string
+  :type 'integer
   :group 'my/customizations)
 
 (defcustom my/windmove-modifier "M"
