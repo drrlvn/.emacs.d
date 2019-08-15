@@ -81,5 +81,8 @@ forge-database.sqlite
 # transient
 transient/
 
+# savehist
+history
+
 .lsp-session-v1
 custom.el
