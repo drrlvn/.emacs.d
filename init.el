@@ -990,7 +990,6 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
 
 (use-package yasnippet
   :ensure
-  :ensure yasnippet-snippets
   :demand
   :bind (:map yas-minor-mode-map
               ("TAB" . nil)
@@ -999,6 +998,10 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   (setq yas-prompt-functions '(yas-completing-prompt) ; use normal completion
         yas-verbosity 1)
   (yas-global-mode 1))
+
+(use-package yasnippet-snippets
+  :ensure
+  :after yasnppet)
 
 (use-package ivy-yasnippet
   :ensure
