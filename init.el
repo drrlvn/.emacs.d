@@ -70,6 +70,7 @@
 (bind-key "C-<tab>" #'previous-buffer)
 (bind-key "<mouse-8>" #'previous-buffer)
 (bind-key "C-S-<iso-lefttab>" #'next-buffer)
+(bind-key "C-S-<tab>" #'next-buffer)
 (bind-key "<mouse-9>" #'next-buffer)
 
 (bind-key "C-`" #'pop-to-mark-command)
