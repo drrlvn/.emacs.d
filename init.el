@@ -16,6 +16,7 @@
       inhibit-message t
       load-prefer-newer t
       custom-file "~/.emacs.d/custom.el"
+      gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"
       package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
 
