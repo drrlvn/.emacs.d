@@ -31,10 +31,6 @@
   (require 'use-package)
   (require 'bind-key))
 
-(push "~/.emacs.d/lisp" load-path)
-
-(require 'config-defuns-autoloads)
-
 (defgroup my/customizations nil
   "Customizations"
   :group 'convenience)
@@ -42,6 +38,17 @@
 (defcustom my/theme 'doom-one
   "Emacs theme."
   :type 'symbol
+  :group 'my/customizations)
+
+(defcustom my/font-family (seq-find (lambda (font) (find-font (font-spec :name font)))
+                                    '("Iosevka SS05" "Iosevka SS09" "Iosevka SS01" "Iosevka" "Ubuntu Mono"))
+  "Emacs font family."
+  :type 'string
+  :group 'my/customizations)
+
+(defcustom my/font-height (if (eq system-type 'darwin) 150 120)
+  "Emacs font height."
+  :type 'integer
   :group 'my/customizations)
 
 (defcustom my/windmove-modifier "M"
@@ -54,6 +61,13 @@
   :type 'boolean
   :group 'my/customizations)
 (make-variable-buffer-local 'my/disable-clang-format-on-save)
+
+(if (file-exists-p "~/.emacs.site.d/init.el")
+    (load "~/.emacs.site.d/init.el"))
+
+(push "~/.emacs.d/lisp" load-path)
+
+(require 'config-defuns-autoloads)
 
 (bind-key "<escape>" #'keyboard-escape-quit)
 (bind-key "C-x r q" #'save-buffers-kill-emacs)
@@ -1052,5 +1066,8 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
 
 (use-package savehist
   :config (savehist-mode 1))
+
+(if (file-exists-p "~/.emacs.site.d/config.el")
+    (load "~/.emacs.site.d/config.el"))
 
 ;;; init.el ends here

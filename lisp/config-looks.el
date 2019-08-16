@@ -9,18 +9,14 @@
 
 (setq frame-title-format '("" invocation-name ": %b"))
 
-(use-package cus-edit
-  :config
-  (when (eq (custom-face-state 'default) 'standard)
-        (custom-set-faces
-         `(default
-            ((t
-              :family ,(seq-find (lambda (font) (find-font (font-spec :name font)))
-                                 '("Iosevka SS05" "Iosevka SS09" "Iosevka SS01" "Iosevka" "Ubuntu Mono"))
-              :height ,(if (eq system-type 'darwin) 150 120)))))))
-
 (eval-when-compile
-  (defvar my/theme))
+  (defvar my/theme)
+  (defvar my/font-family)
+  (defvar my/font-height))
+
+(set-face-attribute 'default nil
+                    :family my/font-family
+                    :height my/font-height)
 
 (use-package doom-themes
   :ensure
@@ -35,9 +31,7 @@
 
 (use-package doom-modeline
   :ensure
-  :config
-  (setq doom-modeline-python-executable nil)
-  (doom-modeline-mode 1))
+  :config (doom-modeline-mode 1))
 
 (when window-system
   (scroll-bar-mode -1)
