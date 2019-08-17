@@ -903,6 +903,7 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :demand
   :bind (("<f7>" . projectile-compile-project)
          ("<C-f7>" . projectile-test-project)
+         ("<S-f7>" . projectile-run-project)
          ("H-p" . projectile-switch-project)
          ("H-f" . projectile-find-file)
          :map projectile-mode-map
@@ -914,6 +915,8 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   (setq projectile-completion-system 'ivy
         projectile-current-project-on-switch 'move-to-end)
   (fset #'projectile-kill-buffers #'my/projectile-kill-buffers)
+  (projectile-register-project-type 'emacs-configuration '("init.el")
+                                    :run "emacs --debug-init")
   (projectile-mode 1))
 
 (use-package counsel-projectile
