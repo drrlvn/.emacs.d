@@ -151,6 +151,7 @@
       scroll-margin 5
       scroll-preserve-screen-position t
       visual-order-cursor-movement t
+      split-width-threshold 120
       )
 
 (if (eq system-type 'windows-nt)
