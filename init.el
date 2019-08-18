@@ -118,10 +118,10 @@
 (bind-key "M-z" #'my/zap-up-to-char)
 (bind-key "M-Z" #'zap-to-char)
 
-(prefer-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8-unix)
+(set-default-coding-systems 'utf-8-unix)
+(set-terminal-coding-system 'utf-8-unix)
+(set-keyboard-coding-system 'utf-8-unix)
 
 (fset #'yes-or-no-p #'y-or-n-p)
 
