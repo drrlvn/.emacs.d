@@ -249,7 +249,7 @@
 
 (use-package dired
   :config (setq dired-recursive-deletes 'always
-                dired-listing-switches (format "%s -lFh" (if (eq system-type 'gnu-linux) "-X --group-directories-first" ""))))
+                dired-listing-switches (format "%s -AlFh" (if (eq system-type 'gnu/linux) "-X --group-directories-first" ""))))
 
 (use-package dired-aux
   :defer
