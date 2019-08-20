@@ -150,8 +150,8 @@
       scroll-conservatively 10000
       scroll-margin 5
       scroll-preserve-screen-position t
-      visual-order-cursor-movement t
       split-width-threshold 120
+      visual-order-cursor-movement t
       )
 
 (if (eq system-type 'windows-nt)
