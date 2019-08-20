@@ -1070,6 +1070,10 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
 (use-package savehist
   :config (savehist-mode 1))
 
+(use-package kubernetes
+  :ensure
+  :defer)
+
 (if (file-exists-p "~/.emacs.site.d/config.el")
     (load "~/.emacs.site.d/config.el"))
 
