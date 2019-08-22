@@ -1,6 +1,5 @@
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/"))
-      byte-compile-error-on-warn t)
+                         ("melpa" . "https://melpa.org/packages/")))
 
 (package-initialize)
 (unless (package-installed-p 'use-package)
@@ -8,4 +7,3 @@
   (package-install 'use-package))
 
 (push (concat default-directory "lisp") load-path)
-(add-to-list 'safe-local-variable-values '(no-byte-compile . t))

@@ -14,9 +14,5 @@ jobs:
         sudo add-apt-repository ppa:kelleyk/emacs
         sudo apt update
         sudo apt install emacs26
-    - name: Disable byte-compilation of elpa packages
-      run: |
-        mkdir elpa
-        echo "((emacs-lisp-mode . ((no-byte-compile . t))))" > elpa/.dir-locals.el
     - name: Byte compile files
       run: git ls-files '*.el' ':!:.*' -z | xargs -0 emacs -Q --batch -l .ci.el -f 'batch-byte-compile'
