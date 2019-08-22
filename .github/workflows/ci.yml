@@ -8,15 +8,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout
     - name: Install Emacs
       run: |
         sudo add-apt-repository ppa:kelleyk/emacs
         sudo apt update
         sudo apt install emacs26
-    - name: Install packages
+    - name: Disable byte-compilation of elpa packages
       run: |
-        ln -s $PWD ./.emacs.d
-        emacs --batch -l init.el
+        mkdir elpa
+        echo "((emacs-lisp-mode . ((no-byte-compile . t))))" > elpa/.dir-locals.el
     - name: Byte compile files
       run: git ls-files '*.el' ':!:.*' -z | xargs -0 emacs -Q --batch -l .ci.el -f 'batch-byte-compile'
