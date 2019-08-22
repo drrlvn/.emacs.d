@@ -15,4 +15,4 @@ jobs:
         sudo apt update
         sudo apt install emacs26-nox
     - name: Byte compile files
-      run: git ls-files '*.el' ':!:.*' -z | xargs -0 -I {} emacs -Q --batch -l .ci.el --eval '(byte-compile-file "{}")'
+      run: git ls-files '*.el' ':!:.*' -z | xargs -0 -I {} emacs -Q --batch -l .ci.el --eval '(unless (byte-compile-file "{}") (error (kill-emacs 1)))'

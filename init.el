@@ -11,6 +11,9 @@
 (defconst my/cargo-check-flags "--all-features --tests --examples")
 (defconst my/cargo-build-flags "--all-features")
 
+(eval-when-compile
+  (defvar gnutls-algorithm-priority))
+
 (setq gc-cons-threshold (* 100 1024 1024)
       file-name-handler-alist nil
       inhibit-message t
@@ -31,41 +34,12 @@
   (require 'use-package)
   (require 'bind-key))
 
-(defgroup my/customizations nil
-  "Customizations"
-  :group 'convenience)
+(push "~/.emacs.d/lisp" load-path)
 
-(defcustom my/theme 'doom-one
-  "Emacs theme."
-  :type 'symbol
-  :group 'my/customizations)
-
-(defcustom my/font-family (seq-find (lambda (font) (find-font (font-spec :name font)))
-                                    '("Iosevka SS05" "Iosevka SS09" "Iosevka SS01" "Iosevka" "Ubuntu Mono"))
-  "Emacs font family."
-  :type 'string
-  :group 'my/customizations)
-
-(defcustom my/font-height (if (eq system-type 'darwin) 150 120)
-  "Emacs font height."
-  :type 'integer
-  :group 'my/customizations)
-
-(defcustom my/windmove-modifier "M"
-  "Modifier key used for windmove bindings."
-  :type 'string
-  :group 'my/customizations)
-
-(defcustom my/disable-clang-format-on-save nil
-  "Whether clang-format on buffer save should be disabled."
-  :type 'boolean
-  :group 'my/customizations)
-(make-variable-buffer-local 'my/disable-clang-format-on-save)
+(require 'config-custom)
 
 (if (file-exists-p "~/.emacs.site.d/init.el")
     (load "~/.emacs.site.d/init.el"))
-
-(push "~/.emacs.d/lisp" load-path)
 
 (require 'config-defuns-autoloads)
 
@@ -155,6 +129,7 @@
 
 (if (eq system-type 'windows-nt)
     (progn
+      (eval-when-compile (defvar w32-lwindow-modifier))
       (setq w32-lwindow-modifier 'super)
       (w32-register-hot-key [s-s]))
   (setq shell-file-name "/bin/sh"))
@@ -794,8 +769,6 @@
   (set-face-attribute 'magit-branch-remote nil :foreground (doom-color 'magenta))
   (setq magit-bury-buffer-function 'magit-mode-quit-window
         magit-repository-directories '(("~/dev" . 1))
-        magit-log-arguments '("-n256" "--graph" "--decorate" "--show-signature")
-        magit-log-section-arguments '("-n256" "--decorate" "--show-signature")
         magit-diff-refine-hunk t
         magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1
         magit-section-initial-visibility-alist '((recent . show)
@@ -867,7 +840,7 @@
          (markdown-mode . flyspell-mode))
   :config (setq markdown-command "cmark"))
 
-(use-package sh-mode
+(use-package sh-script
   :mode ("PKGBUILD\\'" . shell-script-mode))
 
 (use-package fish-mode
