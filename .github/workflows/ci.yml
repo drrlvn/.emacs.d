@@ -17,6 +17,6 @@ jobs:
     - name: Install packages
       run: |
         ln -s $PWD ./.emacs.d
-        emacs -f kill-emacs
+        emacs -nw -f kill-emacs
     - name: Byte compile files
       run: git ls-files '*.el' ':!:.*' -z | xargs -0 emacs -Q --batch -l .ci.el -f 'batch-byte-compile'
