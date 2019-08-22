@@ -16,7 +16,6 @@
       inhibit-message t
       load-prefer-newer t
       custom-file "~/.emacs.d/custom.el"
-      gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"
       package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
 
@@ -157,7 +156,8 @@
     (progn
       (setq w32-lwindow-modifier 'super)
       (w32-register-hot-key [s-s]))
-  (setq shell-file-name "/bin/sh"))
+  (setq shell-file-name "/bin/sh"
+        gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
 (setq-default comment-column 0
               fill-column 100
