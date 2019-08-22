@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout
+    - uses: actions/checkout@master
     - name: Install Emacs
       run: |
         sudo add-apt-repository ppa:kelleyk/emacs
