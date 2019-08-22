@@ -8,3 +8,4 @@
   (package-install 'use-package))
 
 (push (concat default-directory "lisp") load-path)
+(add-to-list 'safe-local-variable-values '(no-byte-compile . t))
