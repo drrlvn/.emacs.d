@@ -229,7 +229,7 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
   "Toggle mut for variable under point."
   (interactive)
   (save-excursion
-    (racer--find-definition #'find-file)
+    (lsp-find-definition)
     (if (looking-back "mut\\s-+" (point-at-bol))
         (delete-region (match-beginning 0) (match-end 0))
       (insert "mut "))))
