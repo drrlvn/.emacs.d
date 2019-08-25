@@ -163,6 +163,10 @@
     :ensure
     :config (exec-path-from-shell-initialize)))
 
+(use-package nxml-mode
+  :defer
+  :config (setq nxml-slash-auto-complete-flag t))
+
 (use-package browse-url
   :bind ("<C-M-return>" . browse-url-at-point))
 
