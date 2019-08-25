@@ -423,6 +423,22 @@ COUNT are set in the same way as the original function."
      (when my/python-black-on-save
        (push #'my/blacken-buffer write-contents-functions)))))
 
+;;;###autoload
+(defun my/revert-project-commands ()
+  "Revert session defined commands back to their original state."
+  (interactive)
+  (let ((default-directory (projectile-compilation-dir)))
+    (remhash default-directory projectile-compilation-cmd-map)
+    (remhash default-directory projectile-test-cmd-map)
+    (remhash default-directory projectile-run-cmd-map)))
+
+;;;###autoload
+(defun my/reload-dir-locals()
+  "Reload dir local variables for the current buffer."
+  (interactive)
+  (hack-dir-local-variables)
+  (hack-local-variables-apply))
+
 (provide 'config-defuns)
 
 ;;; Local Variables:

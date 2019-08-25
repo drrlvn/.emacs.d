@@ -233,6 +233,16 @@ Format a Python buffer before saving according to local variables.
 
 \(fn)" nil nil)
 
+(autoload 'my/revert-project-commands "config-defuns" "\
+Revert session defined commands back to their original state.
+
+\(fn)" t nil)
+
+(autoload 'my/reload-dir-locals "config-defuns" "\
+Reload dir local variables for the current buffer.
+
+\(fn)" t nil)
+
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "config-defuns" '("my/")))
 
 ;;;***
