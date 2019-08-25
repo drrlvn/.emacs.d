@@ -774,6 +774,7 @@
         magit-section-initial-visibility-alist '((recent . show)
                                                  (unpushed . show)
                                                  (unpulled . show))
+        magit-save-repository-buffers 'dontask
         magit-status-initial-section '(((unstaged) (status)) ((untracked) (status)))
         magit-revision-show-gravatars '("^Author:     " . "^Commit:     "))
   (remove-hook 'magit-pre-display-buffer-hook #'magit-save-window-configuration)
