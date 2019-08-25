@@ -436,8 +436,7 @@ COUNT are set in the same way as the original function."
 (defun my/reload-dir-locals()
   "Reload dir local variables for the current buffer."
   (interactive)
-  (hack-dir-local-variables-non-file-buffer)
-  (my/revert-project-commands))
+  (hack-dir-local-variables-non-file-buffer))
 
 (provide 'config-defuns)
 
