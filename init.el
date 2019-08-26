@@ -561,8 +561,7 @@
 
 (use-package lsp-ui-flycheck
   :bind (:map lsp-mode-map
-              ("C-c l c" . lsp-ui-flycheck-list))
-  :config (flycheck-add-next-checker 'lsp-ui '(warning . python-pylint)))
+              ("C-c l c" . lsp-ui-flycheck-list)))
 
 (use-package yaml-mode
   :ensure
