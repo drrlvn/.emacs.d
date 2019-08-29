@@ -1049,7 +1049,7 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
 
 (use-package kubernetes
   :ensure
-  :defer)
+  :bind (("C-c k" . kubernetes-overview)))
 
 (if (file-exists-p "~/.emacs.site.d/config.el")
     (load "~/.emacs.site.d/config.el"))
