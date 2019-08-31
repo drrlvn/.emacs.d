@@ -11,11 +11,18 @@
 (defconst my/cargo-check-flags "--all-features --tests --examples")
 (defconst my/cargo-build-flags "--all-features")
 
+(defconst my/config-directory
+  (file-name-directory user-init-file))
+
+(defconst my/site-init-file
+  "~/.emacs.site.d/init.el")
+
 (setq gc-cons-threshold (* 100 1024 1024)
       file-name-handler-alist nil
       inhibit-message t
       load-prefer-newer t
-      custom-file "~/.emacs.d/custom.el"
+      custom-file (concat my/config-directory "custom.el")
+      package-user-dir (concat my/config-directory "elpa")
       package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
 
@@ -30,12 +37,12 @@
   (require 'use-package)
   (require 'bind-key))
 
-(push "~/.emacs.d/lisp" load-path)
+(push (concat my/config-directory "lisp") load-path)
 
 (require 'config-custom)
 
-(if (file-exists-p "~/.emacs.site.d/init.el")
-    (load "~/.emacs.site.d/init.el"))
+(if (file-exists-p my/site-init-file)
+    (load my/site-init-file))
 
 (require 'config-defuns-autoloads)
 
