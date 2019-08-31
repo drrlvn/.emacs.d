@@ -11,9 +11,6 @@
 (defconst my/cargo-check-flags "--all-features --tests --examples")
 (defconst my/cargo-build-flags "--all-features")
 
-(eval-when-compile
-  (defvar gnutls-algorithm-priority))
-
 (setq gc-cons-threshold (* 100 1024 1024)
       file-name-handler-alist nil
       inhibit-message t
@@ -131,8 +128,7 @@
       (eval-when-compile (defvar w32-lwindow-modifier))
       (setq w32-lwindow-modifier 'super)
       (w32-register-hot-key [s-s]))
-  (setq shell-file-name "/bin/sh"
-        gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
+  (setq shell-file-name "/bin/sh"))
 
 (setq-default comment-column 0
               fill-column 100
