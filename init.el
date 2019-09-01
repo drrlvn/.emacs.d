@@ -14,8 +14,14 @@
 (defconst my/config-directory
   (file-name-directory user-init-file))
 
-(defconst my/site-init-file
-  "~/.emacs.site.d/init.el")
+(defconst my/site-config-directory
+  "~/.emacs.site.d/")
+
+(defconst my/site-pre-config-file
+  (concat my/site-config-directory "init.el"))
+
+(defconst my/site-post-config-file
+  (concat my/site-config-directory "config.el"))
 
 (setq gc-cons-threshold (* 100 1024 1024)
       file-name-handler-alist nil
@@ -41,8 +47,8 @@
 
 (require 'config-custom)
 
-(if (file-exists-p my/site-init-file)
-    (load my/site-init-file))
+(if (file-exists-p my/site-pre-config-file)
+    (load my/site-pre-config-file))
 
 (require 'config-defuns-autoloads)
 
@@ -1054,7 +1060,7 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :ensure
   :bind (("C-c k" . kubernetes-overview)))
 
-(if (file-exists-p "~/.emacs.site.d/config.el")
-    (load "~/.emacs.site.d/config.el"))
+(if (file-exists-p my/site-post-config-file)
+    (load my/site-post-config-file))
 
 ;;; init.el ends here
