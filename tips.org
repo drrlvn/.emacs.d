@@ -17,7 +17,7 @@ order to configure it on per-repository basis. You can customize ~my/emails~ in 
 this:
 
 #+BEGIN_SRC emacs-lisp
-(setq my/emails '("roey.ghost@gmail.com" "rodarwis@microsoft.con"))
+(setq my/emails '("me@home.com" "me@work.com"))
 #+END_SRC
 
 Then run ~my/set-git-email~ to select one of these emails.
