@@ -249,6 +249,11 @@ Load FILE if it exists.
 \(fn FILE)" nil nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "config-defuns" '("my/")))
+(autoload 'my/set-git-email "config-defuns" "\
+Set your git EMAIL for the current project.
+
+\(fn EMAIL)" t nil)
+
 
 ;;;***
 

@@ -11,6 +11,17 @@
 ** Git link
 - ~C-c G H~ will take you to the repository home page. Useful when you push a commit and want to open a pull request
 
+** Working with multiple emails
+When working on a business computer you often omit your email from the global git configuration in
+order to configure it on per-repository basis. You can customize ~my/emails~ in your site file like
+this:
+
+#+BEGIN_SRC emacs-lisp
+(setq my/emails '("roey.ghost@gmail.com" "rodarwis@microsoft.con"))
+#+END_SRC
+
+Then run ~my/set-git-email~ to select one of these emails.
+
 * Snippets
 - ~C-M-/~ will list the available snippets with their respective keys
 - ~M-/~ will expand a snippet key

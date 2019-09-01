@@ -445,6 +445,12 @@ COUNT are set in the same way as the original function."
   (if (file-exists-p file)
       (load file)))
 
+;;;###autoload
+(defun my/set-git-email (email)
+  "Set your git EMAIL for the current project."
+  (interactive (list (completing-read "e-mail: " my/emails)))
+  (magit-git-command-topdir (format "git config user.email %s" email)))
+
 (provide 'config-defuns)
 
 ;;; Local Variables:
