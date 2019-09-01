@@ -1,0 +1,16 @@
+#+title: Tips and tricks for this configuration
+
+* Window management
+- Press alt + arrows to move between windows. You can't do that in org-mode so use ~C-x o~ there.
+- ~C-c C-r~ will transpose windows
+
+* Git
+** Magit Status buffer
+- Press ~j~ and another letter to jump to any of the sections
+
+** Git link
+- ~C-c G H~ will take you to the repository home page. Useful when you push a commit and want to open a pull request
+
+* Snippets
+- ~C-M-/~ will list the available snippets with their respective keys
+- ~M-/~ will expand a snippet key
