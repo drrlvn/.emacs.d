@@ -40,15 +40,9 @@
 (push (concat my/config-directory "lisp") load-path)
 
 (require 'config-custom)
-
-(defun my/load-if-exists (file)
-  "Load FILE if it exists."
-  (if (file-exists-p file)
-      (load file)))
+(require 'config-defuns-autoloads)
 
 (my/load-if-exists (concat my/site-config-directory "init.el"))
-
-(require 'config-defuns-autoloads)
 
 (bind-key "<escape>" #'keyboard-escape-quit)
 (bind-key "C-x r q" #'save-buffers-kill-emacs)

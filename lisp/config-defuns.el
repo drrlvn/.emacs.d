@@ -439,6 +439,12 @@ COUNT are set in the same way as the original function."
   (hack-dir-local-variables)
   (hack-local-variables-apply))
 
+;;;###autoload
+(defun my/load-if-exists (file)
+  "Load FILE if it exists."
+  (if (file-exists-p file)
+      (load file)))
+
 (provide 'config-defuns)
 
 ;;; Local Variables:
