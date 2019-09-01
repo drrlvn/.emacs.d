@@ -10,12 +10,15 @@
 
 (defconst my/cargo-check-flags "--all-features --tests --examples")
 (defconst my/cargo-build-flags "--all-features")
+(defconst my/config-directory (file-name-directory user-init-file))
+(defconst my/site-config-directory "~/.emacs.site.d/")
 
 (setq gc-cons-threshold (* 100 1024 1024)
       file-name-handler-alist nil
       inhibit-message t
       load-prefer-newer t
-      custom-file "~/.emacs.d/custom.el"
+      custom-file (concat my/config-directory "custom.el")
+      package-user-dir (concat my/config-directory "elpa")
       package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
 
@@ -30,14 +33,12 @@
   (require 'use-package)
   (require 'bind-key))
 
-(push "~/.emacs.d/lisp" load-path)
+(push (concat my/config-directory "lisp") load-path)
 
 (require 'config-custom)
-
-(if (file-exists-p "~/.emacs.site.d/init.el")
-    (load "~/.emacs.site.d/init.el"))
-
 (require 'config-defuns-autoloads)
+
+(my/load-if-exists (concat my/site-config-directory "init.el"))
 
 (bind-key "<escape>" #'keyboard-escape-quit)
 (bind-key "C-x r q" #'save-buffers-kill-emacs)
@@ -1047,7 +1048,6 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :ensure
   :bind (("C-c k" . kubernetes-overview)))
 
-(if (file-exists-p "~/.emacs.site.d/config.el")
-    (load "~/.emacs.site.d/config.el"))
+(my/load-if-exists (concat my/site-config-directory "config.el"))
 
 ;;; init.el ends here

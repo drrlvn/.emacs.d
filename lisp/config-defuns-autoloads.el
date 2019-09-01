@@ -243,6 +243,11 @@ Reload dir local variables for the current buffer.
 
 \(fn)" t nil)
 
+(autoload 'my/load-if-exists "config-defuns" "\
+Load FILE if it exists.
+
+\(fn FILE)" nil nil)
+
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "config-defuns" '("my/")))
 
 ;;;***
