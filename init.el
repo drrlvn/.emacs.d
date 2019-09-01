@@ -10,12 +10,8 @@
 
 (defconst my/cargo-check-flags "--all-features --tests --examples")
 (defconst my/cargo-build-flags "--all-features")
-
-(defconst my/config-directory
-  (file-name-directory user-init-file))
-
-(defconst my/site-config-directory
-  "~/.emacs.site.d/")
+(defconst my/config-directory (file-name-directory user-init-file))
+(defconst my/site-config-directory "~/.emacs.site.d/")
 
 (setq gc-cons-threshold (* 100 1024 1024)
       file-name-handler-alist nil
