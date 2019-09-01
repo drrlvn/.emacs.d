@@ -33,6 +33,11 @@
   :group 'my/customizations)
 (make-variable-buffer-local 'my/disable-clang-format-on-save)
 
+(defcustom my/emails ()
+  "A list of email addresses associated with you."
+  :type '(repeat string)
+  :group 'my/customizations)
+
 (provide 'config-custom)
 
 ;;; config-custom.el ends here
