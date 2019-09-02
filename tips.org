@@ -11,21 +11,7 @@ untracked. Meaning that changes will not persist across computers and the file w
 running ~git clean~. If you wish for more persist customization see [[Customization directory]].
 
 ** Customization directory
-Users wishing to customize their configurations can use these files in ~~/.emacs.site.d~:
-
-1. ~init.el~ - loaded before any code is run but after ~use-package~ is available
-2. ~config.el~ - loaded after configuration has finished
-
-For example if one would like to change the theme and font they could do so by placing the following
-in ~/.emacs.site.d/init.el~:
-
-
-#+BEGIN_SRC emacs-lisp
-(setq my/theme 'doom-solarized-light
-      my/font-family "Consolas")
-#+END_SRC
-
-This directory can also be a git repository. For an example see https://github.com/drrlvn/.emacs.site.d.
+See the README file
 
 ** Buffer local variables
 Some variables can be customized per buffer bases. These is done using [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html][Dir locals]]. Press ~C-c p E~
