@@ -1,5 +1,23 @@
 #+title: Tips and tricks for this configuration
 
+* Customization
+** Custom file
+The easiest method for customizing settings is via the custom file, which is located at
+~/.emacs.d/custom.el~. Press ~M-x customize-group~ in order to find out which customization options
+are available for a given package. There is also a customization group for this configuration called
+~my/customization~. Once you make your changes in the UI you can save them just like any other
+buffer. Note that the custom file is placed within the configuration repository and is
+untracked. Meaning that changes will not persist across computers and the file will be purge when
+running ~git clean~. If you wish for more persist customization see [[Customization directory]].
+
+** Customization directory
+See the README file
+
+** Buffer local variables
+Some variables can be customized per buffer bases. These is done using [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html][Dir locals]]. Press ~C-c p E~
+to customize these variables. The syntax on this file might seem crypting, but just think of it as a
+dict mapping between a major mode to a lists of tuples.
+
 * Window management
 - Press alt + arrows to move between windows. You can't do that in org-mode so use ~C-x o~ there.
 - ~C-c C-r~ will transpose windows
@@ -13,7 +31,7 @@
 
 ** Working with multiple emails
 When working on a business computer you often omit your email from the global git configuration in
-order to configure it on per-repository basis. You can customize ~my/emails~ in your site file like
+order to configure it on per-project basis. You can customize ~my/emails~ in your site file like
 this:
 
 #+BEGIN_SRC emacs-lisp
@@ -25,3 +43,32 @@ Then run ~my/set-git-email~ to select one of these emails.
 * Snippets
 - ~C-M-/~ will list the available snippets with their respective keys
 - ~M-/~ will expand a snippet key
+
+* Language specific
+** Python
+**** Virtual environments
+Once you have a virtual environment, use ~C-c p E~ to define the variable ~pyvenv-activate~ for the
+current project. Store the path of the virtual environment inside this variable. Remember to quote
+that path with double quotation marks.
+
+**** Pylint
+If you install pylint in your virtual environment then you should get automatic checking for your
+project. Press ~C-! v~ when visiting a Python file to make sure that the pylint executable is picked
+from the correct virtual environment.
+
+**** Python language server
+You can install ~python-language-server~ in your virtual environment using pip. It's recommended to
+install ~python-language-server[pylint]~ in order to get an integration with pylint. Once that is
+set up the modeline should indicate that the Python Language Server is running by showing
+~LSP[pyls:pid]~.
+
+**** Auto formatting
+This configuration supports automatic Python formatting on save. Since there's no consensus about a
+Python formatting tool, or whether to use such at all, this feature is turned off and can be enabled
+on project basis.
+
+Two buffer local variables were created for this - ~my/python-isort-on-save~ which runs [[https://github.com/timothycrosley/isort/][isort]] and
+~my/python-black-on-save~ which runs [[https://github.com/ambv/black][black]].
+
+These variables are local buffer and are nil by default. They can be set for a given project by
+using dir-local variables, just like ~pyvenv-activate~. See [[Buffer local variables]].
