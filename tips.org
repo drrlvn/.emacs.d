@@ -1,5 +1,37 @@
 #+title: Tips and tricks for this configuration
 
+* Customization
+** Custom file
+The easiest method for customizing settings is via the custom file, which is located at
+~/.emacs.d/custom.el~. Press ~M-x customize-group~ in order to find out which customization options
+are available for a given package. There is also a customization group for this configuration called
+~my/customization~. Once you make your changes in the UI you can save them just like any other
+buffer. Note that the custom file is placed within the configuration repository and is
+untracked. Meaning that changes will not persist across computers and the file will be purge when
+running ~git clean~. If you wish for more persist customization see [[Customization directory]].
+
+** Customization directory
+Users wishing to customize their configurations can use these files in ~~/.emacs.site.d~:
+
+1. ~init.el~ - loaded before any code is run but after ~use-package~ is available
+2. ~config.el~ - loaded after configuration has finished
+
+For example if one would like to change the theme and font they could do so by placing the following
+in ~/.emacs.site.d/init.el~:
+
+
+#+BEGIN_SRC emacs-lisp
+(setq my/theme 'doom-solarized-light
+      my/font-family "Consolas")
+#+END_SRC
+
+This directory can also be a git repository. For an example see https://github.com/drrlvn/.emacs.site.d.
+
+** Buffer local variables
+Some variables can be customized per buffer bases. These is done using [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html][Dir locals]]. Press ~C-c p E~
+to customize these variables. The syntax on this file might seem crypting, but just think of it as a
+dict mapping between a major mode to a lists of tuples.
+
 * Window management
 - Press alt + arrows to move between windows. You can't do that in org-mode so use ~C-x o~ there.
 - ~C-c C-r~ will transpose windows
@@ -52,4 +84,4 @@ Two buffer local variables were created for this - ~my/python-isort-on-save~ whi
 ~my/python-black-on-save~ which runs [[https://github.com/ambv/black][black]]
 
 These variables are local buffer and are nil by default. They can be set for a given project by
-using dir-local variables, just like ~pyvenv-activate~. Use ~C-c p E~ to set them.
+using dir-local variables, just like ~pyvenv-activate~. See [[Buffer local variables]].

@@ -21,20 +21,3 @@ Notes:
 * For spell checking to work an ispell compatible program and dictionary need to be installed,
   e.g. `aspell-en`.
 * By default `cmark` is used to markdown export/preview so it needs to be installed.
-
-## Personal customizations
-
-Users wishing to customize their configurations can use these files in `~/.emacs.site.d`:
-
-1. `init.el` - loaded before any code is run but after `use-package` is available
-1. `config.el` - loaded after configuration has finished
-
-For example if one would like to change the theme and font they could do so by placing the following
-in `~/.emacs.site.d/init.el`:
-
-```elisp
-(setq my/theme 'doom-solarized-light
-      my/font-family "Consolas")
-```
-
-This directory can also be a git repository. For an example see https://github.com/drrlvn/.emacs.site.d.
