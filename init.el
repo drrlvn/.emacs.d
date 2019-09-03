@@ -464,7 +464,9 @@
               ("C-c i p" . my/insert-copy-ctor)
               ("C-c i P" . my/insert-copy-assignment-operator)
               ("C-c i m" . my/insert-move-ctor)
-              ("C-c i M" . my/insert-move-assignment-operator))
+              ("C-c i M" . my/insert-move-assignment-operator)
+         :map java-mode-map
+              ("C-c j" . my/show-in-intellij))
   :hook (c-mode-common . my/c-mode-common-hook)
   :hook (c-mode-common . lsp)
   :config (setq c-basic-offset 4
@@ -496,6 +498,10 @@
   :ensure
   :init (add-hook 'pyvenv-post-activate-hooks #'lsp)
   :hook (hack-local-variables . my/pyvenv-activate))
+
+(use-package lsp-java
+  :ensure
+  :after lsp-mode)
 
 (use-package go-mode
   :ensure

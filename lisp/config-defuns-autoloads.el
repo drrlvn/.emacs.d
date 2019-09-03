@@ -254,6 +254,10 @@ Set your git EMAIL for the current project.
 
 \(fn EMAIL)" t nil)
 
+(autoload 'my/show-in-intellij "config-defuns" "\
+Move IntelliJ to the current line in the current file.
+
+\(fn)" t nil)
 
 ;;;***
 
