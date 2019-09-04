@@ -86,3 +86,7 @@ history
 
 .lsp-session-v1
 custom.el
+
+# Eclipse language server
+workspace
+eclipse.jdt.ls

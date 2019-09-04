@@ -451,6 +451,12 @@ COUNT are set in the same way as the original function."
   (interactive (list (completing-read "e-mail: " my/emails)))
   (magit-git-command-topdir (format "git config user.email %s" email)))
 
+;;;###autoload
+(defun my/show-in-intellij ()
+  "Move IntelliJ to the current line in the current file."
+  (interactive)
+  (start-process "idea" nil "idea" (format "%s:%d" (buffer-file-name) (line-number-at-pos))))
+
 (provide 'config-defuns)
 
 ;;; Local Variables:
