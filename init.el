@@ -708,10 +708,6 @@
          ("C-." . highlight-symbol-next))
   :config (setq highlight-symbol-colors '("highlight")))
 
-(use-package highlight-parentheses
-  :ensure
-  :config (global-highlight-parentheses-mode 1))
-
 (use-package highlight-indent-guides
   :ensure
   :hook (prog-mode . highlight-indent-guides-mode)
@@ -915,7 +911,8 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
 
 (use-package rainbow-delimiters
   :ensure
-  :hook (prog-mode . rainbow-delimiters-mode))
+  :hook (prog-mode . rainbow-delimiters-mode)
+  :config (setq rainbow-delimiters-max-face-count 1))
 
 (use-package rainbow-mode
   :ensure
