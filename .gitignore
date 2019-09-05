@@ -90,3 +90,5 @@ custom.el
 # Eclipse language server
 workspace
 eclipse.jdt.ls
+
+straight

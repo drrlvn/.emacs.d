@@ -1,6 +1,7 @@
 ;;; config-custom.el --- custom configuration -*- lexical-binding: t; byte-compile-warnings: (not unresolved) -*-
 ;;; Commentary:
 ;;; Code:
+(require 'seq)
 
 (defgroup my/customizations nil
   "Customizations"
