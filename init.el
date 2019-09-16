@@ -239,7 +239,9 @@
          ("M-<f10>" . org-capture-goto-last-stored)
          :map org-mode-map
          ("C-s-<up>" . org-move-subtree-up)
-         ("C-s-<down>" . org-move-subtree-down))
+         ("C-s-<down>" . org-move-subtree-down)
+         ("M-p" . org-previous-link)
+         ("M-n" . org-next-link))
   :hook (org-mode . my/org-mode-hook)
   :config
   (setq org-replace-disputed-keys t
@@ -369,6 +371,7 @@
          ("M-i" . counsel-imenu)
          ("C-c a" . my/counsel-rg)
          ("C-c u" . counsel-unicode-char)
+         ("<S-f10>" . counsel-org-goto-all)
          :map counsel-mode-map
          ([remap pop-to-mark-command] . nil)
          ([remap describe-key] . nil)
