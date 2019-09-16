@@ -563,10 +563,6 @@
   (set-face-attribute 'lsp-ui-sideline-code-action nil :foreground (doom-color 'cyan))
   )
 
-(use-package lsp-ui-flycheck
-  :bind (:map lsp-mode-map
-              ("C-c l c" . lsp-ui-flycheck-list)))
-
 (use-package yaml-mode
   :ensure
   :defer)
