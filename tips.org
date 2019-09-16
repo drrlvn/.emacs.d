@@ -43,6 +43,7 @@ Then run ~my/set-git-email~ to select one of these emails.
 * Snippets
 - ~C-M-/~ will list the available snippets with their respective keys
 - ~M-/~ will expand a snippet key
+- ~C-S-w~ defines a temporary snippet from the current line and ~C-S-y~ applies it. See [[https://github.com/abo-abo/auto-yasnippet/blob/master/README.md][auto-yasnippet]].
 
 * Language specific
 ** Python

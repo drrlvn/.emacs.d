@@ -1002,6 +1002,12 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :ensure
   :bind ("C-M-/" . ivy-yasnippet))
 
+
+(use-package auto-yasnippet
+  :ensure
+  :bind (("C-S-w" . aya-create)
+         ("C-S-y" . aya-expand)))
+
 (use-package dumb-jump
   :ensure
   :bind (("M-g M-o" . dumb-jump-quick-look)))
