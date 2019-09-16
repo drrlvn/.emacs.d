@@ -23,6 +23,10 @@ dict mapping between a major mode to a lists of tuples.
 - ~C-c C-r~ will transpose windows
 
 * Git
+** Git timemachine
+- Press ~M-<f9>~ to activate a time machine mode when visiting a file. Press ~?~ inside this mode to
+  see the key bindings.
+
 ** Magit Status buffer
 - Press ~j~ and another letter to jump to any of the sections
 

@@ -43,7 +43,6 @@
 (bind-key "C-x r q" #'save-buffers-kill-emacs)
 (unbind-key "C-x C-c")
 (bind-key "<f5>" #'my/revert-buffer-no-confirmation)
-(bind-key "M-<f9>" #'vc-revision-other-window)
 (bind-key "<f11>" #'toggle-frame-fullscreen)
 (bind-key "S-<f11>" #'whitespace-cleanup)
 (bind-key "C-<f12>" #'my/magit-status-config-project)
@@ -787,6 +786,11 @@
                           'replace)
   (magit-add-section-hook 'magit-status-sections-hook #'magit-insert-modules-overview nil 'append)
   (magit-define-popup-option 'magit-push-popup ?o "Set push option" "--push-option="))
+
+
+(use-package git-timemachine
+  :ensure
+  :bind ("M-<f9>" . git-timemachine))
 
 (use-package smerge-mode
   :bind (:map smerge-mode-map
