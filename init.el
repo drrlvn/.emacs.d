@@ -1048,10 +1048,6 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
 (use-package savehist
   :config (savehist-mode 1))
 
-(use-package kubernetes
-  :ensure
-  :bind (("C-c k" . kubernetes-overview)))
-
 (my/load-if-exists (concat my/site-config-directory "config.el"))
 
 ;;; init.el ends here
