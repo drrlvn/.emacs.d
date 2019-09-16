@@ -787,7 +787,6 @@
   (magit-add-section-hook 'magit-status-sections-hook #'magit-insert-modules-overview nil 'append)
   (magit-define-popup-option 'magit-push-popup ?o "Set push option" "--push-option="))
 
-
 (use-package git-timemachine
   :ensure
   :bind ("M-<f9>" . git-timemachine))
