@@ -11,14 +11,19 @@ untracked. Meaning that changes will not persist across computers and the file w
 running ~git clean~. If you wish for more persist customization see [[Customization directory]].
 
 ** Customization directory
-See the README file
+See the [[file:README.md][README]] file
 
 ** Buffer local variables
 Some variables can be customized per buffer bases. These is done using [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html][Dir locals]]. Press ~C-c p E~
 to customize these variables. The syntax on this file might seem crypting, but just think of it as a
 dict mapping between a major mode to a lists of tuples.
 
-* Window management
+* Navigation
+** Inside a buffer
+- ~S-s~ activates [[https://github.com/abo-abo/avy][Avy]] which allows you to navigate by typing words
+- ~C-f~ and ~C-b~ are similar to Vim's ~f~ and ~b~. See [[https://github.com/lewang/jump-char][jump-char]].
+
+** Switch Windows
 - Press alt + arrows to move between windows. You can't do that in org-mode so use ~C-x o~ there.
 - ~C-c C-r~ will transpose windows
 
