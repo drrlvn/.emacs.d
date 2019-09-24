@@ -20,7 +20,7 @@ dict mapping between a major mode to a lists of tuples.
 
 * Navigation
 ** Inside a buffer
-- ~S-s~ activates [[https://github.com/abo-abo/avy][Avy]] which allows you to navigate by typing words
+- ~s-s~ activates [[https://github.com/abo-abo/avy][Avy]] which allows you to navigate by typing words
 - ~C-f~ and ~C-b~ are similar to Vim's ~f~ and ~b~. See [[https://github.com/lewang/jump-char][jump-char]].
 
 ** Switch Windows
