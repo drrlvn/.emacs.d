@@ -11,14 +11,31 @@ untracked. Meaning that changes will not persist across computers and the file w
 running ~git clean~. If you wish for more persist customization see [[Customization directory]].
 
 ** Customization directory
-See the README file
+See the [[file:README.md][README]] file
 
 ** Buffer local variables
 Some variables can be customized per buffer bases. These is done using [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html][Dir locals]]. Press ~C-c p E~
 to customize these variables. The syntax on this file might seem crypting, but just think of it as a
 dict mapping between a major mode to a lists of tuples.
 
-* Window management
+* Search and replace
+** [[https://writequit.org/denver-emacs/presentations/2017-04-11-ivy.html][Counsel]]
+- ~C-s~ to search within a file
+- ~C-c p s~ to search within the project
+- ~C-c a~ to search within the buffer's directory
+- ~C-c C-o~ when inside counsel mode will open a [[https://github.com/mhayashi1120/Emacs-wgrep][wgrep]] buffer which can be made editable by pressing ~C-x C-q~.
+
+** Others
+- ~vr/query-replace~ is more like a traditional interactive find and replace ([[https://github.com/benma/visual-regexp.el][visual-regexp]])
+- ~C-:~ activates [[https://github.com/magnars/multiple-cursors.el][multiple cursors]] to highlight all instances of the current symbol
+- ~C-"~ highlights the current symbol and its instances
+
+* Navigation
+** Inside a buffer
+- ~s-s~ activates [[https://github.com/abo-abo/avy][Avy]] which allows you to navigate by typing words
+- ~C-f~ and ~C-b~ are similar to Vim's ~f~ and ~b~. See [[https://github.com/lewang/jump-char][jump-char]].
+
+** Switch Windows
 - Press alt + arrows to move between windows. You can't do that in org-mode so use ~C-x o~ there.
 - ~C-c C-r~ will transpose windows
 
