@@ -18,6 +18,18 @@ Some variables can be customized per buffer bases. These is done using [[https:/
 to customize these variables. The syntax on this file might seem crypting, but just think of it as a
 dict mapping between a major mode to a lists of tuples.
 
+* Search and replace
+** [[https://writequit.org/denver-emacs/presentations/2017-04-11-ivy.html][Counsel]]
+- ~C-s~ to search within a file
+- ~C-c p s~ to search within the project
+- ~C-c a~ to search within the buffer's directory
+- ~C-c C-o~ when inside counsel mode will open a [[https://github.com/mhayashi1120/Emacs-wgrep][wgrep]] buffer which can be made editable by pressing ~C-x C-q~.
+
+** Others
+- ~vr/query-replace~ is more like a traditional interactive find and replace ([[https://github.com/benma/visual-regexp.el][visual-regexp]])
+- ~C-:~ activates [[https://github.com/magnars/multiple-cursors.el][multiple cursors]] to highlight all instances of the current symbol
+- ~C-"~ highlights the current symbol and its instances
+
 * Navigation
 ** Inside a buffer
 - ~s-s~ activates [[https://github.com/abo-abo/avy][Avy]] which allows you to navigate by typing words
