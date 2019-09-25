@@ -21,7 +21,7 @@
                          ("melpa" . "https://melpa.org/packages/")))
 
 (push (concat user-emacs-directory "lisp") load-path)
-
+(defvar straight-recipes-emacsmirror-use-mirror nil)
 (require 'straight-bootstrap)
 (require 'straight)
 (setq straight-profiles
