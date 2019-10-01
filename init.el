@@ -819,14 +819,9 @@
 ;; https://github.com/magit/forge/issues/84
 (use-package forge
   :straight t
-  :init (when (eq system-type 'windows-nt)
-          (setq forge-bug-reference-hooks ()))
   :after magit
   :config
-  (push '("git.infinidat.com" "git.infinidat.com/api/v4" "git.infinidat.com" forge-gitlab-repository) forge-alist)
-  (when (eq system-type 'windows-nt)
-    (remove-hook 'magit-status-sections-hook #'forge-insert-pullreqs)
-    (remove-hook 'magit-status-sections-hook #'forge-insert-issues)))
+  (push '("git.infinidat.com" "git.infinidat.com/api/v4" "git.infinidat.com" forge-gitlab-repository) forge-alist))
 
 (use-package git-commit
   :config

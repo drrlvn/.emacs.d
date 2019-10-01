@@ -45,7 +45,7 @@
  ("f.el" . "8191672377816a1975414cc1f116fd3b94b30bd0")
  ("flycheck" . "0006a59259ebd02c9199ddc87f0e3ce22793a2ea")
  ("flycheck-rust" . "a139cd53c5062697e9ed94ad80b803c37d999600")
- ("forge" . "b80e0988cc15d3f7e5754c05fc3ac9414cd97947")
+ ("forge" . "8ab946a5eb1e8de8e54e02f21e65dbd1b97ceff3")
  ("ghub" . "7d59937d7782d0062216130a4d059b45e8396f82")
  ("git-link" . "267bd81c228bdab434172dbef896f3f3b82713fa")
  ("git-modes" . "33c6a116a5b298e20eb39ebb154a51c4dd37c06d")
