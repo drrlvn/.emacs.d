@@ -63,7 +63,7 @@
  ("let-alist" . "57561d7d9267da48e8b7ab1f3bd45c9d05951289")
  ("loop.el" . "e22807f83a0890dc8a904c51ee0742c34efccc6c")
  ("lsp-java" . "df3cfc30eaa9d7605ac3db5d17d8a02efaf50527")
- ("lsp-mode" . "ac388958fcf286461eea2d6e90480c6c36cd66c1")
+ ("lsp-mode" . "9e04a48de9ec0ed046deaaaadc64587d302eb60f")
  ("lsp-ui" . "c8fa40c0f9c65877d1cabe1739e5f787adb24898")
  ("macrostep" . "424e3734a1ee526a1bd7b5c3cd1d3ef19d184267")
  ("magit" . "f788dd7f4730316378b8a222aa5d6b6f1efce94e")
