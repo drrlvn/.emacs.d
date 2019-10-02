@@ -507,6 +507,7 @@
 
 (use-package lsp-java
   :ensure
+  :demand
   :bind (:map java-mode-map
               ("C-c l i" . lsp-java-add-import)
               ("C-c l o" . lsp-java-organize-imports))
