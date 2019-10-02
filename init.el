@@ -814,9 +814,6 @@
   :straight t
   :hook (magit-mode . turn-on-magit-gitflow))
 
-;; We need to shutdown Forge in Windows because it breaks magit if it can't compile the sqlite binary
-;;
-;; https://github.com/magit/forge/issues/84
 (use-package forge
   :straight t
   :after magit
