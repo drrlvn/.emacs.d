@@ -253,7 +253,7 @@
 
 (use-package org-bullets
   :ensure
-  :hook (org . org-bullets-mode))
+  :hook (org-mode . org-bullets-mode))
 
 (use-package ox-html
   :defer
