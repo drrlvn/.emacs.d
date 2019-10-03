@@ -251,7 +251,7 @@
 
 (use-package org-bullets
   :straight t
-  :hook (org . org-bullets-mode))
+  :hook (org-mode . org-bullets-mode))
 
 (use-package ox-html
   :defer
@@ -505,6 +505,7 @@
 
 (use-package lsp-java
   :straight t
+  :demand
   :bind (:map java-mode-map
               ("C-c l i" . lsp-java-add-import)
               ("C-c l o" . lsp-java-organize-imports))
