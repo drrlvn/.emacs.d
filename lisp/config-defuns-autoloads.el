@@ -3,13 +3,6 @@
 ;;; Code:
 
 
-;;;### (autoloads nil "config-custom" "config-custom.el" (0 0 0 0))
-;;; Generated autoloads from config-custom.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "config-custom" '("my/")))
-
-;;;***
-
 ;;;### (autoloads nil "config-defuns" "config-defuns.el" (0 0 0 0))
 ;;; Generated autoloads from config-defuns.el
 
