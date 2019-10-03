@@ -170,6 +170,13 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
     (backward-word)
     (current-word)))
 
+(defun my/goto-baseclass ()
+  "Go to the definition of the base class."
+  (interactive)
+  (search-backward-regexp "\\bclass \\w+?\\(?: +extends \\(?1:\\w+\\)\\|(\\(?1:\\w+\\))\\)")
+  (goto-char (match-beginning 1))
+  (lsp-ui-peek-find-definitions))
+
 ;;;###autoload
 (defun my/insert-default-ctor ()
   "Insert default constructor."

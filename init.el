@@ -565,6 +565,7 @@
               ("C-c l f" . lsp-format-buffer)
               ("C-c l s" . lsp-ui-find-workspace-symbol)
               ("C-c l d" . lsp-ui-doc-mode)
+              ("C-c l b" . my/goto-baseclass)
               ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
               ([remap xref-find-references] . lsp-ui-peek-find-references))
   :config
