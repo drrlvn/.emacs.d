@@ -174,7 +174,7 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
   "Go to the definition of the base class."
   (interactive)
   (let ((baseclass-regex (cond ((eq major-mode 'python-mode) "\\bclass \\w+?(\\(?1:\\w+\\))")
-                               ((eq major-mode 'java-mode) "\\bclass \\w+? +extends \\(?1:\\w+\\)")
+                               ((eq major-mode 'java-mode) "\\bclass [a-zA-Z0-9<>]+? +extends \\(?1:\\w+\\)")
                                (t (error "This function works only in Java or Python modes")))))
 
     (search-backward-regexp baseclass-regex)
