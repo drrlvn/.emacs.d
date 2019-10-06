@@ -568,9 +568,7 @@
   :config
   (setq lsp-ui-sideline-ignore-duplicate t
         lsp-ui-doc-enable nil
-        lsp-ui-sideline-show-hover nil)
-  (set-face-attribute 'lsp-ui-sideline-code-action nil :foreground (doom-color 'cyan))
-  )
+        lsp-ui-sideline-show-hover nil))
 
 (use-package yaml-mode
   :straight t

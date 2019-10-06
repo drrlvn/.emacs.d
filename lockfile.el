@@ -29,7 +29,7 @@
  ("easy-kill" . "2a6309d98aa6b71df6bbbcdf15cab3187c521a6b")
  ("elisp-refs" . "0a254e6a4dc7fa12857f8334fe6eefa72e49d1c9")
  ("emacs-async" . "bd68cc1ab1ac6af890e250bdaa12ffb1cb9649be")
- ("emacs-doom-themes" . "1159463956223ae53df421bcd796e94610759c42")
+ ("emacs-doom-themes" . "668250b967c0d4060653f318480854bbc7d97c17")
  ("emacs-fish" . "688c82decad108029b0434e3bce6c3d129ede6f3")
  ("emacs-memoize" . "8c1e5569550e783dd7814735e22c935416c4462d")
  ("emacs-request" . "61b29734d7c44a594598a7674f2c6c575462dd4b")
