@@ -38,6 +38,10 @@ dict mapping between a major mode to a lists of tuples.
 ** Switch Windows
 - Press alt + arrows to move between windows. You can't do that in org-mode so use ~C-x o~ there.
 - ~C-c C-r~ will transpose windows
+** Jumping to definitions
+- ~M-.~ takes you to the definition of the symbol under the point
+- ~M-?~ finds references to the symbol under the point
+- ~C-c l b~ takes to you the implementation of the base class of the current class (works in Python and Java)
 
 * Git
 ** Git timemachine
