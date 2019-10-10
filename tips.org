@@ -30,6 +30,16 @@ dict mapping between a major mode to a lists of tuples.
 - ~C-:~ activates [[https://github.com/magnars/multiple-cursors.el][multiple cursors]] to highlight all instances of the current symbol
 - ~C-"~ highlights the current symbol and its instances
 
+* Ivy / Swiper / Counsel
+- See [[Search and replace]].
+- Press ~M-o~ inside Ivy to see the list of alternative actions. For example, you can insert a file
+  name by pressing ~C-x C-f~ and instead of pressing ~RET~ to select the file, press ~M-o i~.
+- Press ~C-S-s~ to return to your last ivy search.
+- Say you want to create a new file called ~init~, but a file named ~init.el~ already exists. Press
+  ~C-x C-f~ and type ~init~. ~init.el~ will be selected. However, you can press ~up~ to select
+  ~init~ itself. Alternatively, you can press ~C-M-j~ which will select exactly what appear in the
+  prompt regardless to the current choice
+
 * Navigation
 ** Inside a buffer
 - ~s-s~ activates [[https://github.com/abo-abo/avy][Avy]] which allows you to navigate by typing words
