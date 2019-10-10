@@ -37,7 +37,8 @@ dict mapping between a major mode to a lists of tuples.
 - Press ~C-S-s~ to return to your last ivy search.
 - Say you want to create a new file called ~init~, but a file named ~init.el~ already exists. Press
   ~C-x C-f~ and type ~init~. ~init.el~ will be selected. However, you can press ~up~ to select
-  ~init~ itself.
+  ~init~ itself. Alternatively, you can press ~C-M-j~ which will select exactly what appear in the
+  prompt regardless to the current choice
 
 * Navigation
 ** Inside a buffer
