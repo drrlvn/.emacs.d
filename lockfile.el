@@ -2,7 +2,7 @@
  ("Emacs-wgrep" . "379afd89ebd76f63842c8589127d66096a8bb595")
  ("all-the-icons.el" . "f996fafa5b2ea072d0ad1df9cd98acc75820f530")
  ("auctex" . "d81f1a0a5b18ecc7668bb9d6469e3d882510a3d7")
- ("auto-yasnippet" . "624b0d9711222073a2a3f2186e2605eb99fc83c9")
+ ("auto-yasnippet" . "db9e0dd4335b2202cd5dac95bbbc87a1032d9bbe")
  ("avy" . "87394c9a880104a08d0f0e2d4149ac2d70cc192f")
  ("beginend" . "66e9fbf77fbe248e15a17bd095645a48d40560b4")
  ("blacken" . "5f30f17b048af1fe73ba710781650e3490a7be49")

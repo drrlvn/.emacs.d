@@ -1010,7 +1010,8 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
 (use-package auto-yasnippet
   :straight t
   :bind (("C-S-w" . aya-create)
-         ("C-S-y" . aya-expand)))
+         ("C-S-y" . aya-expand))
+  :config (setq aya-trim-one-line t))
 
 (use-package dumb-jump
   :straight t
