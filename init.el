@@ -24,9 +24,9 @@
 (defvar straight-recipes-emacsmirror-use-mirror nil)
 (require 'straight-bootstrap)
 (require 'straight)
-(setq straight-profiles
-      `((nil . ,(concat user-emacs-directory "lockfile.el"))
-        (site . ,(concat my/site-config-directory "lockfile.el"))))
+(setq straight-profiles `((nil . ,(concat user-emacs-directory "lockfile.el"))
+                          (site . ,(concat my/site-config-directory "lockfile.el")))
+      straight-check-for-modifications '(check-on-save find-when-checking))
 
 (straight-use-package 'use-package)
 
