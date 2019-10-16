@@ -789,8 +789,7 @@
                           #'magit-insert-recent-commits
                           #'magit-insert-unpushed-to-upstream-or-recent
                           'replace)
-  (magit-add-section-hook 'magit-status-sections-hook #'magit-insert-modules-overview nil 'append)
-  (magit-define-popup-option 'magit-push-popup ?o "Set push option" "--push-option="))
+  (magit-add-section-hook 'magit-status-sections-hook #'magit-insert-modules-overview nil 'append))
 
 (use-package git-timemachine
   :straight t
@@ -809,10 +808,6 @@
     ("p" smerge-prev "previous conflict")
     ("n" smerge-next "next conflict")
     ("q" nil "quit")))
-
-(use-package magit-gitflow
-  :straight t
-  :hook (magit-mode . turn-on-magit-gitflow))
 
 (use-package forge
   :straight t
