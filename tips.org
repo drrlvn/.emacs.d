@@ -114,3 +114,6 @@ These variables are local buffer and are nil by default. They can be set for a g
 using dir-local variables, just like ~pyvenv-activate~. See [[Buffer local variables]].
 * Org mode
 - ~S-f10~ is a global key that uses counsel to display the headers of every open org buffer
+* Dired
+- Details in dired mode are hidden by default. Press ~(~ to toggle them.
+- Press ~)~ in dired mode to display the last git commit message for each file.
