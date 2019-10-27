@@ -90,7 +90,7 @@
  ("spinner" . "2daa167bec1c7566d662d48613a94453536b524a")
  ("straight.el" . "b0d455f4364c6d3a91f3ae7bde6b31c1212c04e7")
  ("suggest.el" . "83a2679baf661ee834e9e75921fd546243a6d919")
- ("swiper" . "1bf7f91f00bd90b9ffe8e3e8228a5df43e6d5122")
+ ("swiper" . "9970ae60b60dca532b9aed2ec56773786d9519f0")
  ("syntax-subword" . "9aa9b3f846bfe2474370642458a693ac4760d9fe")
  ("systemd-mode" . "401d71c2dd24e424216ae5e4275c830f2a9c6b0c")
  ("transient" . "ad7f2553088faf633d32b51894de796e01a1cacf")
