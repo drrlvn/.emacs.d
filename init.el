@@ -216,7 +216,8 @@
 
 (use-package ediff
   :defer
-  :config (setq ediff-split-window-function 'split-window-horizontally))
+  :config (setq ediff-split-window-function 'split-window-horizontally
+                ediff-window-setup-function 'ediff-setup-windows-plain))
 
 (use-package doc-view
   :defer
