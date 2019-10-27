@@ -21,6 +21,8 @@
  ("dash.el" . "9631947f2fbeed58b1d07a3ebc1340a3626b2823")
  ("deadgrep" . "e1ea4a358cfdac7551d0c6bf6ae70a4e191c1528")
  ("diff-hl" . "374b1d4b34876219218da7a539e7301259b56958")
+ ("dired-git-info" . "6cd66972ca06b717f35e772b46da3c0ff2f025a5")
+ ("diredfl" . "d5aa50a5269d7374bc8ea981d3871729424d165d")
  ("discover-my-major" . "c592e5e67454f0d1b68669ac0c270073164b16b3")
  ("dockerfile-mode" . "ed73e82dcc636dad00d1a8c3b32a49136d25ee60")
  ("doom-modeline" . "79c705019af38351324f60ba1e06224b1100ccd8")

@@ -225,8 +225,20 @@
                 doc-view-resolution 300))
 
 (use-package dired
+  :hook (dired-mode . dired-hide-details-mode)
   :config (setq dired-recursive-deletes 'always
                 dired-listing-switches (format "%s -AlFh" (if (eq system-type 'gnu/linux) "-X --group-directories-first" ""))))
+
+(use-package diredfl
+  :straight t
+  :after dired
+  :config (diredfl-global-mode 1))
+
+(use-package dired-git-info
+  :straight t
+  :after dired
+  :bind (:map dired-mode-map
+              (")" . dired-git-info-mode)))
 
 (use-package dired-aux
   :defer
