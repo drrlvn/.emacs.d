@@ -183,6 +183,7 @@
         my/hydra-multiple-cursors/mc/unmark-previous-like-this
         my/hydra-multiple-cursors/nil
         shell
+        swiper-mc
         toggle-input-method
         wgrep-finish-edit
         widget-button-click
