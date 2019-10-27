@@ -231,8 +231,7 @@
 (use-package diredfl
   :straight t
   :after dired
-  :config
-  (diredfl-global-mode 1))
+  :config (diredfl-global-mode 1))
 
 (use-package dired-git-info
   :straight t
