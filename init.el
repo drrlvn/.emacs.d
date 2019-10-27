@@ -17,14 +17,18 @@
       inhibit-message t
       load-prefer-newer t
       custom-file (concat user-emacs-directory "custom.el")
-      package-user-dir (concat user-emacs-directory "elpa")
       package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
 
-(package-initialize)
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+(push (concat user-emacs-directory "lisp") load-path)
+(defvar straight-recipes-emacsmirror-use-mirror nil)
+(require 'straight-bootstrap)
+(require 'straight)
+(setq straight-profiles `((nil . ,(concat user-emacs-directory "lockfile.el"))
+                          (site . ,(concat my/site-config-directory "lockfile.el")))
+      straight-check-for-modifications '(check-on-save find-when-checking))
+
+(straight-use-package 'use-package)
 
 (eval-when-compile
   (defvar use-package-enable-imenu-support)
@@ -32,12 +36,11 @@
   (require 'use-package)
   (require 'bind-key))
 
-(push (concat user-emacs-directory "lisp") load-path)
-
 (require 'config-custom)
 (require 'config-defuns-autoloads)
 
-(my/load-if-exists (concat my/site-config-directory "init.el"))
+(let ((straight-current-profile 'site))
+  (my/load-if-exists (concat my/site-config-directory "init.el")))
 
 (bind-key "<escape>" #'keyboard-escape-quit)
 (bind-key "C-x r q" #'save-buffers-kill-emacs)
@@ -146,21 +149,21 @@
 (require 'config-looks)
 
 (use-package dash
-  :ensure
+  :straight t
   :defer)
 
 (use-package f
-  :ensure
+  :straight t
   :defer)
 
 (use-package vc-hooks
   :defer
   :config (setq vc-follow-symlinks t))
 
-(when (eq system-type 'darwin)
-  (use-package exec-path-from-shell
-    :ensure
-    :config (exec-path-from-shell-initialize)))
+(use-package exec-path-from-shell
+  :straight t
+  :if (eq system-type 'darwin)
+  :config (exec-path-from-shell-initialize))
 
 (use-package nxml-mode
   :defer
@@ -169,13 +172,8 @@
 (use-package browse-url
   :bind ("<C-M-return>" . browse-url-at-point))
 
-(use-package paradox
-  :ensure
-  :bind (("C-x p" . paradox-upgrade-packages))
-  :config (setq paradox-github-token t))
-
 (use-package mwim
-  :ensure
+  :straight t
   :bind (("<home>" . mwim-beginning)
          ("<end>" . mwim-end)))
 
@@ -190,7 +188,7 @@
            (,(concat my/windmove-modifier "-<down>") . windmove-down))))
 
 (use-package hydra
-  :ensure
+  :straight t
   :bind ("<f8>" . my/hydra-error/body)
   :config (defhydra my/hydra-error ()
             ("P" first-error "first")
@@ -252,7 +250,7 @@
         org-startup-indented t))
 
 (use-package org-bullets
-  :ensure
+  :straight t
   :hook (org-mode . org-bullets-mode))
 
 (use-package ox-html
@@ -278,7 +276,7 @@
                 uniquify-separator ":"))
 
 (use-package vlf-setup
-  :ensure vlf)
+  :straight vlf)
 
 (use-package server
   :if window-system
@@ -293,16 +291,16 @@
   (global-auto-revert-mode 1))
 
 (use-package beginend
-  :ensure
+  :straight t
   :config (beginend-global-mode 1))
 
 (use-package bln-mode
-  :ensure
+  :straight t
   :bind (("M-[" . bln-backward-half)
          ("M-]" . bln-forward-half)))
 
 (use-package crux
-  :ensure
+  :straight t
   :bind (("M-<return>" . crux-smart-open-line)
          ("M-S-<return>" . crux-smart-open-line-above)
          ("<f12>" . crux-cleanup-buffer-or-region)
@@ -319,16 +317,16 @@
   (recentf-mode 1))
 
 (use-package prescient
-  :ensure
+  :straight t
   :config (prescient-persist-mode 1))
 
 (use-package wgrep
-  :ensure
+  :straight t
   :defer
   :config (setq wgrep-auto-save-buffer t))
 
 (use-package ivy
-  :ensure
+  :straight t
   :demand
   :bind (("C-S-s". ivy-resume)
          ("H-b" . counsel-switch-buffer)
@@ -352,19 +350,19 @@
   (ivy-mode 1))
 
 (use-package ivy-hydra
-  :ensure
+  :straight t
   :bind (:map ivy-minibuffer-map
               ("M-o" . ivy-dispatching-done-hydra)))
 
 (use-package ivy-prescient
-  :ensure
+  :straight t
   :after ivy
   :config
   (setq ivy-prescient-retain-classic-highlighting t)
   (ivy-prescient-mode 1))
 
 (use-package counsel
-  :ensure
+  :straight t
   :after ivy
   :bind (("C-s" . counsel-grep-or-swiper)
          ("C-x b" . counsel-switch-buffer)
@@ -391,7 +389,7 @@
   (counsel-mode 1))
 
 (use-package swiper
-  :ensure
+  :straight t
   :defer)
 
 (use-package cua-base
@@ -406,7 +404,7 @@
   :config (show-paren-mode 1))
 
 (use-package flycheck
-  :ensure
+  :straight t
   :bind ("M-<f8>" . flycheck-list-errors)
   :hook ((prog-mode . flycheck-mode) (flycheck-mode . my/use-eslint-from-node-modules))
   :config
@@ -434,8 +432,8 @@
 (use-package prog-mode
   :hook (prog-mode . my/prog-mode-hook))
 
-(use-package tex
-  :ensure auctex
+(use-package auctex
+  :straight auctex
   :defer
   :hook (LaTeX-mode . my/latex-mode-hook)
   :init (use-package preview
@@ -451,12 +449,12 @@
   (setq-default TeX-engine 'xetex))
 
 (use-package macrostep
-  :ensure
+  :straight t
   :bind (:map emacs-lisp-mode-map
               ("C-c e" . macrostep-expand)))
 
 (use-package suggest
-  :ensure
+  :straight t
   :defer)
 
 (use-package cc-mode
@@ -479,7 +477,7 @@
                 c-default-style "bsd"))
 
 (use-package clang-format
-  :ensure
+  :straight t
   :defer)
 
 (use-package python
@@ -497,16 +495,16 @@
   (advice-add #'python-indent-shift-right :around #'my/python-shift-region))
 
 (use-package blacken
-  :ensure
+  :straight t
   :defer)
 
 (use-package pyvenv
-  :ensure
+  :straight t
   :init (add-hook 'pyvenv-post-activate-hooks #'lsp)
   :hook (hack-local-variables . my/pyvenv-activate))
 
 (use-package lsp-java
-  :ensure
+  :straight t
   :demand
   :bind (:map java-mode-map
               ("C-c l i" . lsp-java-add-import)
@@ -514,11 +512,11 @@
   :after lsp-mode)
 
 (use-package go-mode
-  :ensure
+  :straight t
   :defer)
 
 (use-package rust-mode
-  :ensure
+  :straight t
   :hook (rust-mode . my/rust-mode-hook)
   :bind (:map rust-mode-map
               ("C-c C-f" . nil)
@@ -528,7 +526,7 @@
   :config (setq rust-format-on-save t))
 
 (use-package cargo
-  :ensure
+  :straight t
   :hook ((rust-mode . cargo-minor-mode)
          (conf-toml-mode . my/cargo-toml-mode)
          (magit-mode . my/magit-mode-cargo))
@@ -538,13 +536,13 @@
                 cargo-process--command-build (concat "build " my/cargo-build-flags)))
 
 (use-package flycheck-rust
-  :ensure
+  :straight t
   :after rust-mode
   :hook (flycheck-mode . flycheck-rust-setup)
   :config (flycheck-add-next-checker 'rust-cargo 'rust-clippy))
 
 (use-package lsp
-  :ensure lsp-mode
+  :straight lsp-mode
   :commands lsp
   :config
   (setq lsp-prefer-flymake nil
@@ -552,12 +550,12 @@
   (require 'lsp-clients))
 
 (use-package company-lsp
-  :ensure
+  :straight t
   :after company
   :config (push 'company-lsp company-backends))
 
 (use-package lsp-ui
-  :ensure
+  :straight t
   :hook (lsp-mode . lsp-ui-mode)
   :bind (:map lsp-mode-map
               ("C-c l r" . lsp-rename)
@@ -571,20 +569,18 @@
   :config
   (setq lsp-ui-sideline-ignore-duplicate t
         lsp-ui-doc-enable nil
-        lsp-ui-sideline-show-hover nil)
-  (set-face-attribute 'lsp-ui-sideline-code-action nil :foreground (doom-color 'cyan))
-  )
+        lsp-ui-sideline-show-hover nil))
 
 (use-package yaml-mode
-  :ensure
+  :straight t
   :defer)
 
 (use-package cmake-font-lock
-  :ensure
+  :straight t
   :defer)
 
 (use-package cmake-mode
-  :ensure
+  :straight t
   :hook (cmake-mode . cmake-font-lock-activate))
 
 (use-package hippie-exp
@@ -601,13 +597,13 @@
                                                    )))
 
 (use-package avy
-  :ensure
+  :straight t
   :bind (("s-s" . avy-goto-word-or-subword-1)
          ("C-s-s" . avy-goto-char))
   :config (setq avy-style 'words))
 
 (use-package company
-  :ensure
+  :straight t
   :bind (:map company-mode-map ("C-c TAB" . company-complete))
   :config
   (setq company-minimum-prefix-length 2
@@ -622,7 +618,7 @@
                 company-dabbrev-ignore-case t))
 
 (use-package company-prescient
-  :ensure
+  :straight t
   :config (company-prescient-mode 1))
 
 (use-package conf-mode
@@ -631,11 +627,11 @@
   :hook (conf-mode . my/conf-mode-hook))
 
 (use-package deadgrep
-  :ensure
+  :straight t
   :bind ("<f6>" . deadgrep))
 
 (use-package diff-hl
-  :ensure
+  :straight t
   :demand
   :bind ("C-]" . my/hydra-diff-hl/body)
   :hook ((dired-mode . diff-hl-dired-mode) (magit-post-refresh . diff-hl-magit-post-refresh))
@@ -661,15 +657,15 @@
   (global-diff-hl-mode 1))
 
 (use-package discover-my-major
-  :ensure
+  :straight t
   :bind ("C-h <return>" . discover-my-major))
 
 (use-package dockerfile-mode
-  :ensure
+  :straight t
   :defer)
 
 (use-package drag-stuff
-  :ensure
+  :straight t
   :bind (("M-S-<up>" . drag-stuff-up)
          ("M-S-<down>" . drag-stuff-down)
          ("M-S-<left>" . drag-stuff-left)
@@ -677,53 +673,53 @@
   :hook (drag-stuff-after-drag . my/indent-line-or-region))
 
 (use-package easy-kill
-  :ensure
+  :straight t
   :bind ([remap kill-ring-save] . easy-kill))
 
 (use-package emmet-mode
-  :ensure
+  :straight t
   :hook (sgml-mode web-mode)
   :config (setq emmet-indentation 2
                 emmet-preview-default nil))
 
 (use-package expand-region
-  :ensure
+  :straight t
   :bind (("C-=" . er/expand-region)
          ("C--" . er/contract-region)))
 
 (use-package eyebrowse
-  :ensure
+  :straight t
   :config
   (setq eyebrowse-wrap-around t
         eyebrowse-new-workspace t)
   (eyebrowse-mode 1))
 
 (use-package gitignore-mode
-  :ensure
+  :straight t
   :defer)
 
 (use-package helpful
-  :ensure
+  :straight t
   :bind (([remap describe-key] . helpful-key)
          ([remap describe-function] . helpful-callable)
          ([remap describe-variable] . helpful-variable)
          ([remap describe-symbol] . helpful-symbol)))
 
 (use-package highlight-symbol
-  :ensure
+  :straight t
   :bind (("C-\"" . highlight-symbol-at-point)
          ("C-," . highlight-symbol-prev)
          ("C-." . highlight-symbol-next))
   :config (setq highlight-symbol-colors '("highlight")))
 
 (use-package highlight-indent-guides
-  :ensure
+  :straight t
   :hook (prog-mode . highlight-indent-guides-mode)
   :config (setq highlight-indent-guides-method 'character
                 highlight-indent-guides-responsive 'stack))
 
 (use-package volatile-highlights
-  :ensure
+  :straight t
   :config (volatile-highlights-mode 1))
 
 (use-package ibuffer
@@ -766,7 +762,7 @@
                                                ))))
 
 (use-package magit
-  :ensure
+  :straight t
   :bind (("<f9>" . magit-status)
          ("S-<f9>" . magit-log-buffer-file)
          ("C-<f9>" . magit-blame-addition)
@@ -793,11 +789,10 @@
                           #'magit-insert-recent-commits
                           #'magit-insert-unpushed-to-upstream-or-recent
                           'replace)
-  (magit-add-section-hook 'magit-status-sections-hook #'magit-insert-modules-overview nil 'append)
-  (magit-define-popup-option 'magit-push-popup ?o "Set push option" "--push-option="))
+  (magit-add-section-hook 'magit-status-sections-hook #'magit-insert-modules-overview nil 'append))
 
 (use-package git-timemachine
-  :ensure
+  :straight t
   :bind ("M-<f9>" . git-timemachine))
 
 (use-package smerge-mode
@@ -814,18 +809,11 @@
     ("n" smerge-next "next conflict")
     ("q" nil "quit")))
 
-(use-package magit-gitflow
-  :ensure
-  :hook (magit-mode . turn-on-magit-gitflow))
-
-(if (eq system-type 'windows-nt)
-    (eval-when-compile
-      (defvar forge-alist))
-  (use-package forge
-    :ensure
-    :after magit
-    :config
-    (push '("git.infinidat.com" "git.infinidat.com/api/v4" "git.infinidat.com" forge-gitlab-repository) forge-alist)))
+(use-package forge
+  :straight t
+  :after magit
+  :config
+  (push '("git.infinidat.com" "git.infinidat.com/api/v4" "git.infinidat.com" forge-gitlab-repository) forge-alist))
 
 (use-package git-commit
   :config
@@ -833,7 +821,7 @@
   (global-git-commit-mode 1))
 
 (use-package git-link
-  :ensure
+  :straight t
   :bind (("C-c G h" . git-link-homepage)
          ("C-c G c" . git-link-commit)
          ("C-c G l" . git-link)
@@ -850,7 +838,7 @@
   (setq Man-notify-method 'pushy))
 
 (use-package markdown-mode
-  :ensure
+  :straight t
   :mode ("README\\.md\\'" . gfm-mode)
   :hook ((markdown-mode . auto-fill-mode)
          (markdown-mode . flyspell-mode))
@@ -860,11 +848,11 @@
   :mode ("PKGBUILD\\'" . shell-script-mode))
 
 (use-package fish-mode
-  :ensure
+  :straight t
   :defer)
 
 (use-package multiple-cursors
-  :ensure
+  :straight t
   :bind (("C-|" . mc/edit-lines)
          ("C-;" . mc/mark-all-like-this-dwim)
          ("C->" . mc/mark-next-like-this)
@@ -888,7 +876,7 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
             ("q" nil)))
 
 (use-package projectile
-  :ensure
+  :straight t
   :demand
   :bind (("<f7>" . projectile-compile-project)
          ("<C-f7>" . projectile-test-project)
@@ -909,7 +897,7 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   (projectile-mode 1))
 
 (use-package counsel-projectile
-  :ensure
+  :straight t
   :demand
   :bind (("C-c C-f" . counsel-projectile-find-file))
   :config
@@ -922,33 +910,33 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   (counsel-projectile-mode 1))
 
 (use-package rainbow-delimiters
-  :ensure
+  :straight t
   :hook (prog-mode . rainbow-delimiters-mode)
   :config (setq rainbow-delimiters-max-face-count 1))
 
 (use-package rainbow-mode
-  :ensure
+  :straight t
   :hook ((css-mode scss-mode) . rainbow-mode)
   :config (setq rainbow-x-colors nil))
 
 (use-package restclient
-  :ensure
+  :straight t
   :mode ("\\.http\\'" . restclient-mode))
 
 (use-package syntax-subword
-  :ensure
+  :straight t
   :config (global-syntax-subword-mode 1))
 
 (use-package systemd
-  :ensure
+  :straight t
   :defer)
 
 (use-package undo-tree
-  :ensure
+  :straight t
   :config (global-undo-tree-mode 1))
 
 (use-package web-mode
-  :ensure
+  :straight t
   :mode "\\.hbs\\'"
   :mode "\\.html\\'"
   :config (setq web-mode-code-indent-offset 2
@@ -960,47 +948,47 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
                 web-mode-enable-current-element-highlight t))
 
 (use-package visual-regexp
-  :ensure
+  :straight t
   :defer)
 
 (use-package js2-mode
-  :ensure
+  :straight t
   :config
   (setq js2-mode-show-parse-errors nil
         js2-mode-show-strict-warnings nil)
   :mode "\\.js\\'")
 
 (use-package window-numbering
-  :ensure
+  :straight t
   :config (window-numbering-mode 1))
 
 (use-package winner
   :config (winner-mode))
 
 (use-package which-key
-  :ensure
+  :straight t
   :config
   (setq which-key-idle-delay 0.5)
   (which-key-mode 1))
 
 (use-package whitespace-cleanup-mode
-  :ensure
+  :straight t
   :config (global-whitespace-cleanup-mode 1))
 
 (use-package wrap-region
-  :ensure
+  :straight t
   :config
   (wrap-region-add-wrapper "|" "|" nil 'rust-mode)
   (wrap-region-global-mode 1))
 
 (use-package langtool
-  :ensure
+  :straight t
   :bind (:map text-mode-map
               ("C-c l" . langtool-check)))
 
 (use-package yasnippet
-  :ensure
-  :ensure yasnippet-snippets
+  :straight t
+  :straight yasnippet-snippets
   :demand
   :bind (:map yas-minor-mode-map
               ("TAB" . nil)
@@ -1011,24 +999,25 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   (yas-global-mode 1))
 
 (use-package ivy-yasnippet
-  :ensure
+  :straight t
   :bind ("C-M-/" . ivy-yasnippet))
 
 (use-package auto-yasnippet
-  :ensure
+  :straight t
   :bind (("C-S-w" . aya-create)
-         ("C-S-y" . aya-expand)))
+         ("C-S-y" . aya-expand))
+  :config (setq aya-trim-one-line t))
 
 (use-package dumb-jump
-  :ensure
+  :straight t
   :bind (("M-g M-o" . dumb-jump-quick-look)))
 
 (use-package prettier-js
-  :ensure
+  :straight t
   :hook (js2-mode . prettier-js-mode))
 
 (use-package engine-mode
-  :ensure
+  :straight t
   :defer
   :config
   (engine-mode 1)
@@ -1046,7 +1035,7 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
     :keybinding "h"))
 
 (use-package bm
-  :ensure
+  :straight t
   :bind (("<f2>" . bm-next)
          ("S-<f2>" . bm-show)
          ("C-<f2>" . bm-toggle))
@@ -1054,17 +1043,18 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
                 bm-in-lifo-order t))
 
 (use-package jump-char
-  :ensure
+  :straight t
   :bind (("C-f" . jump-char-forward)
          ("C-b" . jump-char-backward)))
 
 (use-package powershell
-  :ensure
+  :straight t
   :defer)
 
 (use-package savehist
   :config (savehist-mode 1))
 
-(my/load-if-exists (concat my/site-config-directory "config.el"))
+(let ((straight-current-profile 'site))
+  (my/load-if-exists (concat my/site-config-directory "config.el")))
 
 ;;; init.el ends here

@@ -19,7 +19,7 @@
                     :height my/font-height)
 
 (use-package doom-themes
-  :ensure
+  :straight t
   :config
   (load-theme my/theme t)
   (set-face-attribute 'font-lock-keyword-face nil :slant 'italic)
@@ -30,7 +30,7 @@
   (doom-themes-org-config))
 
 (use-package doom-modeline
-  :ensure
+  :straight t
   :config (doom-modeline-mode 1))
 
 (when window-system
