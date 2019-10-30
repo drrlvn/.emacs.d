@@ -259,6 +259,11 @@ Move IntelliJ to the current line in the current file.
 
 \(fn)" t nil)
 
+(autoload 'my/format-buffer "config-defuns" "\
+Format the code in the current buffer.
+
+\(fn)" t nil)
+
 ;;;***
 
 ;;;### (autoloads nil nil ("config-looks.el") (0 0 0 0))

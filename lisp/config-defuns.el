@@ -468,6 +468,22 @@ COUNT are set in the same way as the original function."
   (interactive)
   (start-process "idea" nil "idea" (format "%s:%d" (buffer-file-name) (line-number-at-pos))))
 
+;;;###autoload
+(defun my/format-buffer ()
+  "Format the code in the current buffer."
+  (interactive)
+  (cond ((and (eq major-mode 'python-mode)
+              (executable-find "black"))
+         (blacken-buffer))
+
+        ((and projectile-project-root
+              (file-exists-p (expand-file-name ".clang-format" projectile-project-root)))
+         (clang-format-buffer))
+
+        (lsp-mode (lsp-format-buffer))
+
+        (t (error "No method exists for formatting this buffer"))))
+
 (provide 'config-defuns)
 
 ;;; Local Variables:
