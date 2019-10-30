@@ -86,23 +86,26 @@ Then run ~my/set-git-email~ to select one of these emails.
 
 * Language specific
 ** Python
-**** Virtual environments
+*** Misc
+- There are 3 yasnippets for ~pdb~, ~ipdb~ and ~pudb~ breakpoints. Their names matches the debugger name.
+
+*** Virtual environments
 Once you have a virtual environment, use ~C-c p E~ to define the variable ~pyvenv-activate~ for the
 current project. Store the path of the virtual environment inside this variable. Remember to quote
 that path with double quotation marks.
 
-**** Pylint
+*** Pylint
 If you install pylint in your virtual environment then you should get automatic checking for your
 project. Press ~C-! v~ when visiting a Python file to make sure that the pylint executable is picked
 from the correct virtual environment.
 
-**** Python language server
+*** Python language server
 You can install ~python-language-server~ in your virtual environment using pip. It's recommended to
 install ~python-language-server[pylint]~ in order to get an integration with pylint. Once that is
 set up the modeline should indicate that the Python Language Server is running by showing
 ~LSP[pyls:pid]~.
 
-**** Auto formatting
+*** Auto formatting
 This configuration supports automatic Python formatting on save. Since there's no consensus about a
 Python formatting tool, or whether to use such at all, this feature is turned off and can be enabled
 on project basis.
