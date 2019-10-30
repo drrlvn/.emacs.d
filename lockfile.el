@@ -109,5 +109,5 @@
  ("wrap-region.el" . "fbae9b0f106187af19823f1a6260b5c68b7252e6")
  ("yaml-mode" . "5b4a0db384f996554454b5642e4531c502421de8")
  ("yasnippet" . "a66f15e6c975a4370877df272c1ae87490835d28")
- ("yasnippet-snippets" . "a34020042ccc1fdf8b30910dfb937462f4349db6"))
+ ("yasnippet-snippets" . "fd92455b2bc3c21da56452c6b26415427d2a4263"))
 :alpha
