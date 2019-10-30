@@ -476,7 +476,8 @@ COUNT are set in the same way as the original function."
               (executable-find "black"))
          (blacken-buffer))
 
-        ((and projectile-project-root
+        ((and (eq major-mode 'cc-mode)
+              projectile-project-root
               (file-exists-p (expand-file-name ".clang-format" projectile-project-root)))
          (clang-format-buffer))
 
