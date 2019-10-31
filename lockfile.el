@@ -59,6 +59,7 @@
  ("highlight-symbol.el" . "7a789c779648c55b16e43278e51be5898c121b3a")
  ("ht.el" . "66c5f9131242697fabaede5566d87ecda4c14b1f")
  ("hydra" . "74b32f3ff004cd2ad7707722ffa7f85e8233a845")
+ ("ibuffer-projectile" . "76496214144687cee0b5139be2e61b1e400cac87")
  ("ivy-yasnippet" . "32580b4fd23ebf9ca7dde96704f7d53df6e253cd")
  ("js2-mode" . "b3841a7a304d9d1328fdb0868fbbecf0c2f9831f")
  ("jump-char" . "1e31a3c687f2b3c71bbfab881c6d75915534bb9e")
