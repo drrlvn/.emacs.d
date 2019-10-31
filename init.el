@@ -736,7 +736,10 @@
   :config (volatile-highlights-mode 1))
 
 (use-package ibuffer
-  :bind ("C-x C-b" . ibuffer)
+  :bind (("C-x C-b" . ibuffer)
+         :map ibuffer-mode-map
+         ("<C-up>" . ibuffer-backward-filter-group)
+         ("<C-down>" . ibuffer-forward-filter-group))
   :config
   (setq ibuffer-expert t
         ibuffer-formats '((mark modified read-only " "
@@ -745,34 +748,12 @@
                                 (mode 10 10 :left :elide) " "
                                 (filename-and-process -1 60 :left :elide))
                           (mark " " (name 30 -1)
-                                " " filename)))
-  (add-hook 'ibuffer-mode-hook (apply-partially #'ibuffer-switch-to-saved-filter-groups "default")))
+                                " " filename))))
 
-(use-package ibuf-ext
-  :after ibuffer
-  :config (setq ibuffer-show-empty-filter-groups nil
-                ibuffer-saved-filter-groups '(("default"
-                                               ("Dired" (mode . dired-mode))
-                                               ("Rust" (mode . rust-mode))
-                                               ("C/C++" (or
-                                                         (mode . c-mode)
-                                                         (mode . c++-mode)))
-                                               ("Python" (mode . python-mode))
-                                               ("Go" (mode . go-mode))
-                                               ("Elisp" (mode . emacs-lisp-mode))
-                                               ("Web" (or
-                                                       (mode . sgml-mode)
-                                                       (mode . web-mode)
-                                                       (mode . css-mode)
-                                                       (mode . js-mode)))
-                                               ("Docs" (or
-                                                        (mode . TeX-mode)
-                                                        (derived-mode . markdown-mode)
-                                                        (mode . org-mode)
-                                                        (mode . rst-mode)))
-                                               ("Git" (derived-mode . magit-mode))
-                                               ("Misc" (name . "^\\*"))
-                                               ))))
+(use-package ibuffer-projectile
+  :straight t
+  :hook (ibuffer . ibuffer-projectile-set-filter-groups)
+  :config (setq ibuffer-projectile-prefix ""))
 
 (use-package magit
   :straight t
