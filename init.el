@@ -748,8 +748,7 @@
                                 (mode 10 10 :left :elide) " "
                                 (filename-and-process -1 60 :left :elide))
                           (mark " " (name 30 -1)
-                                " " filename)))
-  (add-hook 'ibuffer-mode-hook (apply-partially #'ibuffer-switch-to-saved-filter-groups "default")))
+                                " " filename))))
 
 (use-package ibuffer-projectile
   :straight t
