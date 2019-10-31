@@ -751,9 +751,6 @@
                                 " " filename)))
   (add-hook 'ibuffer-mode-hook (apply-partially #'ibuffer-switch-to-saved-filter-groups "default")))
 
-(use-package ibuf-ext
-  :after ibuffer)
-
 (use-package ibuffer-projectile
   :straight t
   :hook (ibuffer . ibuffer-projectile-set-filter-groups)
