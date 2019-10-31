@@ -992,6 +992,8 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :straight t
   :config
   (wrap-region-add-wrapper "|" "|" nil 'rust-mode)
+  (wrap-region-add-wrapper "`" "`" nil 'markdown-mode)
+  (wrap-region-add-wrapper "~" "~" nil 'org-mode)
   (wrap-region-global-mode 1))
 
 (use-package langtool
