@@ -895,10 +895,6 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :config
   (counsel-projectile-modify-action 'counsel-projectile-switch-project-action
                                     '((default counsel-projectile-switch-project-action-find-file)))
-  (cl-delete-if (lambda (x) (string= (car x) "si")) counsel-projectile-key-bindings)
-  (push '("s" . counsel-projectile-rg) counsel-projectile-key-bindings)
-  (ivy-set-actions 'counsel-projectile-switch-project
-                   '(("s" counsel-projectile-switch-project-action-rg "search project with rg")))
   (counsel-projectile-mode 1))
 
 (use-package rainbow-delimiters
