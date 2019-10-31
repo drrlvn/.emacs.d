@@ -363,9 +363,7 @@
   (ivy-mode 1))
 
 (use-package ivy-hydra
-  :straight t
-  :bind (:map ivy-minibuffer-map
-              ("M-o" . ivy-dispatching-done-hydra)))
+  :straight t)
 
 (use-package ivy-prescient
   :straight t
