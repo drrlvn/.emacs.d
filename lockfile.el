@@ -86,7 +86,7 @@
  ("rainbow-delimiters" . "5125f4e47604ad36c3eb4706310fcafac729ca8c")
  ("rainbow-mode" . "8059f1cb756d2b211af962f07c5e6aff958094d7")
  ("restclient.el" . "e8ca809ace13549a1ddffb4e4aaa5d5fce750f3d")
- ("rust-mode" . "484d6754c51424e3b49461d54cfeac8fc05993b5")
+ ("rust-mode" . "1b3db883bccb0956e5f05b7312485b2b7a5fa70f")
  ("s.el" . "03410e6a7a2b11e47e1fea3b7d9899c7df26435e")
  ("seq" . "095fb15a3baa082079799dd36b6caccdb062cb90")
  ("shrink-path.el" . "c14882c8599aec79a6e8ef2d06454254bb3e1e41")
