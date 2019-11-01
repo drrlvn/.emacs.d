@@ -35,27 +35,6 @@
   (interactive)
   (counsel-rg nil default-directory))
 
-(defun my/insert-dbg ()
-  "Insert the dbg! macro."
-  (insert-parentheses (unless (region-active-p) 1))
-  (backward-char 1)
-  (insert "dbg!"))
-
-;;;###autoload
-(defun my/dbg-wrap-or-unwrap ()
-  "Either remove or add the dbg! macro."
-  (interactive)
-  (save-excursion
-    (if (region-active-p)
-        (my/insert-dbg)
-
-      (goto-char (beginning-of-thing 'symbol))
-      (if (looking-at "dbg!")
-          (progn
-            (delete-char 4)
-            (delete-pair))
-        (my/insert-dbg)))))
-
 ;;;###autoload
 (defun my/colorize-compilation-buffer ()
   "Colorize complication buffer."

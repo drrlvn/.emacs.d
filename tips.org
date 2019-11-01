@@ -115,6 +115,11 @@ Two buffer local variables were created for this - ~my/python-isort-on-save~ whi
 
 These variables are local buffer and are nil by default. They can be set for a given project by
 using dir-local variables, just like ~pyvenv-activate~. See [[Buffer local variables]].
+
+** Rust
+- Press ~C-c d~ to wrap the current symbol or region with the ~dbg!~ macro. Press that key again
+  when the cursor is inside the macro to unwrap it.
+
 * Org mode
 - ~S-f10~ is a global key that uses counsel to display the headers of every open org buffer
 * Dired
