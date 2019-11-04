@@ -443,7 +443,7 @@
 (use-package prog-mode
   :hook (prog-mode . my/prog-mode-hook))
 
-(use-package auctex
+(use-package tex-site
   :straight auctex
   :defer
   :hook (LaTeX-mode . my/latex-mode-hook)
