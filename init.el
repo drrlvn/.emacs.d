@@ -555,6 +555,11 @@
 (use-package lsp
   :straight lsp-mode
   :commands lsp
+  :bind (:map lsp-mode-map
+              ("C-c l r" . lsp-rename)
+              ("C-c l l" . lsp-find-references)
+              ("C-c l f" . lsp-format-buffer)
+              ("C-c l b" . my/goto-baseclass))
   :config
   (setq lsp-prefer-flymake nil
         lsp-restart 'ignore)
@@ -569,12 +574,9 @@
   :straight t
   :hook (lsp-mode . lsp-ui-mode)
   :bind (:map lsp-mode-map
-              ("C-c l r" . lsp-rename)
               ("C-c l c" . lsp-ui-sideline-apply-code-actions)
-              ("C-c l f" . lsp-format-buffer)
               ("C-c l s" . lsp-ui-find-workspace-symbol)
               ("C-c l d" . lsp-ui-doc-mode)
-              ("C-c l b" . my/goto-baseclass)
               ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
               ([remap xref-find-references] . lsp-ui-peek-find-references))
   :config
