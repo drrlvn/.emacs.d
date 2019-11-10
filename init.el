@@ -148,6 +148,10 @@
 
 (require 'config-looks)
 
+(use-package prog-mode
+  :bind (:map prog-mode-map
+              ("C-c f" . my/format-buffer)))
+
 (use-package dash
   :straight t
   :defer)
@@ -558,7 +562,6 @@
   :bind (:map lsp-mode-map
               ("C-c l r" . lsp-rename)
               ("C-c l l" . lsp-find-references)
-              ("C-c l f" . lsp-format-buffer)
               ("C-c l b" . my/goto-baseclass))
   :config
   (setq lsp-prefer-flymake nil
