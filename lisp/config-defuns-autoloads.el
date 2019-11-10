@@ -80,11 +80,6 @@ Indent region if it is active, otherwise indent line.
 
 \(fn)" t nil)
 
-(autoload 'my/maybe-clang-format-buffer "config-defuns" "\
-Format buffer if project has .clang-format file.
-
-\(fn)" t nil)
-
 (autoload 'my/insert-default-ctor "config-defuns" "\
 Insert default constructor.
 

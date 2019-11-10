@@ -479,7 +479,6 @@
   :mode ("\\.x\\'" . c++-mode)
   :bind (:map c-mode-base-map
               ("C-c o" . ff-get-other-file)
-              ("C-c f" . my/maybe-clang-format-buffer)
               ("C-c i a" . my/insert-all-special)
               ("C-c i c" . my/insert-default-ctor)
               ("C-c i d" . my/insert-virtual-dtor)

@@ -122,20 +122,6 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
         (setq deactivate-mark nil))
     (indent-according-to-mode)))
 
-;;;###autoload
-(defun my/maybe-clang-format-buffer ()
-  "Format buffer if project has .clang-format file."
-  (interactive)
-  (require 'clang-format)
-  (let ((projectile-require-project-root nil))
-    (ignore projectile-require-project-root)
-    (when (and
-           (not my/disable-clang-format-on-save)
-           (not (string= clang-format-executable "clang-format"))
-           (file-exists-p (expand-file-name ".clang-format" (projectile-project-root))))
-      (clang-format-buffer)))
-  nil)
-
 ;; C++ auto insert
 
 (defun my/get-current-class ()
