@@ -28,11 +28,11 @@
   :type 'string
   :group 'my/customizations)
 
-(defcustom my/disable-clang-format-on-save nil
-  "Whether clang-format on buffer save should be disabled."
+(defcustom my/format-on-save nil
+  "Format the buffer when saving."
   :type 'boolean
+  :safe #'booleanp
   :group 'my/customizations)
-(make-variable-buffer-local 'my/disable-clang-format-on-save)
 
 (defcustom my/emails ()
   "A list of email addresses associated with you."

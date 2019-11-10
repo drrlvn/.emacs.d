@@ -6,9 +6,6 @@
 (defvar-local my/python-isort-on-save nil "Format the buffer with isort before saving")
 
 ;;;###autoload
-(defvar-local my/python-black-on-save nil "Format the buffer with black before saving")
-
-;;;###autoload
 (defun my/diff-current-buffer-with-file ()
   "View the differences between current buffer and its associated file."
   (interactive)
@@ -288,8 +285,7 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
   "."
   (setq comment-start "/*"
         comment-end "*/")
-  (c-set-offset 'innamespace 0)
-  (add-hook 'write-contents-functions #'my/maybe-clang-format-buffer))
+  (c-set-offset 'innamespace 0))
 
 ;;;###autoload
 (defun my/conf-mode-hook ()
@@ -408,10 +404,7 @@ COUNT are set in the same way as the original function."
    'hack-local-variables-hook
    (lambda ()
      (when my/python-isort-on-save
-       (push #'my/py-isort-buffer write-contents-functions))
-
-     (when my/python-black-on-save
-       (push #'my/blacken-buffer write-contents-functions)))))
+       (push #'my/py-isort-buffer write-contents-functions)))))
 
 ;;;###autoload
 (defun my/revert-project-commands ()
@@ -463,6 +456,14 @@ COUNT are set in the same way as the original function."
         (lsp-mode (lsp-format-buffer))
 
         (t (error "No method exists for formatting this buffer"))))
+
+;;;###autoload
+(defun my/maybe-format-buffer ()
+  "Format the buffer if possible."
+  (when my/format-on-save
+    (ignore-errors
+      (my/format-buffer)
+      nil)))
 
 (provide 'config-defuns)
 

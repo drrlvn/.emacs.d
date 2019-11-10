@@ -149,6 +149,9 @@
 (require 'config-looks)
 
 (use-package prog-mode
+  :init (add-hook 'prog-mode-hook
+                  (lambda () (push #'my/maybe-format-buffer
+                                   write-contents-functions)))
   :bind (:map prog-mode-map
               ("C-c f" . my/format-buffer)))
 
