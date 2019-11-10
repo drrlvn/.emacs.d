@@ -5,7 +5,7 @@
 (eval-when-compile
   (require 'use-package))
 
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (setq frame-title-format '("" invocation-name ": %b"))
 

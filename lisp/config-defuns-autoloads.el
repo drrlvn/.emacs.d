@@ -32,11 +32,6 @@ Kill buffer in other window.
 
 \(fn)" t nil)
 
-(autoload 'my/dbg-wrap-or-unwrap "config-defuns" "\
-Either remove or add the dbg! macro.
-
-\(fn)" t nil)
-
 (autoload 'my/colorize-compilation-buffer "config-defuns" "\
 Colorize complication buffer.
 

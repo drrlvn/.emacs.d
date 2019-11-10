@@ -363,9 +363,7 @@
   (ivy-mode 1))
 
 (use-package ivy-hydra
-  :straight t
-  :bind (:map ivy-minibuffer-map
-              ("M-o" . ivy-dispatching-done-hydra)))
+  :straight t)
 
 (use-package ivy-prescient
   :straight t
@@ -445,7 +443,7 @@
 (use-package prog-mode
   :hook (prog-mode . my/prog-mode-hook))
 
-(use-package auctex
+(use-package tex-site
   :straight auctex
   :defer
   :hook (LaTeX-mode . my/latex-mode-hook)
@@ -535,7 +533,7 @@
               ("C-c C-f" . nil)
               ("C-c P" . rust-promote-module-into-dir)
               ("C-c m" . my/rust-toggle-mut)
-              ("C-c d" . my/dbg-wrap-or-unwrap))
+              ("C-c d" . rust-dbg-wrap-or-unwrap))
   :config (setq rust-format-on-save t))
 
 (use-package cargo
@@ -557,6 +555,11 @@
 (use-package lsp
   :straight lsp-mode
   :commands lsp
+  :bind (:map lsp-mode-map
+              ("C-c l r" . lsp-rename)
+              ("C-c l l" . lsp-find-references)
+              ("C-c l f" . lsp-format-buffer)
+              ("C-c l b" . my/goto-baseclass))
   :config
   (setq lsp-prefer-flymake nil
         lsp-restart 'ignore)
@@ -571,12 +574,9 @@
   :straight t
   :hook (lsp-mode . lsp-ui-mode)
   :bind (:map lsp-mode-map
-              ("C-c l r" . lsp-rename)
               ("C-c l c" . lsp-ui-sideline-apply-code-actions)
-              ("C-c l f" . lsp-format-buffer)
               ("C-c l s" . lsp-ui-find-workspace-symbol)
               ("C-c l d" . lsp-ui-doc-mode)
-              ("C-c l b" . my/goto-baseclass)
               ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
               ([remap xref-find-references] . lsp-ui-peek-find-references))
   :config
@@ -736,7 +736,10 @@
   :config (volatile-highlights-mode 1))
 
 (use-package ibuffer
-  :bind ("C-x C-b" . ibuffer)
+  :bind (("C-x C-b" . ibuffer)
+         :map ibuffer-mode-map
+         ("<C-up>" . ibuffer-backward-filter-group)
+         ("<C-down>" . ibuffer-forward-filter-group))
   :config
   (setq ibuffer-expert t
         ibuffer-formats '((mark modified read-only " "
@@ -745,34 +748,12 @@
                                 (mode 10 10 :left :elide) " "
                                 (filename-and-process -1 60 :left :elide))
                           (mark " " (name 30 -1)
-                                " " filename)))
-  (add-hook 'ibuffer-mode-hook (apply-partially #'ibuffer-switch-to-saved-filter-groups "default")))
+                                " " filename))))
 
-(use-package ibuf-ext
-  :after ibuffer
-  :config (setq ibuffer-show-empty-filter-groups nil
-                ibuffer-saved-filter-groups '(("default"
-                                               ("Dired" (mode . dired-mode))
-                                               ("Rust" (mode . rust-mode))
-                                               ("C/C++" (or
-                                                         (mode . c-mode)
-                                                         (mode . c++-mode)))
-                                               ("Python" (mode . python-mode))
-                                               ("Go" (mode . go-mode))
-                                               ("Elisp" (mode . emacs-lisp-mode))
-                                               ("Web" (or
-                                                       (mode . sgml-mode)
-                                                       (mode . web-mode)
-                                                       (mode . css-mode)
-                                                       (mode . js-mode)))
-                                               ("Docs" (or
-                                                        (mode . TeX-mode)
-                                                        (derived-mode . markdown-mode)
-                                                        (mode . org-mode)
-                                                        (mode . rst-mode)))
-                                               ("Git" (derived-mode . magit-mode))
-                                               ("Misc" (name . "^\\*"))
-                                               ))))
+(use-package ibuffer-projectile
+  :straight t
+  :hook (ibuffer . ibuffer-projectile-set-filter-groups)
+  :config (setq ibuffer-projectile-prefix ""))
 
 (use-package magit
   :straight t
@@ -916,10 +897,6 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :config
   (counsel-projectile-modify-action 'counsel-projectile-switch-project-action
                                     '((default counsel-projectile-switch-project-action-find-file)))
-  (cl-delete-if (lambda (x) (string= (car x) "si")) counsel-projectile-key-bindings)
-  (push '("s" . counsel-projectile-rg) counsel-projectile-key-bindings)
-  (ivy-set-actions 'counsel-projectile-switch-project
-                   '(("s" counsel-projectile-switch-project-action-rg "search project with rg")))
   (counsel-projectile-mode 1))
 
 (use-package rainbow-delimiters
@@ -992,6 +969,8 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :straight t
   :config
   (wrap-region-add-wrapper "|" "|" nil 'rust-mode)
+  (wrap-region-add-wrapper "`" "`" nil 'markdown-mode)
+  (wrap-region-add-wrapper "~" "~" nil 'org-mode)
   (wrap-region-global-mode 1))
 
 (use-package langtool
