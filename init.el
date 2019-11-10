@@ -148,6 +148,13 @@
 
 (require 'config-looks)
 
+(use-package prog-mode
+  :init (add-hook 'prog-mode-hook
+                  (lambda () (push #'my/maybe-format-buffer
+                                   write-contents-functions)))
+  :bind (:map prog-mode-map
+              ("C-c f" . my/format-buffer)))
+
 (use-package dash
   :straight t
   :defer)
@@ -472,7 +479,6 @@
   :mode ("\\.x\\'" . c++-mode)
   :bind (:map c-mode-base-map
               ("C-c o" . ff-get-other-file)
-              ("C-c f" . my/maybe-clang-format-buffer)
               ("C-c i a" . my/insert-all-special)
               ("C-c i c" . my/insert-default-ctor)
               ("C-c i d" . my/insert-virtual-dtor)
@@ -504,10 +510,6 @@
   :config
   (advice-add #'python-indent-shift-left :around #'my/python-shift-region)
   (advice-add #'python-indent-shift-right :around #'my/python-shift-region))
-
-(use-package blacken
-  :straight t
-  :defer)
 
 (use-package pyvenv
   :straight t
@@ -558,7 +560,6 @@
   :bind (:map lsp-mode-map
               ("C-c l r" . lsp-rename)
               ("C-c l l" . lsp-find-references)
-              ("C-c l f" . lsp-format-buffer)
               ("C-c l b" . my/goto-baseclass))
   :config
   (setq lsp-prefer-flymake nil

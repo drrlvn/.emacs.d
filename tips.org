@@ -84,10 +84,16 @@ Then run ~my/set-git-email~ to select one of these emails.
 - ~M-/~ will expand a snippet key
 - ~C-S-w~ defines a temporary snippet from the current line and ~C-S-y~ applies it. See [[https://github.com/abo-abo/auto-yasnippet/blob/master/README.md][auto-yasnippet]].
 
+* Buffer formatting
+The function ~my/format-buffer~ which is bound to ~C-c f~ formats the current by using a language
+specific tool. This function supports [[https://clang.llvm.org/docs/ClangFormat.html][clang-format]] and the LSP itself.  You can locally set
+the variable ~my/format-on-save~ in order to automatically format specific buffers before
+saving. It is recommended to set this variable by using See [[Buffer local variables]].
+
 * Language specific
 ** Python
 *** Misc
-- There are 3 yasnippets for ~pdb~, ~ipdb~ and ~pudb~ breakpoints. Their names matches the debugger name.
+- There are 3 yasnippets for ~pdb~, ~ipdb~ and ~pudb~ breakpoints. Their names match the debugger name.
 
 *** Virtual environments
 Once you have a virtual environment, use ~C-c p E~ to define the variable ~pyvenv-activate~ for the
@@ -106,15 +112,10 @@ set up the modeline should indicate that the Python Language Server is running b
 ~LSP[pyls:pid]~.
 
 *** Auto formatting
-This configuration supports automatic Python formatting on save. Since there's no consensus about a
-Python formatting tool, or whether to use such at all, this feature is turned off and can be enabled
-on project basis.
+See [[Buffer formatting]]. You'll have to manually install the desired formatter for the Python language
+server. See the [[https://github.com/palantir/python-language-server#installation][documentation]] for details.
 
-Two buffer local variables were created for this - ~my/python-isort-on-save~ which runs [[https://github.com/timothycrosley/isort/][isort]] and
-~my/python-black-on-save~ which runs [[https://github.com/ambv/black][black]].
-
-These variables are local buffer and are nil by default. They can be set for a given project by
-using dir-local variables, just like ~pyvenv-activate~. See [[Buffer local variables]].
+In addition to that, the variable ~my/python-isort-on-save~ will activate [[https://github.com/timothycrosley/isort/][isort]] when saving.
 
 ** Rust
 - Press ~C-c d~ to wrap the current symbol or region with the ~dbg!~ macro. Press that key again

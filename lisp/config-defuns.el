@@ -6,9 +6,6 @@
 (defvar-local my/python-isort-on-save nil "Format the buffer with isort before saving")
 
 ;;;###autoload
-(defvar-local my/python-black-on-save nil "Format the buffer with black before saving")
-
-;;;###autoload
 (defun my/diff-current-buffer-with-file ()
   "View the differences between current buffer and its associated file."
   (interactive)
@@ -125,20 +122,6 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
         (setq deactivate-mark nil))
     (indent-according-to-mode)))
 
-;;;###autoload
-(defun my/maybe-clang-format-buffer ()
-  "Format buffer if project has .clang-format file."
-  (interactive)
-  (require 'clang-format)
-  (let ((projectile-require-project-root nil))
-    (ignore projectile-require-project-root)
-    (when (and
-           (not my/disable-clang-format-on-save)
-           (not (string= clang-format-executable "clang-format"))
-           (file-exists-p (expand-file-name ".clang-format" (projectile-project-root))))
-      (clang-format-buffer)))
-  nil)
-
 ;; C++ auto insert
 
 (defun my/get-current-class ()
@@ -242,13 +225,6 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
   nil)
 
 ;;;###autoload
-(defun my/blacken-buffer ()
-  "Run `blacken-buffer' and always return nil."
-  (interactive)
-  (blacken-buffer)
-  nil)
-
-;;;###autoload
 (defun my/python-insert-import ()
   "Move current line, which should be an import statement, to the beginning of the file and run isort."
   (interactive)
@@ -288,8 +264,7 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
   "."
   (setq comment-start "/*"
         comment-end "*/")
-  (c-set-offset 'innamespace 0)
-  (add-hook 'write-contents-functions #'my/maybe-clang-format-buffer))
+  (c-set-offset 'innamespace 0))
 
 ;;;###autoload
 (defun my/conf-mode-hook ()
@@ -408,10 +383,7 @@ COUNT are set in the same way as the original function."
    'hack-local-variables-hook
    (lambda ()
      (when my/python-isort-on-save
-       (push #'my/py-isort-buffer write-contents-functions))
-
-     (when my/python-black-on-save
-       (push #'my/blacken-buffer write-contents-functions)))))
+       (push #'my/py-isort-buffer write-contents-functions)))))
 
 ;;;###autoload
 (defun my/revert-project-commands ()
@@ -446,6 +418,27 @@ COUNT are set in the same way as the original function."
   "Move IntelliJ to the current line in the current file."
   (interactive)
   (start-process "idea" nil "idea" (format "%s:%d" (buffer-file-name) (line-number-at-pos))))
+
+;;;###autoload
+(defun my/format-buffer ()
+  "Format the code in the current buffer."
+  (interactive)
+  (cond ((and (eq major-mode 'cc-mode)
+              projectile-project-root
+              (file-exists-p (expand-file-name ".clang-format" projectile-project-root)))
+         (clang-format-buffer))
+
+        (lsp-mode (lsp-format-buffer))
+
+        (t (error "No method exists for formatting this buffer"))))
+
+;;;###autoload
+(defun my/maybe-format-buffer ()
+  "Format the buffer if possible."
+  (when my/format-on-save
+    (ignore-errors
+      (my/format-buffer)
+      nil)))
 
 (provide 'config-defuns)
 

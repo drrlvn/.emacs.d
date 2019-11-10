@@ -9,9 +9,6 @@
 (defvar-local my/python-isort-on-save nil "\
 Format the buffer with isort before saving")
 
-(defvar-local my/python-black-on-save nil "\
-Format the buffer with black before saving")
-
 (autoload 'my/diff-current-buffer-with-file "config-defuns" "\
 View the differences between current buffer and its associated file.
 
@@ -80,11 +77,6 @@ Indent region if it is active, otherwise indent line.
 
 \(fn)" t nil)
 
-(autoload 'my/maybe-clang-format-buffer "config-defuns" "\
-Format buffer if project has .clang-format file.
-
-\(fn)" t nil)
-
 (autoload 'my/insert-default-ctor "config-defuns" "\
 Insert default constructor.
 
@@ -127,11 +119,6 @@ Toggle mut for variable under point.
 
 (autoload 'my/magit-status-config-project "config-defuns" "\
 Open `magit-status` for the configuration project.
-
-\(fn)" t nil)
-
-(autoload 'my/blacken-buffer "config-defuns" "\
-Run `blacken-buffer' and always return nil.
 
 \(fn)" t nil)
 
@@ -243,7 +230,6 @@ Load FILE if it exists.
 
 \(fn FILE)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "config-defuns" '("my/")))
 (autoload 'my/set-git-email "config-defuns" "\
 Set your git EMAIL for the current project.
 
@@ -251,6 +237,11 @@ Set your git EMAIL for the current project.
 
 (autoload 'my/show-in-intellij "config-defuns" "\
 Move IntelliJ to the current line in the current file.
+
+\(fn)" t nil)
+
+(autoload 'my/format-buffer "config-defuns" "\
+Format the code in the current buffer.
 
 \(fn)" t nil)
 
