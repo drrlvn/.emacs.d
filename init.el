@@ -511,10 +511,6 @@
   (advice-add #'python-indent-shift-left :around #'my/python-shift-region)
   (advice-add #'python-indent-shift-right :around #'my/python-shift-region))
 
-(use-package blacken
-  :straight t
-  :defer)
-
 (use-package pyvenv
   :straight t
   :init (add-hook 'pyvenv-post-activate-hooks #'lsp)

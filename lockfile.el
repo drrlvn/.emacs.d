@@ -5,7 +5,6 @@
  ("auto-yasnippet" . "db9e0dd4335b2202cd5dac95bbbc87a1032d9bbe")
  ("avy" . "f9c15c573cf6e939e7e1524e79c06ed2144006b4")
  ("beginend" . "66e9fbf77fbe248e15a17bd095645a48d40560b4")
- ("blacken" . "2d75594b8b016597f1c2ffa15f9974a0fa825d8d")
  ("bln-mode" . "a601b0bf975dd1432f6552ab6afe3f4f71133b4a")
  ("bm" . "8129428182e1b8a647d16fceb2d08cc0a2a5f3c7")
  ("cargo.el" . "39a77e48a16d69b2e841084a3dbbbd083f166a21")

@@ -225,13 +225,6 @@ Taken from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html"
   nil)
 
 ;;;###autoload
-(defun my/blacken-buffer ()
-  "Run `blacken-buffer' and always return nil."
-  (interactive)
-  (blacken-buffer)
-  nil)
-
-;;;###autoload
 (defun my/python-insert-import ()
   "Move current line, which should be an import statement, to the beginning of the file and run isort."
   (interactive)
@@ -430,11 +423,7 @@ COUNT are set in the same way as the original function."
 (defun my/format-buffer ()
   "Format the code in the current buffer."
   (interactive)
-  (cond ((and (eq major-mode 'python-mode)
-              (executable-find "black"))
-         (blacken-buffer))
-
-        ((and (eq major-mode 'cc-mode)
+  (cond ((and (eq major-mode 'cc-mode)
               projectile-project-root
               (file-exists-p (expand-file-name ".clang-format" projectile-project-root)))
          (clang-format-buffer))

@@ -9,9 +9,6 @@
 (defvar-local my/python-isort-on-save nil "\
 Format the buffer with isort before saving")
 
-(defvar-local my/python-black-on-save nil "\
-Format the buffer with black before saving")
-
 (autoload 'my/diff-current-buffer-with-file "config-defuns" "\
 View the differences between current buffer and its associated file.
 
@@ -125,11 +122,6 @@ Open `magit-status` for the configuration project.
 
 \(fn)" t nil)
 
-(autoload 'my/blacken-buffer "config-defuns" "\
-Run `blacken-buffer' and always return nil.
-
-\(fn)" t nil)
-
 (autoload 'my/python-insert-import "config-defuns" "\
 Move current line, which should be an import statement, to the beginning of the file and run isort.
 
@@ -238,7 +230,6 @@ Load FILE if it exists.
 
 \(fn FILE)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "config-defuns" '("my/")))
 (autoload 'my/set-git-email "config-defuns" "\
 Set your git EMAIL for the current project.
 

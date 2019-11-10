@@ -86,7 +86,7 @@ Then run ~my/set-git-email~ to select one of these emails.
 
 * Buffer formatting
 The function ~my/format-buffer~ which is bound to ~C-c f~ formats the current by using a language
-specific tool. This function supports [[https://github.com/psf/black][black]], [[https://clang.llvm.org/docs/ClangFormat.html][clang-format]] or the LSP itself.  You can locally set
+specific tool. This function supports [[https://clang.llvm.org/docs/ClangFormat.html][clang-format]] and the LSP itself.  You can locally set
 the variable ~my/format-on-save~ in order to automatically format specific buffers before
 saving. It is recommended to set this variable by using See [[Buffer local variables]].
 
@@ -112,8 +112,10 @@ set up the modeline should indicate that the Python Language Server is running b
 ~LSP[pyls:pid]~.
 
 *** Auto formatting
-See [[Buffer formatting]]. In addition to that, the variable ~my/python-isort-on-save~ will activate
-[[https://github.com/timothycrosley/isort/][isort]] when saving.
+See [[Buffer formatting]]. You'll have to manually install the desired formatter for the Python language
+server. See the [[https://github.com/palantir/python-language-server#installation][documentation]] for details.
+
+In addition to that, the variable ~my/python-isort-on-save~ will activate [[https://github.com/timothycrosley/isort/][isort]] when saving.
 
 ** Rust
 - Press ~C-c d~ to wrap the current symbol or region with the ~dbg!~ macro. Press that key again
