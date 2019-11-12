@@ -323,6 +323,7 @@
   :straight t
   :bind (("M-<return>" . crux-smart-open-line)
          ("M-S-<return>" . crux-smart-open-line-above)
+         ("S-<return>" . crux-duplicate-current-line-or-region)
          ("<f12>" . crux-cleanup-buffer-or-region)
          ("S-<f12>" . crux-find-user-init-file)
          ("C-S-<backspace>" . crux-kill-whole-line)
