@@ -947,7 +947,8 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :straight t
   :config
   (setq js2-mode-show-parse-errors nil
-        js2-mode-show-strict-warnings nil)
+        js2-mode-show-strict-warnings nil
+        js2-basic-offset 2)
   :mode "\\.js\\'")
 
 (use-package window-numbering
