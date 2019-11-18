@@ -74,6 +74,7 @@
  ("melpa" . "da5debb55f7b34dcbcea81675bddd872bdb7fd69")
  ("multiple-cursors.el" . "b9b851a7670f4348f3a08b11ef12ed99676c8b84")
  ("mwim.el" . "b4f3edb4c0fb8f8b71cecbf8095c2c25a8ffbf85")
+ ("org" . "1fd07c1eeb0f29de9ce058fac995031413201d4d")
  ("org-bullets" . "c19b13be00df8d8dc596e4f1aef4a094b08ac801")
  ("pkg-info" . "76ba7415480687d05a4353b27fea2ae02b8d9d61")
  ("popup-el" . "80829dd46381754639fb764da11c67235fe63282")
