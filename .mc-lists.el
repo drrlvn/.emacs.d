@@ -24,6 +24,7 @@
         cua-paste-pop
         cycle-spacing
         delete-indentation
+        downcase-region
         drag-stuff-down
         drag-stuff-left
         drag-stuff-right
@@ -152,6 +153,7 @@
         syntax-subword-left
         syntax-subword-right
         syntax-subword-upcase
+        upcase-region
         wgrep-exit
         yaml-electric-backspace
         yaml-electric-dash-and-dot
