@@ -255,6 +255,7 @@
   :hook (dired-mode . dired-omit-mode))
 
 (use-package org
+  :straight t
   :bind (("<f10>" . org-agenda)
          ("C-<f10>" . org-capture)
          ("M-<f10>" . org-capture-goto-last-stored)
