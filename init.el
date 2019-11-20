@@ -358,8 +358,7 @@
          ("<C-down>" . ivy-next-line-and-call)
          ("<C-up>" . ivy-previous-line-and-call))
   :config
-  (setq ivy-use-virtual-buffers t
-        ivy-use-selectable-prompt t
+  (setq ivy-use-selectable-prompt t
         ivy-virtual-abbreviate 'full
         ivy-count-format "(%d/%d) "
         ivy-extra-directories '("./")
