@@ -266,7 +266,8 @@
          ("M-n" . org-next-link))
   :hook (org-mode . my/org-mode-hook)
   :config
-  (setq org-replace-disputed-keys t
+  (setq org-ellipsis " ▼"
+        org-replace-disputed-keys t
         org-src-fontify-natively t
         org-startup-indented t))
 
