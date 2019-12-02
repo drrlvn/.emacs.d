@@ -21,8 +21,8 @@ dict mapping between a major mode to a lists of tuples.
 * Search and replace
 ** [[https://writequit.org/denver-emacs/presentations/2017-04-11-ivy.html][Counsel]]
 - ~C-s~ to search within a file
-- ~C-c p s~ to search within the project
-- ~C-c a~ to search within the buffer's directory
+- ~C-c s~ to search within the project
+- ~C-c S~ to search within the buffer's directory
 - ~C-c C-o~ when inside counsel mode will open a [[https://github.com/mhayashi1120/Emacs-wgrep][wgrep]] buffer which can be made editable by pressing ~C-x C-q~.
 
 ** Others
@@ -42,7 +42,7 @@ dict mapping between a major mode to a lists of tuples.
 - Press ~C-r~ inside the minibuffer for searching the history.
 - Press ~M-p~ and ~M-n~ to cycle through the history. Pressing ~M-n~ before pressing any ~M-p~ will
   insert the thing at the point to the minibuffer. This is very useful when you wish to search the
-  thing you're pointing at the at entire project. Press ~C-c p s~ and then ~M-n~.
+  thing you're pointing at the at entire project. Press ~C-c s~ and then ~M-n~.
 
 * Navigation
 ** Inside a buffer
