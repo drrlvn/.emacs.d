@@ -1045,7 +1045,7 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
 
 (use-package powershell
   :straight t
-  :defer)
+  :hook (powershell-mode . lsp))
 
 (use-package savehist
   :config (savehist-mode 1))
