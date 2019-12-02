@@ -390,7 +390,7 @@
          ("C-x y" . counsel-yank-pop)
          ("C-x C-r" . counsel-recentf)
          ("M-i" . counsel-imenu)
-         ("C-c a" . my/counsel-rg)
+         ("C-c S" . my/counsel-rg)
          ("C-c u" . counsel-unicode-char)
          ("<S-f10>" . counsel-org-goto-all)
          :map counsel-mode-map
@@ -896,7 +896,8 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
 (use-package counsel-projectile
   :straight t
   :demand
-  :bind (("C-c C-f" . counsel-projectile-find-file))
+  :bind (("C-c C-f" . counsel-projectile-find-file)
+         ("C-c s" . counsel-projectile-rg))
   :config
   (counsel-projectile-modify-action 'counsel-projectile-switch-project-action
                                     '((default counsel-projectile-switch-project-action-find-file)))
