@@ -8,8 +8,8 @@
                                               file-name-handler-alist file-name-handler-alist-original
                                               gc-cons-threshold gc-cons-threshold-original))))
 
-(defconst my/cargo-check-flags "--all-features --tests --examples")
-(defconst my/cargo-build-flags "--all-features")
+(defconst my/cargo-check-flags "--all-features --tests --examples --workspace")
+(defconst my/cargo-build-flags "--all-features --workspace")
 (defconst my/site-config-directory (or (getenv "EMACS_SITE_D") "~/.emacs.site.d/"))
 
 (setq gc-cons-threshold (* 100 1024 1024)
