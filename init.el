@@ -577,7 +577,7 @@
   :straight t
   :hook (lsp-mode . lsp-ui-mode)
   :bind (:map lsp-mode-map
-              ("C-c l c" . lsp-ui-sideline-apply-code-actions)
+              ("<C-return>" . lsp-ui-sideline-apply-code-actions)
               ("C-c l s" . lsp-ui-find-workspace-symbol)
               ("C-c l d" . lsp-ui-doc-mode)
               ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
