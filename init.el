@@ -1011,7 +1011,7 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
 
 (use-package prettier-js
   :straight t
-  :hook (js2-mode . prettier-js-mode))
+  :commands (prettier-js))
 
 (use-package engine-mode
   :straight t

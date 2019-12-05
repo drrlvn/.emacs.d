@@ -428,6 +428,10 @@ COUNT are set in the same way as the original function."
               (file-exists-p (expand-file-name ".clang-format" projectile-project-root)))
          (clang-format-buffer))
 
+        ((or (eq major-mode 'js-mode)
+             (eq major-mode 'js2-mode))
+         (prettier-js))
+
         (lsp-mode (lsp-format-buffer))
 
         (t (error "No method exists for formatting this buffer"))))
