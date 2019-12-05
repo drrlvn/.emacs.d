@@ -782,7 +782,8 @@
                                                  (issues . show))
         magit-save-repository-buffers 'dontask
         magit-status-initial-section '(((unstaged) (status)) ((untracked) (status)))
-        magit-revision-show-gravatars '("^Author:     " . "^Commit:     "))
+        magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")
+        magit-clone-url-format "https://%h/%n.git")
   (remove-hook 'magit-pre-display-buffer-hook #'magit-save-window-configuration)
   (magit-add-section-hook 'magit-status-sections-hook
                           #'magit-insert-recent-commits
