@@ -82,6 +82,8 @@
 (bind-key "C-x n r" #'narrow-to-region)
 (bind-key "C-x n n" #'my/narrow-or-widen-dwim)
 
+(bind-key "C-c c" #'my/copy-file-path)
+
 (bind-key [remap goto-line] #'my/goto-line-with-feedback)
 
 (bind-key "M-p" #'my/scroll-down)
