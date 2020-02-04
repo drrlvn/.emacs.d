@@ -932,6 +932,9 @@ _M-p_: Unmark  _M-n_: Unmark  _q_: Quit"
   :straight t
   :config (global-undo-tree-mode 1))
 
+(use-package vue-mode
+  :straight t)
+
 (use-package web-mode
   :straight t
   :mode "\\.hbs\\'"
